@@ -15,36 +15,38 @@ class GithubRepositorySearchScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final repositories = ref.watch(
-      githubRepositorySearchViewModelProvider.select(
-        (value) => value.repositories,
-      ),
-    );
-
     final textController = useTextEditingController();
+
+    final asyncState = ref.watch(githubRepositorySearchViewModelProvider);
+
     return Scaffold(
       appBar: AppBar(),
-      body: Column(
-        children: [
-          TextField(
-            decoration: const InputDecoration(hintText: 'Search'),
-            controller: textController,
-            onChanged: (value) async {
-              await ref
-                  .read(githubRepositorySearchViewModelProvider.notifier)
-                  .search(value);
-            },
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: repositories.length,
-              itemBuilder: (BuildContext context, int index) {
-                final item = repositories[index];
-                return ListTile(title: Text(item.name), onTap: () {});
-              },
+      body: asyncState.when(
+        loading: () => const Center(child: CircularProgressIndicator()),
+        error: (error, _) => Center(child: Text(error.toString())),
+        data:
+            (state) => Column(
+              children: [
+                TextField(
+                  decoration: const InputDecoration(hintText: 'Search'),
+                  controller: textController,
+                  onChanged: (value) async {
+                    await ref
+                        .read(githubRepositorySearchViewModelProvider.notifier)
+                        .search(value);
+                  },
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: state.repositories.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      final item = state.repositories[index];
+                      return ListTile(title: Text(item.name), onTap: () {});
+                    },
+                  ),
+                ),
+              ],
             ),
-          ),
-        ],
       ),
     );
   }

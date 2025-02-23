@@ -25,30 +25,43 @@ class GithubRepositorySearchState with _$GithubRepositorySearchState {
 class GithubRepositorySearchViewModel
     extends _$GithubRepositorySearchViewModel {
   @override
-  GithubRepositorySearchState build() =>
-      const GithubRepositorySearchState(repositories: []);
+  Future<GithubRepositorySearchState> build() async {
+    return GithubRepositorySearchState(repositories: []);
+  }
 
   Future<void> search(String searchWord) async {
-    try {
+    state = const AsyncValue.loading();
+
+    state = await AsyncValue.guard(() async {
       final result = await ref
           .read(githubRepositorySearchUseCaseProvider)
           .call(searchWord);
-      final repositories = result.$1;
-      state = state.copyWith(repositories: repositories);
-    } catch (e) {
-      print(e);
-    }
+      return GithubRepositorySearchState(
+        repositories: result.$1,
+        page: result.$2,
+        imcompleteResults: result.$3,
+      );
+    });
   }
 
   Future<void> loadMore(String searchWord) async {
-    try {
+    if (state is AsyncError || state is AsyncLoading) {
+      return;
+    }
+    final data = state.value;
+    if (data == null) {
+      return;
+    }
+
+    state = await AsyncValue.guard(() async {
       final result = await ref
           .read(githubRepositorySearchLoadMoreUseCaseProvider)
-          .call((searchWord, state.imcompleteResults, state.page));
-      final repositories = result.$1;
-      state = state.copyWith(repositories: repositories);
-    } catch (e) {
-      //
-    }
+          .call((searchWord, data.imcompleteResults, data.page));
+      return GithubRepositorySearchState(
+        repositories: result.$1,
+        page: result.$2,
+        imcompleteResults: result.$3,
+      );
+    });
   }
 }
