@@ -51,3 +51,36 @@ class GithubRepositorySearchScreen extends HookConsumerWidget {
     );
   }
 }
+
+class _NotLoggedInView extends StatelessWidget {
+  const _NotLoggedInView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text('GithubTokenを入力してください'),
+            const SizedBox(height: 20),
+            TextField(
+              decoration: const InputDecoration(hintText: 'Enter Github Token'),
+              onChanged: (value) {
+                // Handle the token input
+              },
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // Navigate to the login screen
+                Navigator.pushNamed(context, '/login');
+              },
+              child: const Text('Login'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
