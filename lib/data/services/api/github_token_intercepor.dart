@@ -1,10 +1,23 @@
 // Package imports:
 import 'package:dio/dio.dart';
 
-class GithubTokenInterceptor extends Interceptor {
+// Project imports:
+import 'package:flutter_my_blueprint/data/services/github_token/github_token_service.dart';
+
+class GithubTokenInterceptor extends QueuedInterceptor {
+  final GithubTokenService tokenService;
+
+  GithubTokenInterceptor(this.tokenService);
+
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    options.headers['Authorization'] = "Bearer ";
+    final githubToken = tokenService.fetch();
+
+    if (githubToken == null) {
+      return handler.reject(DioException(requestOptions: options));
+    }
+
+    options.headers['Authorization'] = "Bearer $githubToken";
     super.onRequest(options, handler);
   }
 }

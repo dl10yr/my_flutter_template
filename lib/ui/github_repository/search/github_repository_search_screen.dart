@@ -6,12 +6,31 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
+import 'package:flutter_my_blueprint/ui/auth/auth_state_provider.dart';
+import 'package:flutter_my_blueprint/ui/auth/auth_viewmodel.dart';
 import 'package:flutter_my_blueprint/ui/github_repository/search/github_repository_search_view_model.dart';
 
 // Package imports:
 
 class GithubRepositorySearchScreen extends HookConsumerWidget {
   const GithubRepositorySearchScreen({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final isAuthenticated = ref.watch(
+      authStateProvider.select((value) => value.isAuthenticated),
+    );
+
+    if (isAuthenticated) {
+      return const _SearchView();
+    } else {
+      return const _NotLoggedInView();
+    }
+  }
+}
+
+class _SearchView extends HookConsumerWidget {
+  const _SearchView();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -47,6 +66,39 @@ class GithubRepositorySearchScreen extends HookConsumerWidget {
                 ),
               ],
             ),
+      ),
+    );
+  }
+}
+
+class _NotLoggedInView extends HookConsumerWidget {
+  const _NotLoggedInView();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final controller = useTextEditingController();
+
+    return Scaffold(
+      appBar: AppBar(),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text('GithubTokenを入力してください'),
+            const SizedBox(height: 20),
+            TextField(
+              controller: controller,
+              decoration: const InputDecoration(hintText: 'Enter Github Token'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                FocusManager.instance.primaryFocus?.unfocus();
+                ref.read(authViewModelProvider.notifier).login(controller.text);
+              },
+              child: const Text('Login'),
+            ),
+          ],
+        ),
       ),
     );
   }
