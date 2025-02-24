@@ -14,7 +14,7 @@ part 'github_dio.g.dart';
 
 @Riverpod(keepAlive: true)
 Dio githubDio(Ref ref) {
-  return GithubDio.getInstance(ref.watch(githubTokenServiceProvider.notifier));
+  return GithubDio.getInstance(ref.watch(githubTokenServiceProvider));
 }
 
 class GithubDio with DioMixin implements Dio {

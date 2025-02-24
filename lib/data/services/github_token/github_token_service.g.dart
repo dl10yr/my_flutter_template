@@ -7,22 +7,23 @@ part of 'github_token_service.dart';
 // **************************************************************************
 
 String _$githubTokenServiceHash() =>
-    r'ce7774cb499cdab80b5f7d4b7ccdf3f148ce45da';
+    r'447be4cd7cb4f012f15fbc8dd266142da9350adb';
 
-/// See also [GithubTokenService].
-@ProviderFor(GithubTokenService)
-final githubTokenServiceProvider =
-    NotifierProvider<GithubTokenService, String?>.internal(
-      GithubTokenService.new,
-      name: r'githubTokenServiceProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$githubTokenServiceHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
+/// See also [githubTokenService].
+@ProviderFor(githubTokenService)
+final githubTokenServiceProvider = Provider<GithubTokenService>.internal(
+  githubTokenService,
+  name: r'githubTokenServiceProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$githubTokenServiceHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
 
-typedef _$GithubTokenService = Notifier<String?>;
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef GithubTokenServiceRef = ProviderRef<GithubTokenService>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

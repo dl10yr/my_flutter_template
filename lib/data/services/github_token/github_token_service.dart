@@ -1,20 +1,24 @@
 // Package imports:
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'github_token_service.g.dart';
 
 @Riverpod(keepAlive: true)
-class GithubTokenService extends _$GithubTokenService {
-  @override
-  String? build() {
-    return null;
-  }
+GithubTokenService githubTokenService(Ref ref) {
+  return GithubTokenService();
+}
+
+class GithubTokenService {
+  GithubTokenService();
+
+  String? _githubToken;
 
   void save(String githubToken) {
-    state = githubToken;
+    _githubToken = githubToken;
   }
 
   String? fetch() {
-    return state;
+    return _githubToken;
   }
 }
