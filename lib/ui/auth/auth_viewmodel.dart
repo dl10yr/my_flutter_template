@@ -12,6 +12,11 @@ class AuthViewModel extends _$AuthViewModel {
   @override
   AuthState build() => AuthState(githubToken: null);
 
+  void initialize() {
+    final authState = ref.read(remoteAuthRepositoryProvider).fetchAuthState();
+    state = authState;
+  }
+
   void login(String githubToken) {
     final authState = ref.read(remoteAuthRepositoryProvider).login(githubToken);
     state = authState;
