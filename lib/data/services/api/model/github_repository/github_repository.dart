@@ -42,7 +42,7 @@ class GithubSearchRepositoriesResponse with _$GithubSearchRepositoriesResponse {
   @JsonSerializable(explicitToJson: true)
   factory GithubSearchRepositoriesResponse({
     @JsonKey(name: 'total_count') required num totalCount,
-    @JsonKey(name: 'incomplete_results') required bool imcompleteResults,
+    @JsonKey(name: 'incomplete_results') required bool incompleteResults,
     required List<GithubRepository> items,
   }) = _GithubSearchRepositoriesResponse;
 

@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$GithubRepositorySearchState {
   List<GithubRepository> get repositories => throw _privateConstructorUsedError;
-  bool get imcompleteResults => throw _privateConstructorUsedError;
+  bool get incompleteResults => throw _privateConstructorUsedError;
   int get page => throw _privateConstructorUsedError;
 
   /// Create a copy of GithubRepositorySearchState
@@ -41,7 +41,7 @@ abstract class $GithubRepositorySearchStateCopyWith<$Res> {
   @useResult
   $Res call({
     List<GithubRepository> repositories,
-    bool imcompleteResults,
+    bool incompleteResults,
     int page,
   });
 }
@@ -65,7 +65,7 @@ class _$GithubRepositorySearchStateCopyWithImpl<
   @override
   $Res call({
     Object? repositories = null,
-    Object? imcompleteResults = null,
+    Object? incompleteResults = null,
     Object? page = null,
   }) {
     return _then(
@@ -75,10 +75,10 @@ class _$GithubRepositorySearchStateCopyWithImpl<
                     ? _value.repositories
                     : repositories // ignore: cast_nullable_to_non_nullable
                         as List<GithubRepository>,
-            imcompleteResults:
-                null == imcompleteResults
-                    ? _value.imcompleteResults
-                    : imcompleteResults // ignore: cast_nullable_to_non_nullable
+            incompleteResults:
+                null == incompleteResults
+                    ? _value.incompleteResults
+                    : incompleteResults // ignore: cast_nullable_to_non_nullable
                         as bool,
             page:
                 null == page
@@ -102,7 +102,7 @@ abstract class _$$GithubRepositorySearchStateImplCopyWith<$Res>
   @useResult
   $Res call({
     List<GithubRepository> repositories,
-    bool imcompleteResults,
+    bool incompleteResults,
     int page,
   });
 }
@@ -126,7 +126,7 @@ class __$$GithubRepositorySearchStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? repositories = null,
-    Object? imcompleteResults = null,
+    Object? incompleteResults = null,
     Object? page = null,
   }) {
     return _then(
@@ -136,10 +136,10 @@ class __$$GithubRepositorySearchStateImplCopyWithImpl<$Res>
                 ? _value._repositories
                 : repositories // ignore: cast_nullable_to_non_nullable
                     as List<GithubRepository>,
-        imcompleteResults:
-            null == imcompleteResults
-                ? _value.imcompleteResults
-                : imcompleteResults // ignore: cast_nullable_to_non_nullable
+        incompleteResults:
+            null == incompleteResults
+                ? _value.incompleteResults
+                : incompleteResults // ignore: cast_nullable_to_non_nullable
                     as bool,
         page:
             null == page
@@ -157,7 +157,7 @@ class _$GithubRepositorySearchStateImpl
     implements _GithubRepositorySearchState {
   const _$GithubRepositorySearchStateImpl({
     final List<GithubRepository> repositories = const [],
-    this.imcompleteResults = true,
+    this.incompleteResults = true,
     this.page = 1,
   }) : _repositories = repositories;
 
@@ -172,14 +172,14 @@ class _$GithubRepositorySearchStateImpl
 
   @override
   @JsonKey()
-  final bool imcompleteResults;
+  final bool incompleteResults;
   @override
   @JsonKey()
   final int page;
 
   @override
   String toString() {
-    return 'GithubRepositorySearchState(repositories: $repositories, imcompleteResults: $imcompleteResults, page: $page)';
+    return 'GithubRepositorySearchState(repositories: $repositories, incompleteResults: $incompleteResults, page: $page)';
   }
 
   @override
@@ -191,8 +191,8 @@ class _$GithubRepositorySearchStateImpl
               other._repositories,
               _repositories,
             ) &&
-            (identical(other.imcompleteResults, imcompleteResults) ||
-                other.imcompleteResults == imcompleteResults) &&
+            (identical(other.incompleteResults, incompleteResults) ||
+                other.incompleteResults == incompleteResults) &&
             (identical(other.page, page) || other.page == page));
   }
 
@@ -200,7 +200,7 @@ class _$GithubRepositorySearchStateImpl
   int get hashCode => Object.hash(
     runtimeType,
     const DeepCollectionEquality().hash(_repositories),
-    imcompleteResults,
+    incompleteResults,
     page,
   );
 
@@ -219,14 +219,14 @@ abstract class _GithubRepositorySearchState
     implements GithubRepositorySearchState {
   const factory _GithubRepositorySearchState({
     final List<GithubRepository> repositories,
-    final bool imcompleteResults,
+    final bool incompleteResults,
     final int page,
   }) = _$GithubRepositorySearchStateImpl;
 
   @override
   List<GithubRepository> get repositories;
   @override
-  bool get imcompleteResults;
+  bool get incompleteResults;
   @override
   int get page;
 

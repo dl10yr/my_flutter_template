@@ -16,7 +16,7 @@ part 'github_repository_search_view_model.g.dart';
 class GithubRepositorySearchState with _$GithubRepositorySearchState {
   const factory GithubRepositorySearchState({
     @Default([]) List<GithubRepository> repositories,
-    @Default(true) bool imcompleteResults,
+    @Default(true) bool incompleteResults,
     @Default(1) int page,
   }) = _GithubRepositorySearchState;
 }
@@ -39,7 +39,7 @@ class GithubRepositorySearchViewModel
       return GithubRepositorySearchState(
         repositories: result.$1,
         page: result.$2,
-        imcompleteResults: result.$3,
+        incompleteResults: result.$3,
       );
     });
   }
@@ -56,11 +56,11 @@ class GithubRepositorySearchViewModel
     state = await AsyncValue.guard(() async {
       final result = await ref
           .read(githubRepositorySearchLoadMoreUseCaseProvider)
-          .call((searchWord, data.imcompleteResults, data.page));
+          .call((searchWord, data.incompleteResults, data.page));
       return GithubRepositorySearchState(
         repositories: result.$1,
         page: result.$2,
-        imcompleteResults: result.$3,
+        incompleteResults: result.$3,
       );
     });
   }

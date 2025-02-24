@@ -32,14 +32,14 @@ class GithubRepositorySearchLoadMoreUseCase
     (String, bool, int) params,
   ) async {
     final query = params.$1;
-    final imcompleteResults = params.$2;
+    final incompleteResults = params.$2;
     final currentPage = params.$3;
 
     if (query.isEmpty) {
       throw Exception('query is empty');
     }
-    if (!imcompleteResults) {
-      throw Exception('imcompleteResults is false');
+    if (!incompleteResults) {
+      throw Exception('incompleteResults is false');
     }
 
     final response = await _repository.searchRepositories(
@@ -47,6 +47,6 @@ class GithubRepositorySearchLoadMoreUseCase
       currentPage + 1,
     );
 
-    return (response.$1.items, response.$2, response.$1.imcompleteResults);
+    return (response.$1.items, response.$2, response.$1.incompleteResults);
   }
 }

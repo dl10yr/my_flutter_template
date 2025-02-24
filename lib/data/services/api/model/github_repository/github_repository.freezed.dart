@@ -533,7 +533,7 @@ mixin _$GithubSearchRepositoriesResponse {
   @JsonKey(name: 'total_count')
   num get totalCount => throw _privateConstructorUsedError;
   @JsonKey(name: 'incomplete_results')
-  bool get imcompleteResults => throw _privateConstructorUsedError;
+  bool get incompleteResults => throw _privateConstructorUsedError;
   List<GithubRepository> get items => throw _privateConstructorUsedError;
 
   /// Serializes this GithubSearchRepositoriesResponse to a JSON map.
@@ -559,7 +559,7 @@ abstract class $GithubSearchRepositoriesResponseCopyWith<$Res> {
   @useResult
   $Res call({
     @JsonKey(name: 'total_count') num totalCount,
-    @JsonKey(name: 'incomplete_results') bool imcompleteResults,
+    @JsonKey(name: 'incomplete_results') bool incompleteResults,
     List<GithubRepository> items,
   });
 }
@@ -583,7 +583,7 @@ class _$GithubSearchRepositoriesResponseCopyWithImpl<
   @override
   $Res call({
     Object? totalCount = null,
-    Object? imcompleteResults = null,
+    Object? incompleteResults = null,
     Object? items = null,
   }) {
     return _then(
@@ -593,10 +593,10 @@ class _$GithubSearchRepositoriesResponseCopyWithImpl<
                     ? _value.totalCount
                     : totalCount // ignore: cast_nullable_to_non_nullable
                         as num,
-            imcompleteResults:
-                null == imcompleteResults
-                    ? _value.imcompleteResults
-                    : imcompleteResults // ignore: cast_nullable_to_non_nullable
+            incompleteResults:
+                null == incompleteResults
+                    ? _value.incompleteResults
+                    : incompleteResults // ignore: cast_nullable_to_non_nullable
                         as bool,
             items:
                 null == items
@@ -620,7 +620,7 @@ abstract class _$$GithubSearchRepositoriesResponseImplCopyWith<$Res>
   @useResult
   $Res call({
     @JsonKey(name: 'total_count') num totalCount,
-    @JsonKey(name: 'incomplete_results') bool imcompleteResults,
+    @JsonKey(name: 'incomplete_results') bool incompleteResults,
     List<GithubRepository> items,
   });
 }
@@ -644,7 +644,7 @@ class __$$GithubSearchRepositoriesResponseImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? totalCount = null,
-    Object? imcompleteResults = null,
+    Object? incompleteResults = null,
     Object? items = null,
   }) {
     return _then(
@@ -654,10 +654,10 @@ class __$$GithubSearchRepositoriesResponseImplCopyWithImpl<$Res>
                 ? _value.totalCount
                 : totalCount // ignore: cast_nullable_to_non_nullable
                     as num,
-        imcompleteResults:
-            null == imcompleteResults
-                ? _value.imcompleteResults
-                : imcompleteResults // ignore: cast_nullable_to_non_nullable
+        incompleteResults:
+            null == incompleteResults
+                ? _value.incompleteResults
+                : incompleteResults // ignore: cast_nullable_to_non_nullable
                     as bool,
         items:
             null == items
@@ -676,7 +676,7 @@ class _$GithubSearchRepositoriesResponseImpl
     extends _GithubSearchRepositoriesResponse {
   _$GithubSearchRepositoriesResponseImpl({
     @JsonKey(name: 'total_count') required this.totalCount,
-    @JsonKey(name: 'incomplete_results') required this.imcompleteResults,
+    @JsonKey(name: 'incomplete_results') required this.incompleteResults,
     required final List<GithubRepository> items,
   }) : _items = items,
        super._();
@@ -690,7 +690,7 @@ class _$GithubSearchRepositoriesResponseImpl
   final num totalCount;
   @override
   @JsonKey(name: 'incomplete_results')
-  final bool imcompleteResults;
+  final bool incompleteResults;
   final List<GithubRepository> _items;
   @override
   List<GithubRepository> get items {
@@ -701,7 +701,7 @@ class _$GithubSearchRepositoriesResponseImpl
 
   @override
   String toString() {
-    return 'GithubSearchRepositoriesResponse(totalCount: $totalCount, imcompleteResults: $imcompleteResults, items: $items)';
+    return 'GithubSearchRepositoriesResponse(totalCount: $totalCount, incompleteResults: $incompleteResults, items: $items)';
   }
 
   @override
@@ -711,8 +711,8 @@ class _$GithubSearchRepositoriesResponseImpl
             other is _$GithubSearchRepositoriesResponseImpl &&
             (identical(other.totalCount, totalCount) ||
                 other.totalCount == totalCount) &&
-            (identical(other.imcompleteResults, imcompleteResults) ||
-                other.imcompleteResults == imcompleteResults) &&
+            (identical(other.incompleteResults, incompleteResults) ||
+                other.incompleteResults == incompleteResults) &&
             const DeepCollectionEquality().equals(other._items, _items));
   }
 
@@ -721,7 +721,7 @@ class _$GithubSearchRepositoriesResponseImpl
   int get hashCode => Object.hash(
     runtimeType,
     totalCount,
-    imcompleteResults,
+    incompleteResults,
     const DeepCollectionEquality().hash(_items),
   );
 
@@ -747,7 +747,7 @@ abstract class _GithubSearchRepositoriesResponse
     extends GithubSearchRepositoriesResponse {
   factory _GithubSearchRepositoriesResponse({
     @JsonKey(name: 'total_count') required final num totalCount,
-    @JsonKey(name: 'incomplete_results') required final bool imcompleteResults,
+    @JsonKey(name: 'incomplete_results') required final bool incompleteResults,
     required final List<GithubRepository> items,
   }) = _$GithubSearchRepositoriesResponseImpl;
   _GithubSearchRepositoriesResponse._() : super._();
@@ -761,7 +761,7 @@ abstract class _GithubSearchRepositoriesResponse
   num get totalCount;
   @override
   @JsonKey(name: 'incomplete_results')
-  bool get imcompleteResults;
+  bool get incompleteResults;
   @override
   List<GithubRepository> get items;
 

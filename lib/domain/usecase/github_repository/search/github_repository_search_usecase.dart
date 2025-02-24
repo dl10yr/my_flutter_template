@@ -27,6 +27,6 @@ class GithubRepositorySearchUseCase
       throw Exception('query is empty');
     }
     final response = await _repository.searchRepositories(query, 1);
-    return (response.$1.items, response.$2, response.$1.imcompleteResults);
+    return (response.$1.items, response.$2, response.$1.incompleteResults);
   }
 }
