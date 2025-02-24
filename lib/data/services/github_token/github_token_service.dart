@@ -13,6 +13,7 @@ class GithubTokenService {
   GithubTokenService();
 
   String? _githubToken;
+  String? get githubToken => _githubToken;
 
   void save(String githubToken) {
     _githubToken = githubToken;
