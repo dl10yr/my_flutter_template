@@ -7,12 +7,12 @@ part of 'auth_repository.dart';
 // **************************************************************************
 
 String _$remoteAuthRepositoryHash() =>
-    r'b85f24cd9d90dfa4cb3d5d4d4fbf38a4ba1d57ec';
+    r'0c9ba283430453df64060e04ee12cf1881126ee9';
 
 /// See also [remoteAuthRepository].
 @ProviderFor(remoteAuthRepository)
 final remoteAuthRepositoryProvider =
-    AutoDisposeProvider<RemoteAuthRepository>.internal(
+    AutoDisposeProvider<AuthRepository>.internal(
       remoteAuthRepository,
       name: r'remoteAuthRepositoryProvider',
       debugGetCreateSourceHash:
@@ -25,6 +25,6 @@ final remoteAuthRepositoryProvider =
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef RemoteAuthRepositoryRef = AutoDisposeProviderRef<RemoteAuthRepository>;
+typedef RemoteAuthRepositoryRef = AutoDisposeProviderRef<AuthRepository>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
