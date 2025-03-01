@@ -50,61 +50,98 @@ void main() {
     container.dispose();
   });
 
-  test('search', () async {
-    final searchWord = 'apple';
-    final page = 1;
-    final searchResponse = GithubSearchRepositoriesResponse(
-      totalCount: 2,
-      incompleteResults: false,
-      items: [
-        GithubRepository(
-          name: 'apple',
-          fullName: 'apple',
-          issuesCount: 0,
-          stargazersCount: 1,
-          watchersCount: 1,
-          forksCount: 1,
-          language: 'English',
-        ),
-      ],
-    );
+  group('GithubRepositorySearchViewModel Tests', () {
+    test('search', () async {
+      final searchWord = 'apple';
+      final page = 1;
+      final searchResponse = GithubSearchRepositoriesResponse(
+        totalCount: 2,
+        incompleteResults: false,
+        items: [
+          GithubRepository(
+            name: 'apple',
+            fullName: 'apple',
+            issuesCount: 0,
+            stargazersCount: 1,
+            watchersCount: 1,
+            forksCount: 1,
+            language: 'English',
+          ),
+        ],
+      );
 
-    when(mockSearchUseCase.call(searchWord)).thenAnswer((_) async {
-      return (searchResponse.items, page, searchResponse.incompleteResults);
-    });
+      when(mockSearchUseCase.call(searchWord)).thenAnswer((_) async {
+        return (searchResponse.items, page, searchResponse.incompleteResults);
+      });
 
-    final githubRepoSearchViewModel = container.read(
-      githubRepositorySearchViewModelProvider.notifier,
-    );
+      final githubRepoSearchViewModel = container.read(
+        githubRepositorySearchViewModelProvider.notifier,
+      );
 
-    container.listen(
-      githubRepositorySearchViewModelProvider,
-      listener.call,
-      fireImmediately: true,
-    );
-    final initialState = GithubRepositorySearchState(
-      repositories: [],
-      incompleteResults: true,
-      page: 1,
-    );
+      container.listen(
+        githubRepositorySearchViewModelProvider,
+        listener.call,
+        fireImmediately: true,
+      );
+      final initialState = GithubRepositorySearchState(
+        repositories: [],
+        incompleteResults: true,
+        page: 1,
+      );
 
-    await container.read(githubRepositorySearchViewModelProvider.future);
-    verify(listener.call(argThat(isNull), AsyncData(initialState)));
+      await container.read(githubRepositorySearchViewModelProvider.future);
+      verify(listener.call(argThat(isNull), AsyncData(initialState)));
 
-    await githubRepoSearchViewModel.search('apple');
+      await githubRepoSearchViewModel.search('apple');
 
-    verifyInOrder([
-      listener.call(AsyncData(initialState), argThat(isA<AsyncLoading>())),
-      listener.call(
-        argThat(isA<AsyncLoading>()),
-        AsyncData(
-          GithubRepositorySearchState(
-            repositories: searchResponse.items,
-            page: page,
-            incompleteResults: false,
+      verifyInOrder([
+        listener.call(AsyncData(initialState), argThat(isA<AsyncLoading>())),
+        listener.call(
+          argThat(isA<AsyncLoading>()),
+          AsyncData(
+            GithubRepositorySearchState(
+              repositories: searchResponse.items,
+              page: page,
+              incompleteResults: false,
+            ),
           ),
         ),
-      ),
-    ]);
+      ]);
+    });
+
+    test('search fails', () async {
+      final searchWord = 'apple';
+      final exception = Exception('search failed');
+
+      when(mockSearchUseCase.call(searchWord)).thenThrow(exception);
+
+      final githubRepoSearchViewModel = container.read(
+        githubRepositorySearchViewModelProvider.notifier,
+      );
+
+      container.listen(
+        githubRepositorySearchViewModelProvider,
+        listener.call,
+        fireImmediately: true,
+      );
+      final initialState = GithubRepositorySearchState(
+        repositories: [],
+        incompleteResults: true,
+        page: 1,
+      );
+
+      await container.read(githubRepositorySearchViewModelProvider.future);
+      verify(listener.call(argThat(isNull), AsyncData(initialState)));
+
+      await githubRepoSearchViewModel.search('apple');
+
+      verifyInOrder([
+        listener.call(AsyncData(initialState), argThat(isA<AsyncLoading>())),
+        listener.call(
+          argThat(isA<AsyncLoading>()),
+          argThat(isA<AsyncError>().having((e) => e.error, 'error', exception)),
+        ),
+      ]);
+    });
   });
 }
