@@ -9,8 +9,8 @@ import 'package:flutter_my_blueprint/domain/usecase/github_repository/search/git
 
 // Project imports:
 
-part 'github_repository_search_view_model.freezed.dart';
-part 'github_repository_search_view_model.g.dart';
+part 'github_repository_search_viewmodel.freezed.dart';
+part 'github_repository_search_viewmodel.g.dart';
 
 @freezed
 class GithubRepositorySearchState with _$GithubRepositorySearchState {
@@ -25,13 +25,12 @@ class GithubRepositorySearchState with _$GithubRepositorySearchState {
 class GithubRepositorySearchViewModel
     extends _$GithubRepositorySearchViewModel {
   @override
-  Future<GithubRepositorySearchState> build() async {
+  FutureOr<GithubRepositorySearchState> build() {
     return GithubRepositorySearchState(repositories: []);
   }
 
   Future<void> search(String searchWord) async {
     state = const AsyncValue.loading();
-
     state = await AsyncValue.guard(() async {
       final result = await ref
           .read(githubRepositorySearchUseCaseProvider)

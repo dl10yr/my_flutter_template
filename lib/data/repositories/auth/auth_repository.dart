@@ -11,27 +11,29 @@ import 'package:flutter_my_blueprint/domain/model/auth/auth_state.dart';
 part 'auth_repository.g.dart';
 
 abstract class AuthRepository {
-  void login(String githubApiToken);
+  AuthState login(String githubApiToken);
+  AuthState fetchAuthState();
 }
 
 @riverpod
-RemoteAuthRepository remoteAuthRepository(Ref ref) {
-  return RemoteAuthRepository(
-    ref.watch(githubTokenServiceProvider),
-    ref.watch(githubTokenServiceProvider.notifier),
-  );
+AuthRepository remoteAuthRepository(Ref ref) {
+  return RemoteAuthRepository(ref.watch(githubTokenServiceProvider));
 }
 
 class RemoteAuthRepository implements AuthRepository {
-  final String? githubToken;
   final GithubTokenService service;
 
-  RemoteAuthRepository(this.githubToken, this.service);
-
-  AuthState get authState => AuthState(githubToken: githubToken);
+  RemoteAuthRepository(this.service);
 
   @override
-  void login(String githubToken) {
+  AuthState login(String githubToken) {
     service.save(githubToken);
+    return AuthState(githubToken: githubToken);
+  }
+
+  @override
+  AuthState fetchAuthState() {
+    final githubToken = service.fetch();
+    return AuthState(githubToken: githubToken);
   }
 }

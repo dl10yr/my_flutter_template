@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'github_repository_search_view_model.dart';
+part of 'github_repository_search_viewmodel.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
 String _$githubRepositorySearchViewModelHash() =>
-    r'841e0497bd12079946a68f547ef6f48bb658b005';
+    r'44a1475eef123a356f6c0b91c36a11da0e746428';
 
 /// See also [GithubRepositorySearchViewModel].
 @ProviderFor(GithubRepositorySearchViewModel)
