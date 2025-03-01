@@ -18,6 +18,8 @@ import 'package:flutter_my_blueprint/domain/usecase/github_repository/search/git
     as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 
+import 'github_repository_search_viewmodel_test.dart' as _i9;
+
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
 // ignore_for_file: avoid_setters_without_getters
@@ -148,4 +150,19 @@ class MockAuthRepository extends _i1.Mock implements _i8.AuthRepository {
             ),
           )
           as _i3.AuthState);
+}
+
+/// A class which mocks [ChangeListener].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockChangeListener<T> extends _i1.Mock implements _i9.ChangeListener<T> {
+  MockChangeListener() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  void call(T? previous, T? next) => super.noSuchMethod(
+    Invocation.method(#call, [previous, next]),
+    returnValueForMissingStub: null,
+  );
 }

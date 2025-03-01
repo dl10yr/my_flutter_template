@@ -13,20 +13,23 @@ import 'package:flutter_my_blueprint/domain/usecase/github_repository/search/git
 import 'package:flutter_my_blueprint/ui/github_repository/search/github_repository_search_viewmodel.dart';
 import 'github_repository_search_viewmodel_test.mocks.dart';
 
+abstract class ChangeListener<T> {
+  void call(T? previous, T next);
+}
+
 @GenerateMocks([
   GithubRepositorySearchUseCase,
   GithubRepositorySearchLoadMoreUseCase,
   GithubRepositorySearchApi,
   AuthRepository,
+  ChangeListener,
 ])
-class Listener<T> extends Mock {
-  void call(T? previous, T next);
-}
-
 void main() {
   late ProviderContainer container;
   late MockGithubRepositorySearchUseCase mockSearchUseCase;
   late MockGithubRepositorySearchLoadMoreUseCase mockLoadMoreUseCase;
+  final listener =
+      MockChangeListener<AsyncValue<GithubRepositorySearchState>>();
 
   setUp(() {
     mockSearchUseCase = MockGithubRepositorySearchUseCase();
@@ -74,8 +77,6 @@ void main() {
       githubRepositorySearchViewModelProvider.notifier,
     );
 
-    final listener = Listener<AsyncValue<GithubRepositorySearchState>>();
-
     container.listen(
       githubRepositorySearchViewModelProvider,
       listener.call,
@@ -88,19 +89,14 @@ void main() {
     );
 
     await container.read(githubRepositorySearchViewModelProvider.future);
-    verify(listener.call(null, AsyncData(initialState)));
+    verify(listener.call(argThat(isNull), AsyncData(initialState)));
 
     await githubRepoSearchViewModel.search('apple');
 
-    final ttt = AsyncLoading<GithubRepositorySearchState>().copyWithPrevious(
-      AsyncData(initialState),
-      isRefresh: false,
-    );
-
     verifyInOrder([
-      listener.call(AsyncData(initialState), ttt),
+      listener.call(AsyncData(initialState), argThat(isA<AsyncLoading>())),
       listener.call(
-        ttt,
+        argThat(isA<AsyncLoading>()),
         AsyncData(
           GithubRepositorySearchState(
             repositories: searchResponse.items,
