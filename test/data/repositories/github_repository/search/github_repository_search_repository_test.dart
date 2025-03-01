@@ -13,47 +13,49 @@ import '../../../../ui/github_repository/search/github_repository_search_viewmod
 @GenerateMocks([GithubRepositorySearchApi])
 void main() {
   group('GithubRepositorySearchRepository tests', () {
-  late ProviderContainer container;
-  late MockGithubRepositorySearchApi api;
+    late ProviderContainer container;
+    late MockGithubRepositorySearchApi api;
 
-  setUp(() {
-    api = MockGithubRepositorySearchApi();
-    container = ProviderContainer(
-      overrides: [
-        githubRepositorySearchApiProvider.overrideWithValue(api),
-      ],
-    );
-  });
-
-  tearDown(() {
-    container.dispose();
-  });
-
-  test('searchRepository test', () async {
-    final searchWord = 'apple';
-    final page = 1;
-    final searchResponse = GithubSearchRepositoriesResponse(
-      totalCount: 2,
-      incompleteResults: false,
-      items: [GithubRepository(
-        name: 'apple',
-        fullName: 'apple',
-        issuesCount: 0,
-        stargazersCount: 1,
-        watchersCount: 1,
-        forksCount: 1,
-        language: 'English',
-      )],
-    );
-
-    when(api.searchRepositories(searchWord, page)).thenAnswer((_) async {
-      return searchResponse;
+    setUp(() {
+      api = MockGithubRepositorySearchApi();
+      container = ProviderContainer(
+        overrides: [githubRepositorySearchApiProvider.overrideWithValue(api)],
+      );
     });
 
-    final repo = container.read(remoteGithubSearchRepositoryRepositoryProvider);
-    final result = await repo.searchRepositories(searchWord, page);
+    tearDown(() {
+      container.dispose();
+    });
 
-    expect(result, (searchResponse, page));
-  });
+    test('searchRepository test', () async {
+      final searchWord = 'apple';
+      final page = 1;
+      final searchResponse = GithubSearchRepositoriesResponse(
+        totalCount: 2,
+        incompleteResults: false,
+        items: [
+          GithubRepository(
+            name: 'apple',
+            fullName: 'apple',
+            issuesCount: 0,
+            stargazersCount: 1,
+            watchersCount: 1,
+            forksCount: 1,
+            language: 'English',
+          ),
+        ],
+      );
+
+      when(api.searchRepositories(searchWord, page)).thenAnswer((_) async {
+        return searchResponse;
+      });
+
+      final repo = container.read(
+        remoteGithubSearchRepositoryRepositoryProvider,
+      );
+      final result = await repo.searchRepositories(searchWord, page);
+
+      expect(result, (searchResponse, page));
+    });
   });
 }
