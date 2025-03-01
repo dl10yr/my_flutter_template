@@ -7,7 +7,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
 import 'package:flutter_my_blueprint/ui/auth/auth_viewmodel.dart';
-import 'package:flutter_my_blueprint/ui/github_repository/search/github_repository_search_view_model.dart';
+import 'package:flutter_my_blueprint/ui/github_repository/search/github_repository_search_viewmodel.dart';
 
 // Package imports:
 

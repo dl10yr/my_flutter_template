@@ -5,8 +5,12 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:flutter_my_blueprint/data/repositories/auth/auth_repository.dart'
     as _i3;
-import 'package:flutter_my_blueprint/domain/model/auth/auth_state.dart' as _i2;
+
+// Package imports:
 import 'package:mockito/mockito.dart' as _i1;
+
+// Project imports:
+import 'package:flutter_my_blueprint/domain/model/auth/auth_state.dart' as _i2;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
