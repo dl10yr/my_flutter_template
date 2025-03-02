@@ -47,6 +47,12 @@ class MockAuthRepository extends _i1.Mock implements _i3.AuthRepository {
           as _i2.AuthState);
 
   @override
+  void logout() => super.noSuchMethod(
+    Invocation.method(#logout, []),
+    returnValueForMissingStub: null,
+  );
+
+  @override
   _i2.AuthState fetchAuthState() =>
       (super.noSuchMethod(
             Invocation.method(#fetchAuthState, []),
