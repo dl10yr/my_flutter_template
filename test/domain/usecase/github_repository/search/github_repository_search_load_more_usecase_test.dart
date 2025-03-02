@@ -8,7 +8,6 @@ import 'package:mockito/mockito.dart';
 import 'package:flutter_my_blueprint/data/repositories/github_repository/search/github_repository_search_repository.dart';
 import 'package:flutter_my_blueprint/data/services/api/model/github_repository/github_repository.dart';
 import 'package:flutter_my_blueprint/domain/usecase/github_repository/search/github_repository_search_load_more_usecase.dart';
-
 import 'github_repository_search_usecase_test.mocks.dart';
 
 @GenerateMocks([GithubRepositorySearchRepository])
@@ -66,6 +65,7 @@ void main() {
           watchersCount: 1,
           forksCount: 1,
           language: 'English',
+          owner: GithubRepositoryOwner(avatarUrl: 'https://example.com'),
         );
         final response = (
           GithubSearchRepositoriesResponse(

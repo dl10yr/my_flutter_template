@@ -25,6 +25,7 @@ class GithubRepository with _$GithubRepository {
     @JsonKey(name: 'name') required String name,
     @JsonKey(name: 'full_name') required String? fullName,
     required String? language,
+    required GithubRepositoryOwner owner,
     @JsonKey(name: 'stargazers_count') required num? stargazersCount,
     @JsonKey(name: 'watchers_count') required num? watchersCount,
     @JsonKey(name: 'forks_count') required num? forksCount,

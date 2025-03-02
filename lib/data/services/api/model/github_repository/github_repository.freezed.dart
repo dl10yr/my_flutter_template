@@ -198,6 +198,7 @@ mixin _$GithubRepository {
   @JsonKey(name: 'full_name')
   String? get fullName => throw _privateConstructorUsedError;
   String? get language => throw _privateConstructorUsedError;
+  GithubRepositoryOwner get owner => throw _privateConstructorUsedError;
   @JsonKey(name: 'stargazers_count')
   num? get stargazersCount => throw _privateConstructorUsedError;
   @JsonKey(name: 'watchers_count')
@@ -228,11 +229,14 @@ abstract class $GithubRepositoryCopyWith<$Res> {
     @JsonKey(name: 'name') String name,
     @JsonKey(name: 'full_name') String? fullName,
     String? language,
+    GithubRepositoryOwner owner,
     @JsonKey(name: 'stargazers_count') num? stargazersCount,
     @JsonKey(name: 'watchers_count') num? watchersCount,
     @JsonKey(name: 'forks_count') num? forksCount,
     @JsonKey(name: 'issues_count') num? issuesCount,
   });
+
+  $GithubRepositoryOwnerCopyWith<$Res> get owner;
 }
 
 /// @nodoc
@@ -253,6 +257,7 @@ class _$GithubRepositoryCopyWithImpl<$Res, $Val extends GithubRepository>
     Object? name = null,
     Object? fullName = freezed,
     Object? language = freezed,
+    Object? owner = null,
     Object? stargazersCount = freezed,
     Object? watchersCount = freezed,
     Object? forksCount = freezed,
@@ -275,6 +280,11 @@ class _$GithubRepositoryCopyWithImpl<$Res, $Val extends GithubRepository>
                     ? _value.language
                     : language // ignore: cast_nullable_to_non_nullable
                         as String?,
+            owner:
+                null == owner
+                    ? _value.owner
+                    : owner // ignore: cast_nullable_to_non_nullable
+                        as GithubRepositoryOwner,
             stargazersCount:
                 freezed == stargazersCount
                     ? _value.stargazersCount
@@ -299,6 +309,16 @@ class _$GithubRepositoryCopyWithImpl<$Res, $Val extends GithubRepository>
           as $Val,
     );
   }
+
+  /// Create a copy of GithubRepository
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $GithubRepositoryOwnerCopyWith<$Res> get owner {
+    return $GithubRepositoryOwnerCopyWith<$Res>(_value.owner, (value) {
+      return _then(_value.copyWith(owner: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -314,11 +334,15 @@ abstract class _$$GithubRepositoryImplCopyWith<$Res>
     @JsonKey(name: 'name') String name,
     @JsonKey(name: 'full_name') String? fullName,
     String? language,
+    GithubRepositoryOwner owner,
     @JsonKey(name: 'stargazers_count') num? stargazersCount,
     @JsonKey(name: 'watchers_count') num? watchersCount,
     @JsonKey(name: 'forks_count') num? forksCount,
     @JsonKey(name: 'issues_count') num? issuesCount,
   });
+
+  @override
+  $GithubRepositoryOwnerCopyWith<$Res> get owner;
 }
 
 /// @nodoc
@@ -338,6 +362,7 @@ class __$$GithubRepositoryImplCopyWithImpl<$Res>
     Object? name = null,
     Object? fullName = freezed,
     Object? language = freezed,
+    Object? owner = null,
     Object? stargazersCount = freezed,
     Object? watchersCount = freezed,
     Object? forksCount = freezed,
@@ -360,6 +385,11 @@ class __$$GithubRepositoryImplCopyWithImpl<$Res>
                 ? _value.language
                 : language // ignore: cast_nullable_to_non_nullable
                     as String?,
+        owner:
+            null == owner
+                ? _value.owner
+                : owner // ignore: cast_nullable_to_non_nullable
+                    as GithubRepositoryOwner,
         stargazersCount:
             freezed == stargazersCount
                 ? _value.stargazersCount
@@ -393,6 +423,7 @@ class _$GithubRepositoryImpl extends _GithubRepository {
     @JsonKey(name: 'name') required this.name,
     @JsonKey(name: 'full_name') required this.fullName,
     required this.language,
+    required this.owner,
     @JsonKey(name: 'stargazers_count') required this.stargazersCount,
     @JsonKey(name: 'watchers_count') required this.watchersCount,
     @JsonKey(name: 'forks_count') required this.forksCount,
@@ -411,6 +442,8 @@ class _$GithubRepositoryImpl extends _GithubRepository {
   @override
   final String? language;
   @override
+  final GithubRepositoryOwner owner;
+  @override
   @JsonKey(name: 'stargazers_count')
   final num? stargazersCount;
   @override
@@ -425,7 +458,7 @@ class _$GithubRepositoryImpl extends _GithubRepository {
 
   @override
   String toString() {
-    return 'GithubRepository(name: $name, fullName: $fullName, language: $language, stargazersCount: $stargazersCount, watchersCount: $watchersCount, forksCount: $forksCount, issuesCount: $issuesCount)';
+    return 'GithubRepository(name: $name, fullName: $fullName, language: $language, owner: $owner, stargazersCount: $stargazersCount, watchersCount: $watchersCount, forksCount: $forksCount, issuesCount: $issuesCount)';
   }
 
   @override
@@ -438,6 +471,7 @@ class _$GithubRepositoryImpl extends _GithubRepository {
                 other.fullName == fullName) &&
             (identical(other.language, language) ||
                 other.language == language) &&
+            (identical(other.owner, owner) || other.owner == owner) &&
             (identical(other.stargazersCount, stargazersCount) ||
                 other.stargazersCount == stargazersCount) &&
             (identical(other.watchersCount, watchersCount) ||
@@ -455,6 +489,7 @@ class _$GithubRepositoryImpl extends _GithubRepository {
     name,
     fullName,
     language,
+    owner,
     stargazersCount,
     watchersCount,
     forksCount,
@@ -483,6 +518,7 @@ abstract class _GithubRepository extends GithubRepository {
     @JsonKey(name: 'name') required final String name,
     @JsonKey(name: 'full_name') required final String? fullName,
     required final String? language,
+    required final GithubRepositoryOwner owner,
     @JsonKey(name: 'stargazers_count') required final num? stargazersCount,
     @JsonKey(name: 'watchers_count') required final num? watchersCount,
     @JsonKey(name: 'forks_count') required final num? forksCount,
@@ -501,6 +537,8 @@ abstract class _GithubRepository extends GithubRepository {
   String? get fullName;
   @override
   String? get language;
+  @override
+  GithubRepositoryOwner get owner;
   @override
   @JsonKey(name: 'stargazers_count')
   num? get stargazersCount;

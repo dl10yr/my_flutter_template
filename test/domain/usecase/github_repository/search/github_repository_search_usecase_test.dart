@@ -36,6 +36,7 @@ void main() {
           watchersCount: 1,
           forksCount: 1,
           language: 'English',
+          owner: GithubRepositoryOwner(avatarUrl: 'https://example.com'),
         );
         final response = GithubSearchRepositoriesResponse(
           items: [githubRepository],
@@ -65,6 +66,7 @@ void main() {
         watchersCount: 1,
         forksCount: 1,
         language: 'English',
+        owner: GithubRepositoryOwner(avatarUrl: 'https://example.com'),
       );
       final response = GithubSearchRepositoriesResponse(
         items: [githubRepository],
