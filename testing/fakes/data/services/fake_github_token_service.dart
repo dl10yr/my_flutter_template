@@ -17,4 +17,9 @@ class FakeGithubTokenService implements GithubTokenService {
   String? fetch() {
     return _githubToken;
   }
+
+  @override
+  void remove() {
+    _githubToken = null;
+  }
 }

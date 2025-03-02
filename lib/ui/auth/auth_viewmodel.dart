@@ -21,4 +21,9 @@ class AuthViewModel extends _$AuthViewModel {
     final authState = ref.read(remoteAuthRepositoryProvider).login(githubToken);
     state = authState;
   }
+
+  void logout() {
+    ref.read(remoteAuthRepositoryProvider).logout();
+    state = AuthState(githubToken: null);
+  }
 }

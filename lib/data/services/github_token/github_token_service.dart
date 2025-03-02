@@ -19,6 +19,10 @@ class GithubTokenService {
     _githubToken = githubToken;
   }
 
+  void remove() {
+    _githubToken = null;
+  }
+
   String? fetch() {
     return _githubToken;
   }

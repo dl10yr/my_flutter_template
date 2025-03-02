@@ -12,6 +12,7 @@ part 'auth_repository.g.dart';
 
 abstract class AuthRepository {
   AuthState login(String githubApiToken);
+  void logout();
   AuthState fetchAuthState();
 }
 
@@ -35,5 +36,10 @@ class RemoteAuthRepository implements AuthRepository {
   AuthState fetchAuthState() {
     final githubToken = service.fetch();
     return AuthState(githubToken: githubToken);
+  }
+
+  @override
+  void logout() {
+    service.remove();
   }
 }
