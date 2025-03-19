@@ -1,66 +1,39 @@
-import 'package:flutter/cupertino.dart';
-
-import 'package:flutter_my_blueprint/routing/app_routes.dart';
-import 'package:flutter_my_blueprint/ui/botom_tab/presentation/bottom_tab_screen.dart';
-import 'package:flutter_my_blueprint/ui/github_repository/search/github_repository_search_screen.dart';
-import 'package:flutter_my_blueprint/ui/settings/settings_screen.dart';
-
+import 'package:flutter/material.dart';
+import 'package:flutter_my_blueprint/routing/bottom_tab_route.dart';
+import 'package:flutter_my_blueprint/routing/search_branch.dart';
+import 'package:flutter_my_blueprint/routing/search_tab_route.dart';
+import 'package:flutter_my_blueprint/routing/settings_branch.dart';
+import 'package:flutter_my_blueprint/routing/settings_tab_route.dart';
+import 'package:flutter_my_blueprint/ui/start/start_screen.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'router.g.dart';
 
-final rootNavigationKey = GlobalKey<NavigatorState>();
-final _shellSearchNavigatorKey = GlobalKey<NavigatorState>(
-  debugLabel: 'searchTab',
-);
-final _shellSettingsNavigatorKey = GlobalKey<NavigatorState>(
+/// NavigatorKey
+final rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'rootNavigator');
+final searchTabNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'homeTab');
+final settingsTabNavigatorKey = GlobalKey<NavigatorState>(
   debugLabel: 'settingsTab',
 );
 
-@riverpod
-GoRouter goRouter(Ref ref) {
-  return GoRouter(
-    navigatorKey: rootNavigationKey,
-    initialLocation: AppRoutes.searchTab.path,
-    debugLogDiagnostics: true,
-    redirect: (context, state) {
-      return null;
-    },
-    observers: [],
-    routes: [
-      StatefulShellRoute.indexedStack(
-        pageBuilder: (context, state, navigationShell) {
-          return CupertinoPage(child: BottomTabScreen(navigationShell));
-        },
-        branches: [
-          StatefulShellBranch(
-            navigatorKey: _shellSearchNavigatorKey,
-            routes: [
-              GoRoute(
-                path: AppRoutes.searchTab.path,
-                pageBuilder: (context, state) {
-                  return const NoTransitionPage(
-                    child: GithubRepositorySearchScreen(),
-                  );
-                },
-              ),
-            ],
-          ),
-          StatefulShellBranch(
-            navigatorKey: _shellSettingsNavigatorKey,
-            routes: [
-              GoRoute(
-                path: AppRoutes.settings.path,
-                pageBuilder: (context, state) {
-                  return const NoTransitionPage(child: SettingsScreen());
-                },
-              ),
-            ],
-          ),
-        ],
-      ),
-    ],
-  );
+/// TypedGoRoute
+@TypedGoRoute<StartUpRoute>(
+  path: '/',
+  routes: [
+    TypedStatefulShellRoute<BottomTabRoute>(
+      branches: <TypedStatefulShellBranch<StatefulShellBranchData>>[
+        searchBranch,
+        settingsBranch,
+      ],
+    ),
+  ],
+)
+class StartUpRoute extends GoRouteData {
+  const StartUpRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      const StartScreen();
+
+  static final GlobalKey<NavigatorState> $parentNavigatorKey = rootNavigatorKey;
 }

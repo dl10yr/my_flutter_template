@@ -3,24 +3,102 @@
 part of 'router.dart';
 
 // **************************************************************************
-// RiverpodGenerator
+// GoRouterGenerator
 // **************************************************************************
 
-String _$goRouterHash() => r'087ec946b6a5cd63275298011ded26fb9cebb11f';
+List<RouteBase> get $appRoutes => [$startUpRoute];
 
-/// See also [goRouter].
-@ProviderFor(goRouter)
-final goRouterProvider = AutoDisposeProvider<GoRouter>.internal(
-  goRouter,
-  name: r'goRouterProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$goRouterHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
+RouteBase get $startUpRoute => GoRouteData.$route(
+  path: '/',
+
+  parentNavigatorKey: StartUpRoute.$parentNavigatorKey,
+
+  factory: $StartUpRouteExtension._fromState,
+  routes: [
+    StatefulShellRouteData.$route(
+      parentNavigatorKey: BottomTabRoute.$parentNavigatorKey,
+      restorationScopeId: BottomTabRoute.$restorationScopeId,
+      factory: $BottomTabRouteExtension._fromState,
+      branches: [
+        StatefulShellBranchData.$branch(
+          navigatorKey: BranchSearchData.$navigatorKey,
+          restorationScopeId: BranchSearchData.$restorationScopeId,
+
+          routes: [
+            GoRouteData.$route(
+              path: 'search_tab',
+              name: 'search_tab_screen',
+
+              factory: $SearchTabRouteExtension._fromState,
+            ),
+          ],
+        ),
+        StatefulShellBranchData.$branch(
+          navigatorKey: BranchSettingsData.$navigatorKey,
+          restorationScopeId: BranchSettingsData.$restorationScopeId,
+
+          routes: [
+            GoRouteData.$route(
+              path: 'settings_tab',
+              name: 'settings_tab_screen',
+
+              factory: $SettingsTabRouteExtension._fromState,
+            ),
+          ],
+        ),
+      ],
+    ),
+  ],
 );
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef GoRouterRef = AutoDisposeProviderRef<GoRouter>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+extension $StartUpRouteExtension on StartUpRoute {
+  static StartUpRoute _fromState(GoRouterState state) => const StartUpRoute();
+
+  String get location => GoRouteData.$location('/');
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $BottomTabRouteExtension on BottomTabRoute {
+  static BottomTabRoute _fromState(GoRouterState state) =>
+      const BottomTabRoute();
+}
+
+extension $SearchTabRouteExtension on SearchTabRoute {
+  static SearchTabRoute _fromState(GoRouterState state) =>
+      const SearchTabRoute();
+
+  String get location => GoRouteData.$location('/search_tab');
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $SettingsTabRouteExtension on SettingsTabRoute {
+  static SettingsTabRoute _fromState(GoRouterState state) =>
+      const SettingsTabRoute();
+
+  String get location => GoRouteData.$location('/settings_tab');
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
