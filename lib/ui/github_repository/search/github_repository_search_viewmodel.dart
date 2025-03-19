@@ -1,13 +1,8 @@
-// Package imports:
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
-
-// Project imports:
 import 'package:flutter_my_blueprint/data/services/api/model/github_repository/github_repository.dart';
 import 'package:flutter_my_blueprint/domain/usecase/github_repository/search/github_repository_search_load_more_usecase.dart';
 import 'package:flutter_my_blueprint/domain/usecase/github_repository/search/github_repository_search_usecase.dart';
-
-// Project imports:
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'github_repository_search_viewmodel.freezed.dart';
 part 'github_repository_search_viewmodel.g.dart';
@@ -26,7 +21,7 @@ class GithubRepositorySearchViewModel
     extends _$GithubRepositorySearchViewModel {
   @override
   FutureOr<GithubRepositorySearchState> build() {
-    return GithubRepositorySearchState(repositories: []);
+    return const GithubRepositorySearchState();
   }
 
   Future<void> search(String searchWord) async {

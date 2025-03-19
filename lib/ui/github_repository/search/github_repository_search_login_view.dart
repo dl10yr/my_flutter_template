@@ -1,12 +1,7 @@
-// Flutter imports:
 import 'package:flutter/material.dart';
-
-// Package imports:
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-
-// Project imports:
 import 'package:flutter_my_blueprint/ui/auth/auth_viewmodel.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class GithubRepositorySearchLoginView extends HookConsumerWidget {
   const GithubRepositorySearchLoginView({super.key});
@@ -21,7 +16,7 @@ class GithubRepositorySearchLoginView extends HookConsumerWidget {
       appBar: AppBar(title: const Text('GitHub Login'), elevation: 0),
       body: Center(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.all(24.0),
+          padding: const EdgeInsets.all(24),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -62,7 +57,7 @@ class GithubRepositorySearchLoginView extends HookConsumerWidget {
               ),
               const SizedBox(height: 8),
               Text(
-                'You can create a token in GitHub Settings > Developer settings > Personal access tokens',
+                '''You can create a token in GitHub Settings > Developer settings > Personal access tokens''',
                 style: TextStyle(
                   fontSize: 12,
                   color: Colors.grey.shade600,

@@ -1,9 +1,8 @@
 class AppRoute<T> {
+  AppRoute({required this.name, required this.path, required this.fullPath});
   final String name;
   final String path;
   final T fullPath;
-
-  AppRoute({required this.name, required this.path, required this.fullPath});
 }
 
 typedef QuestionSetRoute = String Function(String questionSetId);

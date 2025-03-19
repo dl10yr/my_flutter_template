@@ -1,7 +1,4 @@
-// Flutter imports:
 import 'package:flutter/material.dart';
-
-// Package imports:
 import 'package:go_router/go_router.dart';
 
 class BottomTabScreen extends StatelessWidget {
@@ -27,7 +24,7 @@ class BottomTabScreen extends StatelessWidget {
     );
   }
 
-  void _onTap(index) {
+  void _onTap(int index) {
     navigationShell.goBranch(
       index,
       initialLocation: index == navigationShell.currentIndex,

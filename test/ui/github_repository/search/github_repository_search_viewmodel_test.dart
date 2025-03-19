@@ -1,16 +1,14 @@
-// Package imports:
-import 'package:flutter_test/flutter_test.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
-
-// Project imports:
 import 'package:flutter_my_blueprint/data/repositories/auth/auth_repository.dart';
 import 'package:flutter_my_blueprint/data/services/api/github_repository/search/github_repository_search_api.dart';
 import 'package:flutter_my_blueprint/data/services/api/model/github_repository/github_repository.dart';
 import 'package:flutter_my_blueprint/domain/usecase/github_repository/search/github_repository_search_load_more_usecase.dart';
 import 'package:flutter_my_blueprint/domain/usecase/github_repository/search/github_repository_search_usecase.dart';
 import 'package:flutter_my_blueprint/ui/github_repository/search/github_repository_search_viewmodel.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:mockito/annotations.dart';
+import 'package:mockito/mockito.dart';
+
 import 'github_repository_search_viewmodel_test.mocks.dart';
 
 abstract class ChangeListener<T> {
@@ -52,8 +50,8 @@ void main() {
 
   group('GithubRepositorySearchViewModel Tests', () {
     test('search', () async {
-      final searchWord = 'apple';
-      final page = 1;
+      const searchWord = 'apple';
+      const page = 1;
       final searchResponse = GithubSearchRepositoriesResponse(
         totalCount: 2,
         incompleteResults: false,
@@ -84,25 +82,23 @@ void main() {
         listener.call,
         fireImmediately: true,
       );
-      final initialState = GithubRepositorySearchState(
-        repositories: [],
-        incompleteResults: true,
-        page: 1,
-      );
+      const initialState = GithubRepositorySearchState();
 
       await container.read(githubRepositorySearchViewModelProvider.future);
-      verify(listener.call(argThat(isNull), AsyncData(initialState)));
+      verify(listener.call(argThat(isNull), const AsyncData(initialState)));
 
       await githubRepoSearchViewModel.search('apple');
 
       verifyInOrder([
-        listener.call(AsyncData(initialState), argThat(isA<AsyncLoading>())),
         listener.call(
-          argThat(isA<AsyncLoading>()),
+          const AsyncData(initialState),
+          argThat(isA<AsyncLoading<dynamic>>()),
+        ),
+        listener.call(
+          argThat(isA<AsyncLoading<dynamic>>()),
           AsyncData(
             GithubRepositorySearchState(
               repositories: searchResponse.items,
-              page: page,
               incompleteResults: false,
             ),
           ),
@@ -111,7 +107,7 @@ void main() {
     });
 
     test('search fails', () async {
-      final searchWord = 'apple';
+      const searchWord = 'apple';
       final exception = Exception('search failed');
 
       when(mockSearchUseCase.call(searchWord)).thenThrow(exception);
@@ -125,22 +121,27 @@ void main() {
         listener.call,
         fireImmediately: true,
       );
-      final initialState = GithubRepositorySearchState(
-        repositories: [],
-        incompleteResults: true,
-        page: 1,
-      );
+      const initialState = GithubRepositorySearchState();
 
       await container.read(githubRepositorySearchViewModelProvider.future);
-      verify(listener.call(argThat(isNull), AsyncData(initialState)));
+      verify(listener.call(argThat(isNull), const AsyncData(initialState)));
 
       await githubRepoSearchViewModel.search('apple');
 
       verifyInOrder([
-        listener.call(AsyncData(initialState), argThat(isA<AsyncLoading>())),
         listener.call(
-          argThat(isA<AsyncLoading>()),
-          argThat(isA<AsyncError>().having((e) => e.error, 'error', exception)),
+          const AsyncData(initialState),
+          argThat(isA<AsyncLoading<dynamic>>()),
+        ),
+        listener.call(
+          argThat(isA<AsyncLoading<dynamic>>()),
+          argThat(
+            isA<AsyncError<dynamic>>().having(
+              (e) => e.error,
+              'error',
+              exception,
+            ),
+          ),
         ),
       ]);
     });

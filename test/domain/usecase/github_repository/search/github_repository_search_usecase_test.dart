@@ -1,12 +1,10 @@
-// Package imports:
+import 'package:flutter_my_blueprint/data/repositories/github_repository/search/github_repository_search_repository.dart';
+import 'package:flutter_my_blueprint/data/services/api/model/github_repository/github_repository.dart';
+import 'package:flutter_my_blueprint/domain/usecase/github_repository/search/github_repository_search_usecase.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-// Project imports:
-import 'package:flutter_my_blueprint/data/repositories/github_repository/search/github_repository_search_repository.dart';
-import 'package:flutter_my_blueprint/data/services/api/model/github_repository/github_repository.dart';
-import 'package:flutter_my_blueprint/domain/usecase/github_repository/search/github_repository_search_usecase.dart';
 import 'github_repository_search_usecase_test.mocks.dart';
 
 @GenerateMocks([GithubRepositorySearchRepository])
@@ -25,9 +23,9 @@ void main() {
     });
 
     test(
-      'should return a list of repositories, total count, and incomplete results flag',
+      'return a list of repositories, total count, and incomplete results',
       () async {
-        final query = 'flutter';
+        const query = 'flutter';
         final githubRepository = GithubRepository(
           name: 'apple',
           fullName: 'apple',
@@ -57,7 +55,7 @@ void main() {
     );
 
     test('should handle incomplete results', () async {
-      final query = 'flutter';
+      const query = 'flutter';
       final githubRepository = GithubRepository(
         name: 'apple',
         fullName: 'apple',

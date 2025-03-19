@@ -1,14 +1,11 @@
-// Package imports:
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
-
-// Project imports:
 import 'package:flutter_my_blueprint/data/services/api/error_interceptor.dart';
 import 'package:flutter_my_blueprint/data/services/api/github_header_interceptor.dart';
 import 'package:flutter_my_blueprint/data/services/api/github_token_intercepor.dart';
 import 'package:flutter_my_blueprint/data/services/github_token/github_token_service.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'github_dio.g.dart';
 
@@ -29,9 +26,10 @@ class GithubDio with DioMixin implements Dio {
 
     this.options = options;
 
-    interceptors.add(ErrorInterceptor());
-    interceptors.add(GithubHeaderInterceptor());
-    interceptors.add(GithubTokenInterceptor(tokenService));
+    interceptors
+      ..add(ErrorInterceptor())
+      ..add(GithubHeaderInterceptor())
+      ..add(GithubTokenInterceptor(tokenService));
 
     httpClientAdapter = IOHttpClientAdapter();
   }

@@ -1,10 +1,7 @@
-// Package imports:
+import 'package:flutter_my_blueprint/data/services/shared_preference/app_shared_prefernce_key.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-// Project imports:
-import 'package:flutter_my_blueprint/data/services/shared_preference/app_shared_prefernce_key.dart';
 
 part 'shared_preference_service.g.dart';
 

@@ -1,7 +1,5 @@
-// Flutter imports:
 import 'package:flutter/material.dart';
 
-// Package imports:
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class SettingsScreen extends HookConsumerWidget {
@@ -14,7 +12,7 @@ class SettingsScreen extends HookConsumerWidget {
       body: ListView.builder(
         itemCount: 0,
         itemBuilder: (BuildContext context, int index) {
-          return ListTile(title: Text(''), onTap: () {});
+          return ListTile(title: const Text(''), onTap: () {});
         },
       ),
     );

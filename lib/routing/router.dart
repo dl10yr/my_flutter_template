@@ -1,16 +1,13 @@
-// Flutter imports:
 import 'package:flutter/cupertino.dart';
 
-// Package imports:
-import 'package:go_router/go_router.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
-
-// Project imports:
 import 'package:flutter_my_blueprint/routing/app_routes.dart';
 import 'package:flutter_my_blueprint/ui/botom_tab/presentation/bottom_tab_screen.dart';
 import 'package:flutter_my_blueprint/ui/github_repository/search/github_repository_search_screen.dart';
 import 'package:flutter_my_blueprint/ui/settings/settings_screen.dart';
+
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'router.g.dart';
 
@@ -48,7 +45,6 @@ GoRouter goRouter(Ref ref) {
                     child: GithubRepositorySearchScreen(),
                   );
                 },
-                routes: const [],
               ),
             ],
           ),
@@ -58,9 +54,8 @@ GoRouter goRouter(Ref ref) {
               GoRoute(
                 path: AppRoutes.settings.path,
                 pageBuilder: (context, state) {
-                  return NoTransitionPage(child: SettingsScreen());
+                  return const NoTransitionPage(child: SettingsScreen());
                 },
-                routes: [],
               ),
             ],
           ),

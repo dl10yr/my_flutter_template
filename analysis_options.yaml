@@ -24,6 +24,7 @@ linter:
     public_member_api_docs: false
     no_default_cases: false
     one_member_abstracts: false
+    require_trailing_commas: false
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options

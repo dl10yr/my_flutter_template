@@ -1,13 +1,8 @@
-// Flutter imports:
 import 'package:flutter/material.dart';
-
-// Package imports:
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-
-// Project imports:
 import 'package:flutter_my_blueprint/ui/auth/auth_viewmodel.dart';
 import 'package:flutter_my_blueprint/ui/github_repository/search/github_repository_search_viewmodel.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class GithubRepositorySearchView extends HookConsumerWidget {
   const GithubRepositorySearchView({super.key});
@@ -22,7 +17,7 @@ class GithubRepositorySearchView extends HookConsumerWidget {
       Future<void> debounceSearch() async {
         if (textController.text.isNotEmpty) {
           searchDebounce.value = true;
-          await Future.delayed(const Duration(milliseconds: 500));
+          await Future<void>.delayed(const Duration(milliseconds: 500));
           if (textController.text.isNotEmpty) {
             await ref
                 .read(githubRepositorySearchViewModelProvider.notifier)
@@ -51,7 +46,7 @@ class GithubRepositorySearchView extends HookConsumerWidget {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16),
             child: TextField(
               controller: textController,
               decoration: InputDecoration(
@@ -88,7 +83,7 @@ class GithubRepositorySearchView extends HookConsumerWidget {
                         ),
                         const SizedBox(height: 16),
                         Text(
-                          'Error: ${error.toString()}',
+                          'Error: $error',
                           style: const TextStyle(fontSize: 16),
                           textAlign: TextAlign.center,
                         ),

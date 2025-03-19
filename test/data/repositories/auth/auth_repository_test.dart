@@ -1,9 +1,7 @@
-// Package imports:
-import 'package:flutter_test/flutter_test.dart';
-
-// Project imports:
 import 'package:flutter_my_blueprint/data/repositories/auth/auth_repository.dart';
 import 'package:flutter_my_blueprint/domain/model/auth/auth_state.dart';
+import 'package:flutter_test/flutter_test.dart';
+
 import '../../../../testing/fakes/data/services/fake_github_token_service.dart';
 
 void main() {

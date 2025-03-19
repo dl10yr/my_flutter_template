@@ -1,6 +1,14 @@
 {
+  "editor.codeActionsOnSave": {
+    "quickfix.insertSemicolon": "always",
+    "source.organizeImports": "always",
+    "source.addMissingImports": "always",
+    "source.fixAll": "always"
+  },
   "editor.formatOnSave": true,
-  "[dart]": {
-    "editor.formatOnSave": true
-  }
+  "editor.formatOnType": true,
+  "editor.formatOnPaste": true,
+  "editor.rulers": [
+    80
+  ]
 }

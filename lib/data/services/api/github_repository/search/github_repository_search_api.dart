@@ -1,12 +1,10 @@
-// Package imports:
 import 'package:dio/dio.dart';
+
+import 'package:flutter_my_blueprint/data/services/api/github_dio.dart';
+import 'package:flutter_my_blueprint/data/services/api/model/github_repository/github_repository.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-
-// Project imports:
-import 'package:flutter_my_blueprint/data/services/api/github_dio.dart';
-import 'package:flutter_my_blueprint/data/services/api/model/github_repository/github_repository.dart';
 
 part 'github_repository_search_api.g.dart';
 

@@ -1,12 +1,7 @@
-// Package imports:
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
-
-// Project imports:
 import 'package:flutter_my_blueprint/data/services/github_token/github_token_service.dart';
 import 'package:flutter_my_blueprint/domain/model/auth/auth_state.dart';
-
-// Project imports:
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'auth_repository.g.dart';
 
@@ -22,9 +17,8 @@ AuthRepository remoteAuthRepository(Ref ref) {
 }
 
 class RemoteAuthRepository implements AuthRepository {
-  final GithubTokenService service;
-
   RemoteAuthRepository(this.service);
+  final GithubTokenService service;
 
   @override
   AuthState login(String githubToken) {

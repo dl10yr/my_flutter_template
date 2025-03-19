@@ -1,11 +1,8 @@
-// Package imports:
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
-
-// Project imports:
 import 'package:flutter_my_blueprint/data/repositories/github_repository/search/github_repository_search_repository.dart';
 import 'package:flutter_my_blueprint/data/services/api/model/github_repository/github_repository.dart';
 import 'package:flutter_my_blueprint/domain/usecase/usecase.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'github_repository_search_load_more_usecase.g.dart';
 
@@ -23,9 +20,8 @@ class GithubRepositorySearchLoadMoreUseCase
           (String, bool, int),
           Future<(List<GithubRepository>, int, bool)>
         > {
-  final GithubRepositorySearchRepository _repository;
-
   GithubRepositorySearchLoadMoreUseCase(this._repository);
+  final GithubRepositorySearchRepository _repository;
 
   @override
   Future<(List<GithubRepository>, int, bool)> call(

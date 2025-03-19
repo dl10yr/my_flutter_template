@@ -1,13 +1,11 @@
-// Package imports:
+import 'package:flutter_my_blueprint/data/repositories/auth/auth_repository.dart';
+import 'package:flutter_my_blueprint/domain/model/auth/auth_state.dart';
+import 'package:flutter_my_blueprint/ui/auth/auth_viewmodel.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-// Project imports:
-import 'package:flutter_my_blueprint/data/repositories/auth/auth_repository.dart';
-import 'package:flutter_my_blueprint/domain/model/auth/auth_state.dart';
-import 'package:flutter_my_blueprint/ui/auth/auth_viewmodel.dart';
 import 'auth_viewmodel_test.mocks.dart';
 
 @GenerateMocks([AuthRepository])
@@ -35,8 +33,8 @@ void main() {
       return authState;
     });
 
-    final authViewModel = container.read(authViewModelProvider.notifier);
-    authViewModel.initialize();
+    final authViewModel = container.read(authViewModelProvider.notifier)
+      ..initialize();
 
     expect(authViewModel.state, authState);
   });
@@ -47,8 +45,8 @@ void main() {
       return authState;
     });
 
-    final authViewModel = container.read(authViewModelProvider.notifier);
-    authViewModel.login('newToken');
+    final authViewModel = container.read(authViewModelProvider.notifier)
+      ..login('newToken');
 
     expect(authViewModel.state, authState);
   });
