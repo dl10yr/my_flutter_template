@@ -1,10 +1,10 @@
 // Package imports:
-// Project imports:
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../../services/api/github_repository/search/github_repository_search_api.dart';
-import '../../../services/api/model/github_repository/github_repository.dart';
+// Project imports:
+import 'package:flutter_my_blueprint/data/services/api/github_repository/search/github_repository_search_api.dart';
+import 'package:flutter_my_blueprint/data/services/api/model/github_repository/github_repository.dart';
 
 part 'github_repository_search_repository.g.dart';
 
@@ -26,16 +26,16 @@ GithubRepositorySearchRepository remoteGithubSearchRepositoryRepository(
 
 class RemoteGithubRepositorySearchRepository
     implements GithubRepositorySearchRepository {
-  RemoteGithubRepositorySearchRepository(this.api);
   final GithubRepositorySearchApi api;
+
+  RemoteGithubRepositorySearchRepository(this.api);
 
   @override
   Future<(GithubSearchRepositoriesResponse, int)> searchRepositories(
     String searchWord,
     int page,
   ) async {
-    final GithubSearchRepositoriesResponse response = await api
-        .searchRepositories(searchWord, page);
+    final response = await api.searchRepositories(searchWord, page);
     return (response, page);
   }
 }

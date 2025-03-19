@@ -156,7 +156,7 @@ class __$$GithubRepositorySearchStateImplCopyWithImpl<$Res>
 class _$GithubRepositorySearchStateImpl
     implements _GithubRepositorySearchState {
   const _$GithubRepositorySearchStateImpl({
-    final List<GithubRepository> repositories = const <GithubRepository>[],
+    final List<GithubRepository> repositories = const [],
     this.incompleteResults = true,
     this.page = 1,
   }) : _repositories = repositories;

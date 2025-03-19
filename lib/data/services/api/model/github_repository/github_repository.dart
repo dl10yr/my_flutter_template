@@ -6,10 +6,11 @@ part 'github_repository.freezed.dart';
 
 @freezed
 class GithubRepositoryOwner with _$GithubRepositoryOwner {
+  const GithubRepositoryOwner._();
+
   factory GithubRepositoryOwner({
     @JsonKey(name: 'avatar_url') required String avatarUrl,
   }) = _GithubRepositoryOwner;
-  const GithubRepositoryOwner._();
 
   factory GithubRepositoryOwner.fromJson(Map<String, dynamic> json) =>
       _$GithubRepositoryOwnerFromJson(json);
@@ -17,6 +18,8 @@ class GithubRepositoryOwner with _$GithubRepositoryOwner {
 
 @freezed
 class GithubRepository with _$GithubRepository {
+  const GithubRepository._();
+
   @JsonSerializable(explicitToJson: true)
   factory GithubRepository({
     @JsonKey(name: 'name') required String name,
@@ -28,7 +31,6 @@ class GithubRepository with _$GithubRepository {
     @JsonKey(name: 'forks_count') required num? forksCount,
     @JsonKey(name: 'issues_count') required num? issuesCount,
   }) = _GithubRepository;
-  const GithubRepository._();
 
   factory GithubRepository.fromJson(Map<String, dynamic> json) =>
       _$GithubRepositoryFromJson(json);
@@ -36,13 +38,14 @@ class GithubRepository with _$GithubRepository {
 
 @freezed
 class GithubSearchRepositoriesResponse with _$GithubSearchRepositoriesResponse {
+  const GithubSearchRepositoriesResponse._();
+
   @JsonSerializable(explicitToJson: true)
   factory GithubSearchRepositoriesResponse({
     @JsonKey(name: 'total_count') required num totalCount,
     @JsonKey(name: 'incomplete_results') required bool incompleteResults,
     required List<GithubRepository> items,
   }) = _GithubSearchRepositoriesResponse;
-  const GithubSearchRepositoriesResponse._();
 
   factory GithubSearchRepositoriesResponse.fromJson(
     Map<String, dynamic> json,

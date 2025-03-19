@@ -1,10 +1,10 @@
 // Package imports:
-// Project imports:
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'app_shared_prefernce_key.dart';
+// Project imports:
+import 'package:flutter_my_blueprint/data/services/shared_preference/app_shared_prefernce_key.dart';
 
 part 'shared_preference_service.g.dart';
 
@@ -38,7 +38,7 @@ class SharedPreferenceService {
   }
 
   Future<T?> read<T>(AppSharedPreferenceKey<T> key) async {
-    final Type type = T;
+    final type = T;
     try {
       switch (type) {
         case const (String):

@@ -7,7 +7,7 @@ part of 'github_repository_search_viewmodel.dart';
 // **************************************************************************
 
 String _$githubRepositorySearchViewModelHash() =>
-    r'4f8d7b170063d3ab4b613ccfeb40cde7d54b241f';
+    r'44a1475eef123a356f6c0b91c36a11da0e746428';
 
 /// See also [GithubRepositorySearchViewModel].
 @ProviderFor(GithubRepositorySearchViewModel)

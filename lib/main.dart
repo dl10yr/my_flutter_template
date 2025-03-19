@@ -2,12 +2,13 @@
 
 // Flutter imports:
 import 'package:flutter/material.dart';
+
 // Package imports:
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
-import 'routing/router.dart';
+import 'package:flutter_my_blueprint/routing/router.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -22,7 +23,7 @@ class MyApp extends HookConsumerWidget {
       WidgetsBinding.instance.addPostFrameCallback((_) {});
 
       return null;
-    }, <Object?>[]);
+    }, []);
 
     return MaterialApp.router(
       routerConfig: ref.watch(goRouterProvider),

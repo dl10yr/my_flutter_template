@@ -1,8 +1,9 @@
 class AppRoute<T> {
-  AppRoute({required this.name, required this.path, required this.fullPath});
   final String name;
   final String path;
   final T fullPath;
+
+  AppRoute({required this.name, required this.path, required this.fullPath});
 }
 
 typedef QuestionSetRoute = String Function(String questionSetId);
@@ -12,12 +13,12 @@ class AppRoutes {
     throw Exception('AppRoutes is static.');
   }
 
-  static final AppRoute<String> searchTab = AppRoute<String>(
+  static final searchTab = AppRoute<String>(
     name: 'github_repository_search',
     path: '/github_repository_search',
     fullPath: '/github_repository_search',
   );
-  static final AppRoute<String> settings = AppRoute(
+  static final settings = AppRoute(
     name: 'settings',
     path: '/settings',
     fullPath: '/settings',
