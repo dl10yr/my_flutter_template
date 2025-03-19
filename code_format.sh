@@ -12,7 +12,6 @@ done
 
 # コードのフォーマットや整理
 dart fix --apply lib
-flutter pub run import_sorter:main
 dart format lib
 
 # --clean オプションが指定された場合、キャッシュをクリア
