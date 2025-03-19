@@ -1,22 +1,24 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
-
 // Package imports:
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../data/services/api/model/github_repository/github_repository.dart';
 // Project imports:
-import 'package:flutter_my_blueprint/ui/auth/auth_viewmodel.dart';
-import 'package:flutter_my_blueprint/ui/github_repository/search/github_repository_search_viewmodel.dart';
+import '../../auth/auth_viewmodel.dart';
+import 'github_repository_search_viewmodel.dart';
 
 class GithubRepositorySearchView extends HookConsumerWidget {
   const GithubRepositorySearchView({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final textController = useTextEditingController();
-    final asyncState = ref.watch(githubRepositorySearchViewModelProvider);
-    final searchDebounce = useState<bool>(false);
+    final TextEditingController textController = useTextEditingController();
+    final AsyncValue<GithubRepositorySearchState> asyncState = ref.watch(
+      githubRepositorySearchViewModelProvider,
+    );
+    final ValueNotifier<bool> searchDebounce = useState<bool>(false);
 
     useEffect(() {
       Future<void> debounceSearch() async {
@@ -34,13 +36,13 @@ class GithubRepositorySearchView extends HookConsumerWidget {
 
       textController.addListener(debounceSearch);
       return () => textController.removeListener(debounceSearch);
-    }, [textController]);
+    }, <Object?>[textController]);
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('GitHub Repositories'),
         elevation: 2,
-        actions: [
+        actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.logout),
             onPressed: () => ref.read(authViewModelProvider.notifier).logout(),
@@ -49,9 +51,9 @@ class GithubRepositorySearchView extends HookConsumerWidget {
         ],
       ),
       body: Column(
-        children: [
+        children: <Widget>[
           Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16),
             child: TextField(
               controller: textController,
               decoration: InputDecoration(
@@ -77,10 +79,10 @@ class GithubRepositorySearchView extends HookConsumerWidget {
             child: asyncState.when(
               loading: () => const Center(child: CircularProgressIndicator()),
               error:
-                  (error, _) => Center(
+                  (Object error, _) => Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                      children: <Widget>[
                         const Icon(
                           Icons.error_outline,
                           size: 48,
@@ -88,7 +90,7 @@ class GithubRepositorySearchView extends HookConsumerWidget {
                         ),
                         const SizedBox(height: 16),
                         Text(
-                          'Error: ${error.toString()}',
+                          'Error: $error',
                           style: const TextStyle(fontSize: 16),
                           textAlign: TextAlign.center,
                         ),
@@ -104,12 +106,12 @@ class GithubRepositorySearchView extends HookConsumerWidget {
                     ),
                   ),
               data:
-                  (state) =>
+                  (GithubRepositorySearchState state) =>
                       state.repositories.isEmpty
                           ? Center(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
+                              children: <Widget>[
                                 Icon(
                                   Icons.search_off,
                                   size: 64,
@@ -131,9 +133,11 @@ class GithubRepositorySearchView extends HookConsumerWidget {
                           : ListView.separated(
                             itemCount: state.repositories.length,
                             separatorBuilder:
-                                (context, index) => const Divider(height: 1),
+                                (BuildContext context, int index) =>
+                                    const Divider(height: 1),
                             itemBuilder: (BuildContext context, int index) {
-                              final repo = state.repositories[index];
+                              final GithubRepository repo =
+                                  state.repositories[index];
                               return ListTile(
                                 contentPadding: const EdgeInsets.symmetric(
                                   horizontal: 16,
@@ -154,11 +158,11 @@ class GithubRepositorySearchView extends HookConsumerWidget {
                                 ),
                                 subtitle: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
+                                  children: <Widget>[
                                     const SizedBox(height: 4),
                                     const SizedBox(height: 8),
                                     Row(
-                                      children: [
+                                      children: <Widget>[
                                         Icon(
                                           Icons.star_border,
                                           size: 16,

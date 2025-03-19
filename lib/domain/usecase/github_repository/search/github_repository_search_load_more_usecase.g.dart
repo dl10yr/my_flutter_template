@@ -7,7 +7,7 @@ part of 'github_repository_search_load_more_usecase.dart';
 // **************************************************************************
 
 String _$githubRepositorySearchLoadMoreUseCaseHash() =>
-    r'84ce681b2bc67f3d89df17760322c657969689d1';
+    r'a4248e648c820742d9adc28ceb9dd2a2b370cb14';
 
 /// See also [githubRepositorySearchLoadMoreUseCase].
 @ProviderFor(githubRepositorySearchLoadMoreUseCase)

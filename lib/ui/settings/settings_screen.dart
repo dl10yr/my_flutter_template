@@ -14,7 +14,7 @@ class SettingsScreen extends HookConsumerWidget {
       body: ListView.builder(
         itemCount: 0,
         itemBuilder: (BuildContext context, int index) {
-          return ListTile(title: Text(''), onTap: () {});
+          return ListTile(title: const Text(''), onTap: () {});
         },
       ),
     );

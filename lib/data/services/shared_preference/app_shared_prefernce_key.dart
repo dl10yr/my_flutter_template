@@ -1,7 +1,7 @@
 class AppSharedPreferenceKey<T> {
+  const AppSharedPreferenceKey(this.keyName);
   final String keyName;
 
-  const AppSharedPreferenceKey(this.keyName);
-
-  static const favofites = AppSharedPreferenceKey<List<String>>('favorites');
+  static const AppSharedPreferenceKey<List<String>> favofites =
+      AppSharedPreferenceKey<List<String>>('favorites');
 }

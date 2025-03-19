@@ -1,26 +1,23 @@
 // Flutter imports:
 import 'package:flutter/cupertino.dart';
-
 // Package imports:
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../ui/botom_tab/presentation/bottom_tab_screen.dart';
+import '../ui/github_repository/search/github_repository_search_screen.dart';
+import '../ui/settings/settings_screen.dart';
 // Project imports:
-import 'package:flutter_my_blueprint/routing/app_routes.dart';
-import 'package:flutter_my_blueprint/ui/botom_tab/presentation/bottom_tab_screen.dart';
-import 'package:flutter_my_blueprint/ui/github_repository/search/github_repository_search_screen.dart';
-import 'package:flutter_my_blueprint/ui/settings/settings_screen.dart';
+import 'app_routes.dart';
 
 part 'router.g.dart';
 
-final rootNavigationKey = GlobalKey<NavigatorState>();
-final _shellSearchNavigatorKey = GlobalKey<NavigatorState>(
-  debugLabel: 'searchTab',
-);
-final _shellSettingsNavigatorKey = GlobalKey<NavigatorState>(
-  debugLabel: 'settingsTab',
-);
+final GlobalKey<NavigatorState> rootNavigationKey = GlobalKey<NavigatorState>();
+final GlobalKey<NavigatorState> _shellSearchNavigatorKey =
+    GlobalKey<NavigatorState>(debugLabel: 'searchTab');
+final GlobalKey<NavigatorState> _shellSettingsNavigatorKey =
+    GlobalKey<NavigatorState>(debugLabel: 'settingsTab');
 
 @riverpod
 GoRouter goRouter(Ref ref) {
@@ -28,39 +25,41 @@ GoRouter goRouter(Ref ref) {
     navigatorKey: rootNavigationKey,
     initialLocation: AppRoutes.searchTab.path,
     debugLogDiagnostics: true,
-    redirect: (context, state) {
+    redirect: (BuildContext context, GoRouterState state) {
       return null;
     },
-    observers: [],
-    routes: [
+    observers: <NavigatorObserver>[],
+    routes: <RouteBase>[
       StatefulShellRoute.indexedStack(
-        pageBuilder: (context, state, navigationShell) {
+        pageBuilder: (
+          BuildContext context,
+          GoRouterState state,
+          StatefulNavigationShell navigationShell,
+        ) {
           return CupertinoPage(child: BottomTabScreen(navigationShell));
         },
-        branches: [
+        branches: <StatefulShellBranch>[
           StatefulShellBranch(
             navigatorKey: _shellSearchNavigatorKey,
-            routes: [
+            routes: <RouteBase>[
               GoRoute(
                 path: AppRoutes.searchTab.path,
-                pageBuilder: (context, state) {
+                pageBuilder: (BuildContext context, GoRouterState state) {
                   return const NoTransitionPage(
                     child: GithubRepositorySearchScreen(),
                   );
                 },
-                routes: const [],
               ),
             ],
           ),
           StatefulShellBranch(
             navigatorKey: _shellSettingsNavigatorKey,
-            routes: [
+            routes: <RouteBase>[
               GoRoute(
                 path: AppRoutes.settings.path,
-                pageBuilder: (context, state) {
-                  return NoTransitionPage(child: SettingsScreen());
+                pageBuilder: (BuildContext context, GoRouterState state) {
+                  return const NoTransitionPage(child: SettingsScreen());
                 },
-                routes: [],
               ),
             ],
           ),

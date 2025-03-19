@@ -4,11 +4,11 @@ import 'package:dio/io.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../github_token/github_token_service.dart';
 // Project imports:
-import 'package:flutter_my_blueprint/data/services/api/error_interceptor.dart';
-import 'package:flutter_my_blueprint/data/services/api/github_header_interceptor.dart';
-import 'package:flutter_my_blueprint/data/services/api/github_token_intercepor.dart';
-import 'package:flutter_my_blueprint/data/services/github_token/github_token_service.dart';
+import 'error_interceptor.dart';
+import 'github_header_interceptor.dart';
+import 'github_token_intercepor.dart';
 
 part 'github_dio.g.dart';
 
