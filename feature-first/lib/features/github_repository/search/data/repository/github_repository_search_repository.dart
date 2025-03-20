@@ -1,3 +1,5 @@
+import 'package:dio/dio.dart';
+import 'package:flutter_my_blueprint/core/exception/app_exception.dart';
 import 'package:flutter_my_blueprint/features/github_repository/common/domain/model/github_repository.dart';
 import 'package:flutter_my_blueprint/features/github_repository/search/data/api/github_repository_search_api.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -31,7 +33,11 @@ class RemoteGithubRepositorySearchRepository
     String searchWord,
     int page,
   ) async {
-    final response = await api.searchRepositories(searchWord, page);
-    return (response, page);
+    try {
+      final response = await api.searchRepositories(searchWord, page);
+      return (response, page);
+    } on DioException catch (e) {
+      throw AppException.fromNetworkException(e);
+    }
   }
 }

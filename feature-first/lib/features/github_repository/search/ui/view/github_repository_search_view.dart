@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_my_blueprint/core/widgets/snack_bar/show_snack_bar.dart';
 import 'package:flutter_my_blueprint/features/auth/ui/auth_provider.dart';
 import 'package:flutter_my_blueprint/features/github_repository/search/ui/state/github_repository_search_state.dart';
 
@@ -13,6 +14,16 @@ class GithubRepositorySearchView extends HookConsumerWidget {
     final textController = useTextEditingController();
     final asyncState = ref.watch(githubRepositoryStateNotifierProvider);
     final searchDebounce = useState<bool>(false);
+
+    ref.listen(githubRepositoryStateNotifierProvider, (prev, next) {
+      if (next is AsyncError) {
+        showSnackBar(
+          context: context,
+          message: next.error.toString(),
+          backgroundColor: Colors.red,
+        );
+      }
+    });
 
     useEffect(() {
       Future<void> debounceSearch() async {
