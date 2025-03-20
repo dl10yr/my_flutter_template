@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_my_blueprint/features/start/ui/view/start_screen.dart';
 import 'package:flutter_my_blueprint/routing/bottom_tab_route.dart';
 import 'package:flutter_my_blueprint/routing/search_branch.dart';
 import 'package:flutter_my_blueprint/routing/search_tab_route.dart';
 import 'package:flutter_my_blueprint/routing/settings_branch.dart';
 import 'package:flutter_my_blueprint/routing/settings_tab_route.dart';
-import 'package:flutter_my_blueprint/ui/start/start_screen.dart';
 import 'package:go_router/go_router.dart';
 
 part 'router.g.dart';
