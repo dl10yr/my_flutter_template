@@ -1,0 +1,7 @@
+name: flutter_my_blueproof_feature_first
+
+environment:
+  sdk: ^3.7.0
+
+dev_dependencies:
+  melos: ^6.3.2

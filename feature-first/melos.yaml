@@ -1,0 +1,59 @@
+name: flutter_my_blueproof_feature_first
+
+packages:
+  - "packages/*"
+
+command:
+  clean:
+    hooks:
+      post: |
+        melos exec --flutter -- "flutter clean"
+  version:
+    branch: main
+    releaseUrl: true
+
+scripts:
+  fix:
+    exec: |
+      dart fix --apply lib
+      dart run custom_lint --fix
+    description: Fix dart files.
+    packageFilters:
+      dirExists: lib
+
+  gen:
+    run: dart run build_runner build --delete-conflicting-outputs
+    exec:
+      concurrency: 1
+    description: Generate code.
+    packageFilters:
+      dirExists: lib
+      dependsOn: "build_runner"
+
+  gen:watch:
+    run: dart run build_runner watch --delete-conflicting-outputs
+    exec:
+      concurrency: 99
+    description: Generate code in watch mode.
+    packageFilters:
+      dirExists: lib
+      dependsOn: "build_runner"
+
+  test:
+    run: flutter test
+    exec:
+      failFast: true
+    description: Run flutter test.
+    packageFilters:
+      flutter: true
+      dirExists: test
+  
+  pod:ios:
+    exec: |
+      cd ios
+      rm -f Podfile.lock
+      pod install --repo-update
+    description: Run pod install on iOS.
+    packageFilters:
+      dirExists: [lib, ios]
+      fileExists: "ios/Podfile"
