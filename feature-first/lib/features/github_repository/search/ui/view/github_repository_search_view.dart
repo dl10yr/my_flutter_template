@@ -1,8 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_my_blueprint/core/widgets/snack_bar/show_snack_bar.dart';
 import 'package:flutter_my_blueprint/features/auth/ui/auth_provider.dart';
 import 'package:flutter_my_blueprint/features/github_repository/search/ui/state/github_repository_search_state.dart';
+import 'package:flutter_my_blueprint/gen/assets/assets.gen.dart';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -146,11 +148,32 @@ class GithubRepositorySearchView extends HookConsumerWidget {
                                   horizontal: 16,
                                   vertical: 8,
                                 ),
-                                leading: CircleAvatar(
-                                  backgroundImage: NetworkImage(
-                                    repo.owner.avatarUrl,
-                                  ),
-                                  backgroundColor: Colors.grey.shade200,
+                                leading: CachedNetworkImage(
+                                  imageUrl: repo.owner.avatarUrl,
+                                  imageBuilder:
+                                      (context, imageProvider) => Container(
+                                        width: 40,
+                                        height: 40,
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          image: DecorationImage(
+                                            image: imageProvider,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                      ),
+                                  placeholder: (context, url) {
+                                    return Assets.images.placeholder.image(
+                                      width: 40,
+                                      height: 40,
+                                    );
+                                  },
+                                  errorWidget: (context, url, error) {
+                                    return Assets.images.placeholder.image(
+                                      width: 40,
+                                      height: 40,
+                                    );
+                                  },
                                 ),
                                 title: Text(
                                   repo.name,
