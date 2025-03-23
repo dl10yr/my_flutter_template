@@ -22,12 +22,11 @@ class MyApp extends HookConsumerWidget {
 
     final textTheme = createTextTheme(context);
 
-    final theme = MaterialTheme(textTheme);
     return MaterialApp.router(
       routerConfig: ref.watch(goRouterProvider),
       title: 'test',
-      theme: theme.light(),
-      darkTheme: theme.dark(),
+      theme: lightTheme(textTheme: textTheme),
+      darkTheme: darkTheme(textTheme: textTheme),
     );
   }
 }

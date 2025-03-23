@@ -45,6 +45,7 @@ dependencies:
   retrofit: ^4.4.2
   riverpod_annotation: ^2.6.1
   shared_preferences: ^2.5.2
+  theme_extensions_builder_annotation: ^4.0.1
 
 dev_dependencies:
   # The "flutter_lints" package below contains a set of recommended lints to
@@ -62,6 +63,7 @@ dev_dependencies:
   mockito: ^5.4.5
   retrofit_generator: ^9.1.9
   riverpod_generator: ^2.6.4
+  theme_extensions_builder: ^4.0.1
   very_good_analysis: ^7.0.0
 
 # For information on the generic Dart part of this file, see the
