@@ -16,14 +16,14 @@ class BottomTabRoute extends StatefulShellRouteData {
   }
 
   static final GlobalKey<NavigatorState> $parentNavigatorKey = rootNavigatorKey;
-  static const String $restorationScopeId = 'restorationScopeId';
+  // static const String $restorationScopeId = 'restorationScopeId';
 }
 
 class BranchSearchData extends StatefulShellBranchData {
   const BranchSearchData();
 
   static final GlobalKey<NavigatorState> $navigatorKey = searchTabNavigatorKey;
-  static const String $restorationScopeId = 'restorationScopeId';
+  // static const String $restorationScopeId = 'restorationScopeId';
 }
 
 class BranchSettingsData extends StatefulShellBranchData {
@@ -31,5 +31,5 @@ class BranchSettingsData extends StatefulShellBranchData {
 
   static final GlobalKey<NavigatorState> $navigatorKey =
       settingsTabNavigatorKey;
-  static const String $restorationScopeId = 'restorationScopeId';
+  // static const String $restorationScopeId = 'restorationScopeId';
 }

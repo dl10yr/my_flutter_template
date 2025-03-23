@@ -17,12 +17,10 @@ RouteBase get $startUpRoute => GoRouteData.$route(
   routes: [
     StatefulShellRouteData.$route(
       parentNavigatorKey: BottomTabRoute.$parentNavigatorKey,
-      restorationScopeId: BottomTabRoute.$restorationScopeId,
       factory: $BottomTabRouteExtension._fromState,
       branches: [
         StatefulShellBranchData.$branch(
           navigatorKey: BranchSearchData.$navigatorKey,
-          restorationScopeId: BranchSearchData.$restorationScopeId,
 
           routes: [
             GoRouteData.$route(
@@ -35,7 +33,6 @@ RouteBase get $startUpRoute => GoRouteData.$route(
         ),
         StatefulShellBranchData.$branch(
           navigatorKey: BranchSettingsData.$navigatorKey,
-          restorationScopeId: BranchSettingsData.$restorationScopeId,
 
           routes: [
             GoRouteData.$route(
