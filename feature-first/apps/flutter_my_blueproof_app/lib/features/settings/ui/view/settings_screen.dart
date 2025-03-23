@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_my_blueprint/core/flavor/app_flavor.dart';
 import 'package:flutter_my_blueprint/routing/routes/bottom_tab/settings/settings_branch.dart';
-import 'package:flutter_my_blueprint/routing/start_up_route.dart';
+import 'package:flutter_my_blueprint/routing/routes/start_up_route.dart';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
