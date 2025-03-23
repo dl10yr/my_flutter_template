@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_my_blueprint/core/custom_hooks/use_effect_once.dart';
+import 'package:flutter_my_blueprint/core/themes/material_theme.dart';
+import 'package:flutter_my_blueprint/core/themes/text_theme.dart';
 import 'package:flutter_my_blueprint/routing/go_router_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -18,10 +20,14 @@ class MyApp extends HookConsumerWidget {
       return null;
     });
 
+    final textTheme = createTextTheme(context);
+
+    final theme = MaterialTheme(textTheme);
     return MaterialApp.router(
       routerConfig: ref.watch(goRouterProvider),
       title: 'test',
-      theme: ThemeData(primarySwatch: Colors.blue),
+      theme: theme.light(),
+      darkTheme: theme.dark(),
     );
   }
 }
