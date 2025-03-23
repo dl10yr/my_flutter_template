@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_my_blueprint/core/widgets/bottom_tab/bottom_tab_screen.dart';
-import 'package:flutter_my_blueprint/routing/router.dart';
+import 'package:flutter_my_blueprint/routing/go_router_provider.dart';
 import 'package:go_router/go_router.dart';
 
 class BottomTabRoute extends StatefulShellRouteData {

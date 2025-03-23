@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'router.dart';
+part of 'start_up_route.dart';
 
 // **************************************************************************
 // GoRouterGenerator
@@ -40,9 +40,15 @@ RouteBase get $startUpRoute => GoRouteData.$route(
           routes: [
             GoRouteData.$route(
               path: 'settings_tab',
-              name: 'settings_tab_screen',
 
               factory: $SettingsTabRouteExtension._fromState,
+              routes: [
+                GoRouteData.$route(
+                  path: 'license',
+
+                  factory: $LicensePageRouteExtension._fromState,
+                ),
+              ],
             ),
           ],
         ),
@@ -92,6 +98,22 @@ extension $SettingsTabRouteExtension on SettingsTabRoute {
       const SettingsTabRoute();
 
   String get location => GoRouteData.$location('/settings_tab');
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $LicensePageRouteExtension on LicensePageRoute {
+  static LicensePageRoute _fromState(GoRouterState state) =>
+      const LicensePageRoute();
+
+  String get location => GoRouteData.$location('/settings_tab/license');
 
   void go(BuildContext context) => context.go(location);
 

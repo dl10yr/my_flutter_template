@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 
 /// A custom button with a cool design.
 class CoolButton extends StatelessWidget {
-
   const CoolButton({
-    required this.text, required this.onPressed, super.key,
+    required this.text,
+    required this.onPressed,
+    super.key,
     this.color,
     this.textColor,
     this.width,
@@ -24,7 +25,7 @@ class CoolButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    
+
     return SizedBox(
       width: width,
       height: height,
@@ -39,23 +40,24 @@ class CoolButton extends StatelessWidget {
           elevation: 4,
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         ),
-        child: isLoading
-          ? const SizedBox(
-              width: 24,
-              height: 24,
-              child: CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                strokeWidth: 2,
-              ),
-            )
-          : Text(
-              text,
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: textColor ?? Colors.white,
-              ),
-            ),
+        child:
+            isLoading
+                ? const SizedBox(
+                  width: 24,
+                  height: 24,
+                  child: CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                    strokeWidth: 2,
+                  ),
+                )
+                : Text(
+                  text,
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: textColor ?? Colors.white,
+                  ),
+                ),
       ),
     );
   }
