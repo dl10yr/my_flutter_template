@@ -1,0 +1,45 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+      {
+          "name": "dev-debug",
+          "cwd": "apps/flutter_my_blueproof_app",
+          "request": "launch",
+          "program": "lib/main.dart",
+          "type": "dart",
+          "args": [
+              "--dart-define-from-file=dart_defines/dev.json"
+          ]
+      },
+      {
+          "name": "stg-debug",
+          "cwd": "apps/flutter_my_blueproof_app",
+          "request": "launch",
+          "program": "lib/main.dart",
+          "type": "dart",
+          "args": [
+              "--dart-define-from-file=dart_defines/stg.json"
+          ]
+      },
+      {
+          "name": "prd-debug",
+          "cwd": "apps/flutter_my_blueproof_app",
+          "request": "launch",
+          "program": "lib/main.dart",
+          "type": "dart",
+          "args": [
+              "--dart-define-from-file=dart_defines/prd.json"
+          ]
+      },
+      {
+          "name": "ui-catalog",
+          "cwd": "apps/widgetbook",
+          "request": "launch",
+          "program": "lib/main.dart",
+          "type": "dart",
+      },
+  ]
+}

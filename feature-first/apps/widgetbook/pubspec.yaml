@@ -4,9 +4,11 @@ publish_to: 'none'
 version: 0.1.0
 
 environment:
-  sdk: ^3.7.2
+  sdk: ^3.7.0
 
 dependencies:
+  flutter_my_blueprint:
+    path: ../../apps/flutter_my_blueproof_app
   flutter:
     sdk: flutter
   widgetbook: ^3.11.0

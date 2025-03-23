@@ -1,0 +1,6 @@
+targets:
+  $default:
+    builders:
+      widgetbook_generator:telemetry:
+        # ref:https://docs.widgetbook.io/telemetry
+        enabled: false
