@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_my_blueprint/core/custom_hooks/use_effect_once.dart';
 import 'package:flutter_my_blueprint/routing/go_router_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -12,11 +12,11 @@ class MyApp extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    useEffect(() {
+    useEffectOnce(() {
       WidgetsBinding.instance.addPostFrameCallback((_) {});
 
       return null;
-    }, []);
+    });
 
     return MaterialApp.router(
       routerConfig: ref.watch(goRouterProvider),
