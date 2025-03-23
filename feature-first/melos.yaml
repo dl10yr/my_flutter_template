@@ -1,6 +1,7 @@
 name: flutter_my_blueproof_feature_first
 
 packages:
+  - "apps/*"
   - "packages/*"
 
 command:
