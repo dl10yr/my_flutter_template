@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 
-import 'package:flutter_my_blueprint/core/data/service/github_token/github_token_service.dart';
+import 'package:flutter_my_blueprint/core/data/service/github_token/provider/github_token_service.dart';
 
 class GithubTokenInterceptor extends QueuedInterceptor {
   GithubTokenInterceptor(this.tokenService);

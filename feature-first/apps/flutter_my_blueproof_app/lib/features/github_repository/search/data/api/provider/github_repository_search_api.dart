@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_my_blueprint/core/data/service/api/provider/github_dio.dart';
 
-import 'package:flutter_my_blueprint/core/data/service/api/github_dio.dart';
 import 'package:flutter_my_blueprint/features/github_repository/common/domain/model/github_repository.dart';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';

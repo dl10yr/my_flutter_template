@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_my_blueprint/core/data/service/shared_preference/app_shared_prefernce_key.dart';
-import 'package:flutter_my_blueprint/core/data/service/shared_preference/shared_preference_service.dart';
+import 'package:flutter_my_blueprint/core/data/service/shared_preference/provider/shared_preference_service.dart';
 import 'package:flutter_my_blueprint/core/ui/theme_mode/provider/init_theme_mode.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 

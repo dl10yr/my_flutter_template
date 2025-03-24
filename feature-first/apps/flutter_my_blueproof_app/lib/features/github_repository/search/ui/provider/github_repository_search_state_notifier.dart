@@ -1,12 +1,12 @@
 import 'package:flutter_my_blueprint/features/github_repository/common/domain/model/github_repository.dart';
-import 'package:flutter_my_blueprint/features/github_repository/search/domain/usecase/github_repository_search_load_more_usecase.dart';
-import 'package:flutter_my_blueprint/features/github_repository/search/domain/usecase/github_repository_search_usecase.dart';
+import 'package:flutter_my_blueprint/features/github_repository/search/domain/usecase/provider/github_repository_search_load_more_usecase.dart';
+import 'package:flutter_my_blueprint/features/github_repository/search/domain/usecase/provider/github_repository_search_usecase.dart';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'github_repository_search_state.freezed.dart';
-part 'github_repository_search_state.g.dart';
+part 'github_repository_search_state_notifier.freezed.dart';
+part 'github_repository_search_state_notifier.g.dart';
 
 @freezed
 class GithubRepositorySearchState with _$GithubRepositorySearchState {

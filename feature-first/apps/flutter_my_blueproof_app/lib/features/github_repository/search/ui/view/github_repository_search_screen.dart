@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_my_blueprint/features/auth/ui/auth_provider.dart';
+import 'package:flutter_my_blueprint/features/auth/ui/provider/auth_state_notifier.dart';
 import 'package:flutter_my_blueprint/features/github_repository/search/ui/view/github_repository_search_login_view.dart';
 import 'package:flutter_my_blueprint/features/github_repository/search/ui/view/github_repository_search_view.dart';
 
@@ -11,7 +11,7 @@ class GithubRepositorySearchScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isAuthenticated = ref.watch(
-      authProvider.select((value) => value.isAuthenticated),
+      authStateNotifierProvider.select((value) => value.isAuthenticated),
     );
 
     if (isAuthenticated) {

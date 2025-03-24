@@ -1,6 +1,6 @@
 import 'package:flutter_my_blueprint/features/github_repository/common/domain/model/github_repository.dart';
-import 'package:flutter_my_blueprint/features/github_repository/search/data/repository/github_repository_search_repository.dart';
-import 'package:flutter_my_blueprint/features/github_repository/search/domain/usecase/github_repository_search_usecase.dart';
+import 'package:flutter_my_blueprint/features/github_repository/search/data/repository/provider/github_repository_search_repository.dart';
+import 'package:flutter_my_blueprint/features/github_repository/search/domain/usecase/provider/github_repository_search_usecase.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';

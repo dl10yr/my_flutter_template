@@ -1,7 +1,7 @@
-import 'package:flutter_my_blueprint/features/auth/data/repository/auth_repository.dart';
+import 'package:flutter_my_blueprint/features/auth/data/repository/provider/auth_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../../../testing/fakes/data/services/fake_github_token_service.dart';
+import '../../../../../../testing/fakes/data/services/fake_github_token_service.dart';
 
 void main() {
   group('AuthRepositoryRemote tests', () {

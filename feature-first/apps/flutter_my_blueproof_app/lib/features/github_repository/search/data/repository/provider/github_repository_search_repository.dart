@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_my_blueprint/core/exception/app_exception.dart';
 import 'package:flutter_my_blueprint/features/github_repository/common/domain/model/github_repository.dart';
-import 'package:flutter_my_blueprint/features/github_repository/search/data/api/github_repository_search_api.dart';
+import 'package:flutter_my_blueprint/features/github_repository/search/data/api/provider/github_repository_search_api.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 

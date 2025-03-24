@@ -1,9 +1,9 @@
-import 'package:flutter_my_blueprint/features/auth/data/repository/auth_repository.dart';
+import 'package:flutter_my_blueprint/features/auth/data/repository/provider/auth_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'auth_provider.g.dart';
-part 'auth_provider.freezed.dart';
+part 'auth_state_notifier.g.dart';
+part 'auth_state_notifier.freezed.dart';
 
 @freezed
 class AuthState with _$AuthState {
@@ -15,7 +15,7 @@ class AuthState with _$AuthState {
 }
 
 @riverpod
-class Auth extends _$Auth {
+class AuthStateNotifier extends _$AuthStateNotifier {
   @override
   AuthState build() => AuthState(githubToken: null);
 

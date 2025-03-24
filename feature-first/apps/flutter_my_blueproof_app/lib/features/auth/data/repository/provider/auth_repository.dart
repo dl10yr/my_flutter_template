@@ -1,4 +1,4 @@
-import 'package:flutter_my_blueprint/core/data/service/github_token/github_token_service.dart';
+import 'package:flutter_my_blueprint/core/data/service/github_token/provider/github_token_service.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 

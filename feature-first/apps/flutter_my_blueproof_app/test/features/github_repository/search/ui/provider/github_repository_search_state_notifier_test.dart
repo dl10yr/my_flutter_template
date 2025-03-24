@@ -1,15 +1,15 @@
-import 'package:flutter_my_blueprint/features/auth/data/repository/auth_repository.dart';
+import 'package:flutter_my_blueprint/features/auth/data/repository/provider/auth_repository.dart';
 import 'package:flutter_my_blueprint/features/github_repository/common/domain/model/github_repository.dart';
-import 'package:flutter_my_blueprint/features/github_repository/search/data/api/github_repository_search_api.dart';
-import 'package:flutter_my_blueprint/features/github_repository/search/domain/usecase/github_repository_search_load_more_usecase.dart';
-import 'package:flutter_my_blueprint/features/github_repository/search/domain/usecase/github_repository_search_usecase.dart';
-import 'package:flutter_my_blueprint/features/github_repository/search/ui/state/github_repository_search_state.dart';
+import 'package:flutter_my_blueprint/features/github_repository/search/data/api/provider/github_repository_search_api.dart';
+import 'package:flutter_my_blueprint/features/github_repository/search/domain/usecase/provider/github_repository_search_load_more_usecase.dart';
+import 'package:flutter_my_blueprint/features/github_repository/search/domain/usecase/provider/github_repository_search_usecase.dart';
+import 'package:flutter_my_blueprint/features/github_repository/search/ui/provider/github_repository_search_state_notifier.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import 'github_repository_search_viewmodel_test.mocks.dart';
+import './github_repository_search_state_notifier_test.mocks.dart';
 
 abstract class ChangeListener<T> {
   void call(T? previous, T next);

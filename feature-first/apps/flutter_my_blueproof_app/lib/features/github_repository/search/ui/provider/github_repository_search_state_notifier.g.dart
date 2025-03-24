@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'github_repository_search_state.dart';
+part of 'github_repository_search_state_notifier.dart';
 
 // **************************************************************************
 // RiverpodGenerator

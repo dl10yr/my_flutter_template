@@ -2,8 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_my_blueprint/core/widgets/snack_bar/show_snack_bar.dart';
-import 'package:flutter_my_blueprint/features/auth/ui/auth_provider.dart';
-import 'package:flutter_my_blueprint/features/github_repository/search/ui/state/github_repository_search_state.dart';
+import 'package:flutter_my_blueprint/features/auth/ui/provider/auth_state_notifier.dart';
+import 'package:flutter_my_blueprint/features/github_repository/search/ui/provider/github_repository_search_state_notifier.dart';
 import 'package:flutter_my_blueprint/gen/assets/assets.gen.dart';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -52,7 +52,8 @@ class GithubRepositorySearchView extends HookConsumerWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.logout),
-            onPressed: () => ref.read(authProvider.notifier).logout(),
+            onPressed:
+                () => ref.read(authStateNotifierProvider.notifier).logout(),
             tooltip: 'Logout',
           ),
         ],

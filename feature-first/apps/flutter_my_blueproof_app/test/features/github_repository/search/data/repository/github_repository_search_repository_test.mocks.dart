@@ -7,7 +7,7 @@ import 'dart:async' as _i4;
 
 import 'package:flutter_my_blueprint/features/github_repository/common/domain/model/github_repository.dart'
     as _i2;
-import 'package:flutter_my_blueprint/features/github_repository/search/data/api/github_repository_search_api.dart'
+import 'package:flutter_my_blueprint/features/github_repository/search/data/api/provider/github_repository_search_api.dart'
     as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 
