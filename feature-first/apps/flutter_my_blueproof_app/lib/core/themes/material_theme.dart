@@ -8,7 +8,7 @@ ThemeData lightTheme({required TextTheme textTheme}) => _createTheme(
 );
 
 ThemeData darkTheme({required TextTheme textTheme}) => _createTheme(
-  colorScheme: lightColorScheme,
+  colorScheme: darkColorScheme,
   textTheme: textTheme,
   appColors: AppColors.dark(),
 );
