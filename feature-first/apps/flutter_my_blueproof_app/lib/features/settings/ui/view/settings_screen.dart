@@ -39,6 +39,12 @@ class SettingsScreen extends HookConsumerWidget {
           const LicensePageRoute().push<void>(context);
         },
       ),
+      ListTile(
+        title: const Text('go to web_view'),
+        onTap: () {
+          const WebViewPageRoute().push<void>(context);
+        },
+      ),
     ];
 
     return Scaffold(

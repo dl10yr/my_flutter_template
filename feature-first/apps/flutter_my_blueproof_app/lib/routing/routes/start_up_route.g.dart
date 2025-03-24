@@ -45,6 +45,13 @@ RouteBase get $startUpRoute => GoRouteData.$route(
 
                   factory: $LicensePageRouteExtension._fromState,
                 ),
+                GoRouteData.$route(
+                  path: 'web_view',
+
+                  parentNavigatorKey: WebViewPageRoute.$parentNavigatorKey,
+
+                  factory: $WebViewPageRouteExtension._fromState,
+                ),
               ],
             ),
           ],
@@ -111,6 +118,22 @@ extension $LicensePageRouteExtension on LicensePageRoute {
       const LicensePageRoute();
 
   String get location => GoRouteData.$location('/settings_tab/license');
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $WebViewPageRouteExtension on WebViewPageRoute {
+  static WebViewPageRoute _fromState(GoRouterState state) =>
+      const WebViewPageRoute();
+
+  String get location => GoRouteData.$location('/settings_tab/web_view');
 
   void go(BuildContext context) => context.go(location);
 

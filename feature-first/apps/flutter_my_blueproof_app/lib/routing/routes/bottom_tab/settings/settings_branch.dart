@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_my_blueprint/features/settings/ui/view/settings_screen.dart';
+import 'package:flutter_my_blueprint/features/web_view/ui/web_view_screen.dart';
+import 'package:flutter_my_blueprint/routing/go_router_provider.dart';
 import 'package:flutter_my_blueprint/routing/routes/bottom_tab/bottom_tab_route.dart';
 import 'package:flutter_my_blueprint/routing/transition/custom_slide_transition.dart';
 import 'package:go_router/go_router.dart';
@@ -8,7 +10,10 @@ const settingsBranch = TypedStatefulShellBranch<BranchSettingsData>(
   routes: <TypedRoute<RouteData>>[
     TypedGoRoute<SettingsTabRoute>(
       path: SettingsTabRoute.path,
-      routes: [TypedGoRoute<LicensePageRoute>(path: LicensePageRoute.path)],
+      routes: [
+        TypedGoRoute<LicensePageRoute>(path: LicensePageRoute.path),
+        TypedGoRoute<WebViewPageRoute>(path: WebViewPageRoute.path),
+      ],
     ),
   ],
 );
@@ -31,5 +36,23 @@ class LicensePageRoute extends GoRouteData {
   @override
   Page<void> buildPage(BuildContext context, GoRouterState state) {
     return CustomSlideTransition(child: const LicensePage());
+  }
+}
+
+class WebViewPageRoute extends GoRouteData {
+  const WebViewPageRoute();
+
+  static const path = 'web_view';
+
+  static final $parentNavigatorKey = rootNavigatorKey;
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return WebViewScreen(
+      initialUrl: Uri.parse('https://flutter.dev'),
+      pop: () {
+        print('pop');
+      },
+    );
   }
 }
