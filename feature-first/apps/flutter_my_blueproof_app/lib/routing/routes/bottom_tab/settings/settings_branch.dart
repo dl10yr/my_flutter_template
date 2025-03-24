@@ -1,10 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_my_blueprint/features/settings/ui/view/settings_screen.dart';
-import 'package:flutter_my_blueprint/features/web_view/ui/web_view_screen.dart';
-import 'package:flutter_my_blueprint/routing/go_router_provider.dart';
-import 'package:flutter_my_blueprint/routing/routes/bottom_tab/bottom_tab_route.dart';
-import 'package:flutter_my_blueprint/routing/transition/custom_slide_transition.dart';
-import 'package:go_router/go_router.dart';
+part of '../../../go_router_provider.dart';
 
 const settingsBranch = TypedStatefulShellBranch<BranchSettingsData>(
   routes: <TypedRoute<RouteData>>[
@@ -21,7 +15,7 @@ const settingsBranch = TypedStatefulShellBranch<BranchSettingsData>(
 class SettingsTabRoute extends GoRouteData {
   const SettingsTabRoute();
 
-  static const path = 'settings_tab';
+  static const path = '/settings_tab';
 
   @override
   Widget build(BuildContext context, GoRouterState state) =>

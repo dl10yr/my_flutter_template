@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_my_blueprint/core/flavor/app_flavor.dart';
 import 'package:flutter_my_blueprint/core/ui/theme_mode/provider/theme_mode_notifier.dart';
 import 'package:flutter_my_blueprint/core/widgets/modal_bottom_sheet/show_list_bottom_sheet.dart';
-import 'package:flutter_my_blueprint/routing/routes/bottom_tab/settings/settings_branch.dart';
-import 'package:flutter_my_blueprint/routing/routes/start_up_route.dart';
+import 'package:flutter_my_blueprint/routing/go_router_provider.dart';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 

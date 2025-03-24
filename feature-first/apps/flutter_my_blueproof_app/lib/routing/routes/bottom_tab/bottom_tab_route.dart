@@ -1,8 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_my_blueprint/core/widgets/bottom_tab/bottom_tab_screen.dart';
-import 'package:flutter_my_blueprint/routing/go_router_provider.dart';
-import 'package:go_router/go_router.dart';
+part of '../../go_router_provider.dart';
 
+@TypedStatefulShellRoute<BottomTabRoute>(
+  branches: <TypedStatefulShellBranch<StatefulShellBranchData>>[
+    searchBranch,
+    settingsBranch,
+  ],
+)
 class BottomTabRoute extends StatefulShellRouteData {
   const BottomTabRoute();
 

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_my_blueprint/routing/routes/bottom_tab/search/search_branch.dart';
-import 'package:flutter_my_blueprint/routing/routes/start_up_route.dart';
+import 'package:flutter_my_blueprint/routing/go_router_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class StartScreen extends HookConsumerWidget {
