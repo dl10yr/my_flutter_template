@@ -24,8 +24,7 @@ RouteBase get $startUpRoute => GoRouteData.$route(
 
           routes: [
             GoRouteData.$route(
-              path: 'search_tab',
-              name: 'search_tab_screen',
+              path: 'settings_tab',
 
               factory: $SearchTabRouteExtension._fromState,
             ),
@@ -85,7 +84,7 @@ extension $SearchTabRouteExtension on SearchTabRoute {
   static SearchTabRoute _fromState(GoRouterState state) =>
       const SearchTabRoute();
 
-  String get location => GoRouteData.$location('/search_tab');
+  String get location => GoRouteData.$location('/settings_tab');
 
   void go(BuildContext context) => context.go(location);
 

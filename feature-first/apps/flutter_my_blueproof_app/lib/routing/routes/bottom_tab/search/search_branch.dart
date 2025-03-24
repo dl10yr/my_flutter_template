@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 
 const searchBranch = TypedStatefulShellBranch<BranchSearchData>(
   routes: <TypedRoute<RouteData>>[
-    TypedGoRoute<SearchTabRoute>(path: 'search_tab', name: 'search_tab_screen'),
+    TypedGoRoute<SearchTabRoute>(path: SearchTabRoute.path),
   ],
 );
 
