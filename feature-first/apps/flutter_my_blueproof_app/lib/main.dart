@@ -4,6 +4,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_my_blueprint/core/custom_hooks/use_effect_once.dart';
 import 'package:flutter_my_blueprint/core/data/service/shared_preference/app_shared_prefernce_key.dart';
 import 'package:flutter_my_blueprint/core/extension/enum_extension.dart';
+import 'package:flutter_my_blueprint/core/logger/logger.dart';
+import 'package:flutter_my_blueprint/core/provider/app_lifecycle_notifier.dart';
 import 'package:flutter_my_blueprint/core/provider/package_info.dart';
 import 'package:flutter_my_blueprint/core/themes/material_theme.dart';
 import 'package:flutter_my_blueprint/core/themes/text_theme.dart';
@@ -43,6 +45,21 @@ class MyApp extends HookConsumerWidget {
       WidgetsBinding.instance.addPostFrameCallback((_) {});
 
       return null;
+    });
+
+    ref.listen(appLifecycleNotifierProvider, (_, newState) {
+      switch (newState) {
+        case AppLifecycleState.resumed:
+          logger.d('AppLifecycleState.resumed');
+        case AppLifecycleState.inactive:
+          logger.d('AppLifecycleState.inactive');
+        case AppLifecycleState.paused:
+          logger.d('AppLifecycleState.paused');
+        case AppLifecycleState.detached:
+          logger.d('AppLifecycleState.detached');
+        case AppLifecycleState.hidden:
+          logger.d('AppLifecycleState.hidden');
+      }
     });
 
     final textTheme = createTextTheme(context);
