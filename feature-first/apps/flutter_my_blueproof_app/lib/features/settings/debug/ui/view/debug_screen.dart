@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_my_blueprint/core/provider/package_info.dart';
+import 'package:flutter_my_blueprint/core/widgets/loading_indicator/app_loading_indicator_notifier.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class DebugScreen extends ConsumerWidget {
@@ -20,6 +21,18 @@ class DebugScreen extends ConsumerWidget {
       appBar: AppBar(title: const Text('Debug Information')),
       body: ListView(
         children: [
+          ListTile(
+            title: const Text('loading'),
+            onTap: () async {
+              final rrr = await ref
+                  .read(appLoadingIndicatorNotifierProvider.notifier)
+                  .show(() async {
+                    await Future.delayed(const Duration(seconds: 2));
+                    return 'aaa';
+                  });
+              if (rrr == 'aaa') {}
+            },
+          ),
           _infoTile('App name', packageInfo.appName),
           _infoTile('Package name', packageInfo.packageName),
           _infoTile('App version', packageInfo.version),

@@ -11,6 +11,7 @@ import 'package:flutter_my_blueprint/core/themes/material_theme.dart';
 import 'package:flutter_my_blueprint/core/themes/text_theme.dart';
 import 'package:flutter_my_blueprint/core/ui/theme_mode/provider/init_theme_mode.dart';
 import 'package:flutter_my_blueprint/core/ui/theme_mode/provider/theme_mode_notifier.dart';
+import 'package:flutter_my_blueprint/core/widgets/loading_indicator/app_loading_indicator.dart';
 import 'package:flutter_my_blueprint/routing/go_router_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -66,6 +67,14 @@ class MyApp extends HookConsumerWidget {
 
     return MaterialApp.router(
       routerConfig: ref.watch(goRouterProvider),
+      builder: (context, child) {
+        return Stack(
+          children: [
+            Positioned.fill(child: child!),
+            const Positioned.fill(child: AppLoadingIndicator()),
+          ],
+        );
+      },
       title: 'test',
       supportedLocales: const [Locale('ja', 'JP')],
       localizationsDelegates: const [
