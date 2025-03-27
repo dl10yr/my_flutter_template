@@ -6,7 +6,7 @@ part of 'go_router_provider.dart';
 // GoRouterGenerator
 // **************************************************************************
 
-List<RouteBase> get $appRoutes => [$bottomTabRoute, $startUpRoute];
+List<RouteBase> get $appRoutes => [$bottomTabRoute, $debugRoute, $startUpRoute];
 
 RouteBase get $bottomTabRoute => StatefulShellRouteData.$route(
   parentNavigatorKey: BottomTabRoute.$parentNavigatorKey,
@@ -120,6 +120,29 @@ extension $WebViewPageRouteExtension on WebViewPageRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
+RouteBase get $debugRoute => GoRouteData.$route(
+  path: '/debug',
+
+  parentNavigatorKey: DebugRoute.$parentNavigatorKey,
+
+  factory: $DebugRouteExtension._fromState,
+);
+
+extension $DebugRouteExtension on DebugRoute {
+  static DebugRoute _fromState(GoRouterState state) => const DebugRoute();
+
+  String get location => GoRouteData.$location('/debug');
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
 RouteBase get $startUpRoute => GoRouteData.$route(
   path: '/',
 
@@ -147,7 +170,7 @@ extension $StartUpRouteExtension on StartUpRoute {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$goRouterHash() => r'6830aa622e9730a6f515a3d76ff16864962df2d4';
+String _$goRouterHash() => r'fa79e245399536c8b6df3b776e7e829675f498fd';
 
 /// See also [goRouter].
 @ProviderFor(goRouter)

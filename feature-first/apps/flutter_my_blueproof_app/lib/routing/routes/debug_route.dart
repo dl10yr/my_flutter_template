@@ -1,0 +1,14 @@
+part of '../go_router_provider.dart';
+
+@TypedGoRoute<DebugRoute>(path: DebugRoute.path, routes: [])
+class DebugRoute extends GoRouteData {
+  const DebugRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      const DebugScreen();
+
+  static const path = '/debug';
+
+  static final GlobalKey<NavigatorState> $parentNavigatorKey = rootNavigatorKey;
+}

@@ -44,6 +44,13 @@ class SettingsScreen extends HookConsumerWidget {
           const WebViewPageRoute().push<void>(context);
         },
       ),
+      if (!isPrd())
+        ListTile(
+          title: const Text('go to debug'),
+          onTap: () {
+            const DebugRoute().push<void>(context);
+          },
+        ),
     ];
 
     return Scaffold(

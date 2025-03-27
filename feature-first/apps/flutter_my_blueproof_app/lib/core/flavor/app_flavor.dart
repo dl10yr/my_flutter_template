@@ -8,3 +8,8 @@ AppFlavor stringToFlavor(String value) {
   }
   return AppFlavor.prd;
 }
+
+bool isPrd() {
+  return stringToFlavor(const String.fromEnvironment('flavor')) ==
+      AppFlavor.prd;
+}

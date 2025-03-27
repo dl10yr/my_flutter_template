@@ -1,13 +1,17 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_my_blueprint/core/custom_hooks/use_effect_once.dart';
 import 'package:flutter_my_blueprint/core/data/service/shared_preference/app_shared_prefernce_key.dart';
 import 'package:flutter_my_blueprint/core/extension/enum_extension.dart';
+import 'package:flutter_my_blueprint/core/provider/package_info.dart';
 import 'package:flutter_my_blueprint/core/themes/material_theme.dart';
 import 'package:flutter_my_blueprint/core/themes/text_theme.dart';
 import 'package:flutter_my_blueprint/core/ui/theme_mode/provider/init_theme_mode.dart';
 import 'package:flutter_my_blueprint/core/ui/theme_mode/provider/theme_mode_notifier.dart';
 import 'package:flutter_my_blueprint/routing/go_router_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
@@ -16,11 +20,13 @@ void main() async {
   final themeMode = await SharedPreferencesAsync().getString(
     AppSharedPreferenceKey.themeMode.keyName,
   );
+  final packageInfo = await PackageInfo.fromPlatform();
 
   final overrideProviders = [
     initThemeModeProvider.overrideWithValue(
       ThemeMode.values.byNameOrNull(themeMode) ?? ThemeMode.system,
     ),
+    packageInfoProvider.overrideWithValue(packageInfo),
   ];
 
   runApp(
@@ -44,6 +50,13 @@ class MyApp extends HookConsumerWidget {
     return MaterialApp.router(
       routerConfig: ref.watch(goRouterProvider),
       title: 'test',
+      supportedLocales: const [Locale('ja', 'JP')],
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        DefaultCupertinoLocalizations.delegate,
+      ],
       theme: lightTheme(textTheme: textTheme),
       darkTheme: darkTheme(textTheme: textTheme),
       themeMode: ref.watch(themeModeNotifierProvider),
