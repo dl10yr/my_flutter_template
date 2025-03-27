@@ -12,6 +12,7 @@ import 'package:flutter_my_blueprint/core/themes/text_theme.dart';
 import 'package:flutter_my_blueprint/core/ui/theme_mode/provider/init_theme_mode.dart';
 import 'package:flutter_my_blueprint/core/ui/theme_mode/provider/theme_mode_notifier.dart';
 import 'package:flutter_my_blueprint/core/widgets/loading_indicator/app_loading_indicator.dart';
+import 'package:flutter_my_blueprint/core/widgets/snack_bar/app_snack_bar_manager.dart';
 import 'package:flutter_my_blueprint/routing/go_router_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -86,6 +87,7 @@ class MyApp extends HookConsumerWidget {
       theme: lightTheme(textTheme: textTheme),
       darkTheme: darkTheme(textTheme: textTheme),
       themeMode: ref.watch(themeModeNotifierProvider),
+      scaffoldMessengerKey: AppSnackBarManager.scaffoldMessengerKey,
     );
   }
 }

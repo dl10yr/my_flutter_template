@@ -7,7 +7,7 @@ part of 'app_loading_indicator_notifier.dart';
 // **************************************************************************
 
 String _$appLoadingIndicatorNotifierHash() =>
-    r'707e39ba8e01472594dc3f8cd4ffaee7ca9a07b3';
+    r'45b917ed5d9d44a5b532b5314e37daabdf04248d';
 
 /// See also [AppLoadingIndicatorNotifier].
 @ProviderFor(AppLoadingIndicatorNotifier)
