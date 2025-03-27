@@ -5,8 +5,8 @@
   "version": "0.2.0",
   "configurations": [
       {
-          "name": "dev-debug",
-          "cwd": "apps/flutter_my_blueproof_app",
+          "name": "feature-first-dev-debug",
+          "cwd": "feature-first/apps/flutter_my_blueproof_app",
           "request": "launch",
           "program": "lib/main.dart",
           "type": "dart",
@@ -16,7 +16,7 @@
       },
       {
           "name": "stg-debug",
-          "cwd": "apps/flutter_my_blueproof_app",
+          "cwd": "feature-first/apps/flutter_my_blueproof_app",
           "request": "launch",
           "program": "lib/main.dart",
           "type": "dart",
@@ -26,7 +26,7 @@
       },
       {
           "name": "prd-debug",
-          "cwd": "apps/flutter_my_blueproof_app",
+          "cwd": "feature-first/apps/flutter_my_blueproof_app",
           "request": "launch",
           "program": "lib/main.dart",
           "type": "dart",
@@ -36,7 +36,7 @@
       },
       {
           "name": "ui-catalog",
-          "cwd": "apps/widgetbook",
+          "cwd": "feature-first/apps/widgetbook",
           "request": "launch",
           "program": "lib/main.dart",
           "type": "dart",
