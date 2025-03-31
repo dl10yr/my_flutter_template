@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'github_token_notifier.dart';
+part of 'github_token_state_notifier.dart';
 
 // **************************************************************************
 // RiverpodGenerator

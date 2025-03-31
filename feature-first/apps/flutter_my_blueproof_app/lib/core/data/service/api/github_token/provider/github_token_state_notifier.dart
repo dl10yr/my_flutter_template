@@ -1,7 +1,7 @@
 import 'package:flutter_my_blueprint/core/data/service/api/github_token/github_token_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'github_token_notifier.g.dart';
+part 'github_token_state_notifier.g.dart';
 
 @Riverpod(keepAlive: true)
 class GithubTokenStateNotifier extends _$GithubTokenStateNotifier {
