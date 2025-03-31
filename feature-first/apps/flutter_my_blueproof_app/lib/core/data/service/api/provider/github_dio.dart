@@ -2,8 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:flutter_my_blueprint/core/data/service/api/error_interceptor.dart';
 import 'package:flutter_my_blueprint/core/data/service/api/github_header_interceptor.dart';
+import 'package:flutter_my_blueprint/core/data/service/api/github_token/provider/github_token_notifier.dart';
 import 'package:flutter_my_blueprint/core/data/service/api/github_token_intercepor.dart';
-import 'package:flutter_my_blueprint/core/data/service/github_token/provider/github_token_service.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -11,11 +11,16 @@ part 'github_dio.g.dart';
 
 @Riverpod(keepAlive: true)
 Dio githubDio(Ref ref) {
-  return GithubDio.getInstance(ref.watch(githubTokenServiceProvider));
+  return GithubDio.getInstance(
+    ref.watch(githubTokenStateNotifierProvider.notifier),
+  );
 }
 
 class GithubDio with DioMixin implements Dio {
-  GithubDio._(GithubTokenService tokenService, [BaseOptions? options]) {
+  GithubDio._(
+    GithubTokenStateNotifier tokenStateNotifier, [
+    BaseOptions? options,
+  ]) {
     options = BaseOptions(
       baseUrl: 'https://api.github.com',
       contentType: Headers.jsonContentType,
@@ -29,11 +34,11 @@ class GithubDio with DioMixin implements Dio {
     interceptors
       ..add(ErrorInterceptor())
       ..add(GithubHeaderInterceptor())
-      ..add(GithubTokenInterceptor(tokenService));
+      ..add(GithubTokenInterceptor(tokenStateNotifier));
 
     httpClientAdapter = IOHttpClientAdapter();
   }
 
-  static Dio getInstance(GithubTokenService tokenService) =>
-      GithubDio._(tokenService);
+  static Dio getInstance(GithubTokenStateNotifier tokenStateNotifier) =>
+      GithubDio._(tokenStateNotifier);
 }

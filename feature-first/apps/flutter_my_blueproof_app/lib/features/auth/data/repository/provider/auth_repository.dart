@@ -1,4 +1,4 @@
-import 'package:flutter_my_blueprint/core/data/service/github_token/provider/github_token_service.dart';
+import 'package:flutter_my_blueprint/core/data/service/api/github_token/provider/github_token_notifier.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -12,27 +12,29 @@ abstract class AuthRepository {
 
 @riverpod
 AuthRepository remoteAuthRepository(Ref ref) {
-  return RemoteAuthRepository(ref.watch(githubTokenServiceProvider));
+  return RemoteAuthRepository(
+    ref.watch(githubTokenStateNotifierProvider.notifier),
+  );
 }
 
 class RemoteAuthRepository implements AuthRepository {
-  RemoteAuthRepository(this.service);
-  final GithubTokenService service;
+  RemoteAuthRepository(this.tokenStateNotifier);
+  final GithubTokenStateNotifier tokenStateNotifier;
 
   @override
   String login(String githubToken) {
-    service.save(githubToken);
+    tokenStateNotifier.save(githubToken);
     return githubToken;
   }
 
   @override
   String? fetch() {
-    final githubToken = service.fetch();
+    final githubToken = tokenStateNotifier.fetch();
     return githubToken;
   }
 
   @override
   void logout() {
-    service.remove();
+    tokenStateNotifier.remove();
   }
 }

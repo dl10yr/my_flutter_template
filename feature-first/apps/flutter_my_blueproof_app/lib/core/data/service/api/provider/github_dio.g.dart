@@ -6,7 +6,7 @@ part of 'github_dio.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$githubDioHash() => r'f05e86656e0f1d679f3a534cf256f74c595f2d2b';
+String _$githubDioHash() => r'e87b61e53148a4a43f46a5a18919e9728c11d4f4';
 
 /// See also [githubDio].
 @ProviderFor(githubDio)

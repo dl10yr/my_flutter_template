@@ -1,27 +1,28 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'auth_state_notifier.dart';
+part of 'github_token_notifier.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$authStateNotifierHash() => r'14d1698d88250b591acb6939068175ef99df6205';
+String _$githubTokenStateNotifierHash() =>
+    r'ae32486c234e0fffd3bd79cccc89b9a1f99f4065';
 
-/// See also [AuthStateNotifier].
-@ProviderFor(AuthStateNotifier)
-final authStateNotifierProvider =
-    AutoDisposeNotifierProvider<AuthStateNotifier, AuthState>.internal(
-      AuthStateNotifier.new,
-      name: r'authStateNotifierProvider',
+/// See also [GithubTokenStateNotifier].
+@ProviderFor(GithubTokenStateNotifier)
+final githubTokenStateNotifierProvider =
+    NotifierProvider<GithubTokenStateNotifier, GithubTokenState>.internal(
+      GithubTokenStateNotifier.new,
+      name: r'githubTokenStateNotifierProvider',
       debugGetCreateSourceHash:
           const bool.fromEnvironment('dart.vm.product')
               ? null
-              : _$authStateNotifierHash,
+              : _$githubTokenStateNotifierHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );
 
-typedef _$AuthStateNotifier = AutoDisposeNotifier<AuthState>;
+typedef _$GithubTokenStateNotifier = Notifier<GithubTokenState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

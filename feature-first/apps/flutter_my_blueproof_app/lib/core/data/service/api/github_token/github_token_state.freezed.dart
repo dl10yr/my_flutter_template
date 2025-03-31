@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'auth_state_notifier.dart';
+part of 'github_token_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -16,35 +16,37 @@ final _privateConstructorUsedError = UnsupportedError(
 );
 
 /// @nodoc
-mixin _$AuthState {
+mixin _$GithubTokenState {
   String? get githubToken => throw _privateConstructorUsedError;
 
-  /// Create a copy of AuthState
+  /// Create a copy of GithubTokenState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $AuthStateCopyWith<AuthState> get copyWith =>
+  $GithubTokenStateCopyWith<GithubTokenState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AuthStateCopyWith<$Res> {
-  factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
-      _$AuthStateCopyWithImpl<$Res, AuthState>;
+abstract class $GithubTokenStateCopyWith<$Res> {
+  factory $GithubTokenStateCopyWith(
+    GithubTokenState value,
+    $Res Function(GithubTokenState) then,
+  ) = _$GithubTokenStateCopyWithImpl<$Res, GithubTokenState>;
   @useResult
   $Res call({String? githubToken});
 }
 
 /// @nodoc
-class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
-    implements $AuthStateCopyWith<$Res> {
-  _$AuthStateCopyWithImpl(this._value, this._then);
+class _$GithubTokenStateCopyWithImpl<$Res, $Val extends GithubTokenState>
+    implements $GithubTokenStateCopyWith<$Res> {
+  _$GithubTokenStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of AuthState
+  /// Create a copy of GithubTokenState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -63,33 +65,33 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
 }
 
 /// @nodoc
-abstract class _$$AuthStateImplCopyWith<$Res>
-    implements $AuthStateCopyWith<$Res> {
-  factory _$$AuthStateImplCopyWith(
-    _$AuthStateImpl value,
-    $Res Function(_$AuthStateImpl) then,
-  ) = __$$AuthStateImplCopyWithImpl<$Res>;
+abstract class _$$GithubTokenStateImplCopyWith<$Res>
+    implements $GithubTokenStateCopyWith<$Res> {
+  factory _$$GithubTokenStateImplCopyWith(
+    _$GithubTokenStateImpl value,
+    $Res Function(_$GithubTokenStateImpl) then,
+  ) = __$$GithubTokenStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? githubToken});
 }
 
 /// @nodoc
-class __$$AuthStateImplCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$AuthStateImpl>
-    implements _$$AuthStateImplCopyWith<$Res> {
-  __$$AuthStateImplCopyWithImpl(
-    _$AuthStateImpl _value,
-    $Res Function(_$AuthStateImpl) _then,
+class __$$GithubTokenStateImplCopyWithImpl<$Res>
+    extends _$GithubTokenStateCopyWithImpl<$Res, _$GithubTokenStateImpl>
+    implements _$$GithubTokenStateImplCopyWith<$Res> {
+  __$$GithubTokenStateImplCopyWithImpl(
+    _$GithubTokenStateImpl _value,
+    $Res Function(_$GithubTokenStateImpl) _then,
   ) : super(_value, _then);
 
-  /// Create a copy of AuthState
+  /// Create a copy of GithubTokenState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({Object? githubToken = freezed}) {
     return _then(
-      _$AuthStateImpl(
+      _$GithubTokenStateImpl(
         githubToken:
             freezed == githubToken
                 ? _value.githubToken
@@ -102,22 +104,22 @@ class __$$AuthStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AuthStateImpl extends _AuthState {
-  _$AuthStateImpl({required this.githubToken}) : super._();
+class _$GithubTokenStateImpl extends _GithubTokenState {
+  _$GithubTokenStateImpl({this.githubToken}) : super._();
 
   @override
   final String? githubToken;
 
   @override
   String toString() {
-    return 'AuthState(githubToken: $githubToken)';
+    return 'GithubTokenState(githubToken: $githubToken)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AuthStateImpl &&
+            other is _$GithubTokenStateImpl &&
             (identical(other.githubToken, githubToken) ||
                 other.githubToken == githubToken));
   }
@@ -125,26 +127,30 @@ class _$AuthStateImpl extends _AuthState {
   @override
   int get hashCode => Object.hash(runtimeType, githubToken);
 
-  /// Create a copy of AuthState
+  /// Create a copy of GithubTokenState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$AuthStateImplCopyWith<_$AuthStateImpl> get copyWith =>
-      __$$AuthStateImplCopyWithImpl<_$AuthStateImpl>(this, _$identity);
+  _$$GithubTokenStateImplCopyWith<_$GithubTokenStateImpl> get copyWith =>
+      __$$GithubTokenStateImplCopyWithImpl<_$GithubTokenStateImpl>(
+        this,
+        _$identity,
+      );
 }
 
-abstract class _AuthState extends AuthState {
-  factory _AuthState({required final String? githubToken}) = _$AuthStateImpl;
-  _AuthState._() : super._();
+abstract class _GithubTokenState extends GithubTokenState {
+  factory _GithubTokenState({final String? githubToken}) =
+      _$GithubTokenStateImpl;
+  _GithubTokenState._() : super._();
 
   @override
   String? get githubToken;
 
-  /// Create a copy of AuthState
+  /// Create a copy of GithubTokenState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AuthStateImplCopyWith<_$AuthStateImpl> get copyWith =>
+  _$$GithubTokenStateImplCopyWith<_$GithubTokenStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
