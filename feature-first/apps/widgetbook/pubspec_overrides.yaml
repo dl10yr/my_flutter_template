@@ -1,0 +1,4 @@
+# melos_managed_dependency_overrides: flutter_my_blueprint
+dependency_overrides:
+  flutter_my_blueprint:
+    path: ../flutter_my_blueproof_app
