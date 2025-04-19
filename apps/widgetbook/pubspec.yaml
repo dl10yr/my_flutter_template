@@ -1,6 +1,6 @@
 name: widgetbook_workspace
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
@@ -9,8 +9,8 @@ environment:
 resolution: workspace
 
 dependencies:
-  flutter_my_blueprint:
-    path: ../../apps/flutter_my_blueproof_app
+  my_app:
+    path: ../../apps/my_app
   flutter:
     sdk: flutter
   widgetbook: ^3.11.0
