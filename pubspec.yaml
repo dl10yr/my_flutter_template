@@ -10,6 +10,7 @@ workspace:
   # packages
   - packages/cores/core
   - packages/features/auth
+  - packages/features/github_repository
 
 dev_dependencies:
   melos: ^7.0.0-dev.8
