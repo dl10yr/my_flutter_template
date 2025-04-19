@@ -17,8 +17,8 @@ dependencies:
   features_auth: ^0.0.1
   flutter:
     sdk: flutter
-  flutter_hooks: ^0.20.5
-  freezed_annotation: ^2.4.4
+  flutter_hooks: ^0.21.2
+  freezed_annotation: ^3.0.0
   hooks_riverpod: ^2.6.1
   retrofit: ^4.4.2
   riverpod_annotation: ^2.6.1
