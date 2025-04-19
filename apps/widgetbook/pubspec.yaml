@@ -6,6 +6,8 @@ version: 0.1.0
 environment:
   sdk: ^3.7.0
 
+resolution: workspace
+
 dependencies:
   flutter_my_blueprint:
     path: ../../apps/flutter_my_blueproof_app
