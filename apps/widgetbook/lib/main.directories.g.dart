@@ -15,22 +15,17 @@ import 'package:widgetbook_workspace/cool_button.dart' as _i2;
 
 final directories = <_i1.WidgetbookNode>[
   _i1.WidgetbookFolder(
-    name: 'core',
+    name: 'widgets',
     children: [
       _i1.WidgetbookFolder(
-        name: 'widgets',
+        name: 'button',
         children: [
-          _i1.WidgetbookFolder(
-            name: 'button',
-            children: [
-              _i1.WidgetbookLeafComponent(
-                name: 'CoolButton',
-                useCase: _i1.WidgetbookUseCase(
-                  name: 'Default',
-                  builder: _i2.buildCoolButtonUseCase,
-                ),
-              ),
-            ],
+          _i1.WidgetbookLeafComponent(
+            name: 'CoolButton',
+            useCase: _i1.WidgetbookUseCase(
+              name: 'Default',
+              builder: _i2.buildCoolButtonUseCase,
+            ),
           ),
         ],
       ),
