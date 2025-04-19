@@ -12,28 +12,26 @@ resolution: workspace
 dependencies:
   cores_core:
     path: ../../packages/cores/core
-  async: ^2.12.0
-  cached_network_image: ^3.4.1
+ 
   collection: ^1.19.1
   cupertino_icons: ^1.0.8
   dio: ^5.8.0+1
+  features_auth:
+    path: ../../packages/features/auth
+  features_github_repository:
+    path: ../../packages/features/github_repository
   flutter:
     sdk: flutter
   flutter_hooks: ^0.20.5
-  flutter_inappwebview: ^6.1.5
   flutter_localizations:
     sdk: flutter
   freezed_annotation: ^2.4.4
   go_router: ^14.8.0
   hooks_riverpod: ^2.6.1
-  json_annotation: ^4.9.0
-  json_serializable: ^6.9.4
-  logger: ^2.5.0
-  package_info_plus: ^8.3.0
-  retrofit: ^4.4.2
   riverpod_annotation: ^2.6.1
-  shared_preferences: ^2.5.2
-  theme_extensions_builder_annotation: ^4.0.1
+  flutter_riverpod: ^2.6.1
+  package_info_plus: ^8.3.0
+  shared_preferences: ^2.5.3
 
 dev_dependencies:
   # The "flutter_lints" package below contains a set of recommended lints to
@@ -41,17 +39,10 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  build_runner: ^2.4.15
-  flutter_gen_runner: ^5.10.0
   flutter_lints: ^5.0.0
   flutter_test:
     sdk: flutter
-  freezed: ^2.5.8
   go_router_builder: ^2.8.2
-  mockito: ^5.4.5
-  retrofit_generator: ^9.1.9
-  riverpod_generator: ^2.6.4
-  theme_extensions_builder: ^4.0.1
   very_good_analysis: ^7.0.0
 
 # For information on the generic Dart part of this file, see the
@@ -65,8 +56,6 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  assets:
-    - assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
@@ -93,8 +82,3 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
-
-flutter_gen:
-  output: lib/gen/assets
-  assets:
-    outputs:
