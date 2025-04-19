@@ -9,6 +9,7 @@ workspace:
   - apps/widgetbook
   # packages
   - packages/cores/core
+  - packages/cores/assets
   - packages/features/auth
   - packages/features/github_repository
 
@@ -55,6 +56,16 @@ melos:
       packageFilters:
         dirExists: lib
         dependsOn: "build_runner"
+
+    gen:assets:
+      run: dart run build_runner build --delete-conflicting-outputs
+      exec:
+        concurrency: 1
+      description: Generate code.
+      packageFilters:
+        dirExists: lib
+        dependsOn: "build_runner"
+        scope: "cores_assets"
 
     gen:watch:
       run: dart run build_runner watch --delete-conflicting-outputs

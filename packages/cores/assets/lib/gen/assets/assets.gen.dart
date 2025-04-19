@@ -9,12 +9,12 @@
 
 import 'package:flutter/widgets.dart';
 
-class $AssetsImagesGen {
-  const $AssetsImagesGen();
+class $ImagesGen {
+  const $ImagesGen();
 
-  /// File path: assets/images/placeholder.png
+  /// File path: images/placeholder.png
   AssetGenImage get placeholder =>
-      const AssetGenImage('assets/images/placeholder.png');
+      const AssetGenImage('images/placeholder.png');
 
   /// List of all assets
   List<AssetGenImage> get values => [placeholder];
@@ -23,7 +23,7 @@ class $AssetsImagesGen {
 class Assets {
   const Assets._();
 
-  static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $ImagesGen images = $ImagesGen();
 }
 
 class AssetGenImage {
