@@ -6,8 +6,7 @@ class StartUpRoute extends GoRouteData {
   const StartUpRoute();
 
   @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      const StartScreen();
+  Widget build(BuildContext context, GoRouterState state) => const StartPage();
 
   static final GlobalKey<NavigatorState> $parentNavigatorKey = rootNavigatorKey;
 }

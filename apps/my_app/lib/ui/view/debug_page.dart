@@ -3,8 +3,8 @@ import 'package:cores_core/widgets/loading_indicator/app_loading_indicator_notif
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class DebugScreen extends ConsumerWidget {
-  const DebugScreen({super.key});
+class DebugPage extends ConsumerWidget {
+  const DebugPage({super.key});
 
   Widget _infoTile(String title, String subtitle) {
     return ListTile(

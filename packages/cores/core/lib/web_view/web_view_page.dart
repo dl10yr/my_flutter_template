@@ -5,8 +5,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 // ref: https://github.com/yumemi-inc/flutter-mobile-project-template/blob/main/packages/features/webview/lib/src/ui/web_page.dart
-class WebViewScreen extends StatefulHookWidget {
-  const WebViewScreen({
+class WebViewPage extends StatefulHookWidget {
+  const WebViewPage({
     required Uri initialUrl,
     required VoidCallback pop,
     super.key,
@@ -17,10 +17,10 @@ class WebViewScreen extends StatefulHookWidget {
   final VoidCallback _pop;
 
   @override
-  State<WebViewScreen> createState() => _WebViewState();
+  State<WebViewPage> createState() => _WebViewState();
 }
 
-class _WebViewState extends State<WebViewScreen> {
+class _WebViewState extends State<WebViewPage> {
   final GlobalKey _webViewKey = GlobalKey();
   PullToRefreshController? _pullToRefreshController;
   InAppWebViewController? _webViewController;

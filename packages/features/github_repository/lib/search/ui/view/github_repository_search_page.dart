@@ -5,8 +5,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'github_repository_search_login_view.dart';
 import 'github_repository_search_view.dart';
 
-class GithubRepositorySearchScreen extends HookConsumerWidget {
-  const GithubRepositorySearchScreen({super.key});
+class GithubRepositorySearchPage extends HookConsumerWidget {
+  const GithubRepositorySearchPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

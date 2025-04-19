@@ -5,8 +5,7 @@ class DebugRoute extends GoRouteData {
   const DebugRoute();
 
   @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      const DebugScreen();
+  Widget build(BuildContext context, GoRouterState state) => const DebugPage();
 
   static const path = '/debug';
 

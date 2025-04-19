@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:my_app/routing/go_router_provider.dart';
 
-class SettingsScreen extends HookConsumerWidget {
-  const SettingsScreen({super.key});
+class SettingsPage extends HookConsumerWidget {
+  const SettingsPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

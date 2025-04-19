@@ -13,5 +13,5 @@ class SearchTabRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) =>
-      const GithubRepositorySearchScreen();
+      const GithubRepositorySearchPage();
 }

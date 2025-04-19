@@ -19,7 +19,7 @@ class SettingsTabRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) =>
-      const SettingsScreen();
+      const SettingsPage();
 }
 
 class LicensePageRoute extends GoRouteData {
@@ -42,7 +42,7 @@ class WebViewPageRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return WebViewScreen(
+    return WebViewPage(
       initialUrl: Uri.parse('https://flutter.dev'),
       pop: () {
         print('pop');

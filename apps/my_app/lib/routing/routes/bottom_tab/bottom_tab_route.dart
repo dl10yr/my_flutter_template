@@ -15,7 +15,7 @@ class BottomTabRoute extends StatefulShellRouteData {
     GoRouterState state,
     StatefulNavigationShell navigationShell,
   ) {
-    return BottomTabScreen(navigationShell);
+    return BottomTabPage(navigationShell);
   }
 
   static final GlobalKey<NavigatorState> $parentNavigatorKey = rootNavigatorKey;

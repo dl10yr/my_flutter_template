@@ -1,15 +1,15 @@
 import 'package:cores_core/flavor/app_flavor.dart';
-import 'package:cores_core/web_view/web_view_screen.dart';
-import 'package:cores_core/widgets/bottom_tab/bottom_tab_screen.dart';
-import 'package:features_github_repository/search/ui/view/github_repository_search_screen.dart';
+import 'package:cores_core/web_view/web_view_page.dart';
+import 'package:cores_core/widgets/bottom_tab/bottom_tab_page.dart';
+import 'package:features_github_repository/search/ui/view/github_repository_search_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:my_app/routing/transition/custom_slide_transition.dart';
-import 'package:my_app/ui/view/debug_screen.dart';
-import 'package:my_app/ui/view/settings_screen.dart';
-import 'package:my_app/ui/view/start_screen.dart';
+import 'package:my_app/ui/view/debug_page.dart';
+import 'package:my_app/ui/view/settings_page.dart';
+import 'package:my_app/ui/view/start_page.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'go_router_provider.g.dart';
