@@ -1,5 +1,6 @@
-import 'package:flutter_my_blueprint/features/auth/data/repository/provider/auth_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+import '../../data/repository/provider/auth_repository.dart';
 
 part 'auth_notifier.g.dart';
 

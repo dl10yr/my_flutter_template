@@ -5,7 +5,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i4;
 
-import 'package:flutter_my_blueprint/features/auth/data/repository/provider/auth_repository.dart'
+import 'package:features_auth/data/repository/provider/auth_repository.dart'
     as _i7;
 import 'package:flutter_my_blueprint/features/github_repository/common/domain/model/github_repository.dart'
     as _i2;

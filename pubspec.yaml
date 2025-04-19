@@ -7,8 +7,9 @@ workspace:
   # apps
   - apps/flutter_my_blueproof_app
   - apps/widgetbook
-  # cores
+  # packages
   - packages/cores/core
+  - packages/features/auth
 
 dev_dependencies:
   melos: ^7.0.0-dev.8

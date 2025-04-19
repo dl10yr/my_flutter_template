@@ -1,5 +1,5 @@
-import 'package:flutter_my_blueprint/features/auth/data/repository/provider/auth_repository.dart';
-import 'package:flutter_my_blueprint/features/auth/ui/provider/auth_notifier.dart';
+import 'package:features_auth/data/repository/provider/auth_repository.dart';
+import 'package:features_auth/ui/provider/auth_notifier.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mockito/annotations.dart';

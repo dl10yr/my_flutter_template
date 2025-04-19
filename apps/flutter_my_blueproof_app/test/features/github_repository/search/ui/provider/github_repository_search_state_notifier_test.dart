@@ -1,4 +1,4 @@
-import 'package:flutter_my_blueprint/features/auth/data/repository/provider/auth_repository.dart';
+import 'package:features_auth/data/repository/provider/auth_repository.dart';
 import 'package:flutter_my_blueprint/features/github_repository/common/domain/model/github_repository.dart';
 import 'package:flutter_my_blueprint/features/github_repository/search/data/api/provider/github_repository_search_api.dart';
 import 'package:flutter_my_blueprint/features/github_repository/search/domain/usecase/provider/github_repository_search_load_more_usecase.dart';

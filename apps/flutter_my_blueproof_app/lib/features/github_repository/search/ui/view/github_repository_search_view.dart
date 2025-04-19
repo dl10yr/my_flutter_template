@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cores_core/widgets/snack_bar/app_snack_bar_manager.dart';
+import 'package:features_auth/ui/provider/auth_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_my_blueprint/features/auth/ui/provider/auth_notifier.dart';
 import 'package:flutter_my_blueprint/features/github_repository/search/ui/provider/github_repository_search_state_notifier.dart';
 import 'package:flutter_my_blueprint/gen/assets/assets.gen.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
