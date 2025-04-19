@@ -2,8 +2,8 @@ import 'package:cores_core/flavor/app_flavor.dart';
 import 'package:cores_core/ui/theme_mode/provider/theme_mode_notifier.dart';
 import 'package:cores_core/widgets/modal_bottom_sheet/show_list_bottom_sheet.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_my_blueprint/routing/go_router_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:my_app/routing/go_router_provider.dart';
 
 class SettingsScreen extends HookConsumerWidget {
   const SettingsScreen({super.key});

@@ -4,20 +4,20 @@ import 'package:cores_core/widgets/bottom_tab/bottom_tab_screen.dart';
 import 'package:features_github_repository/search/ui/view/github_repository_search_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_my_blueprint/routing/transition/custom_slide_transition.dart';
-import 'package:flutter_my_blueprint/ui/view/debug_screen.dart';
-import 'package:flutter_my_blueprint/ui/view/settings_screen.dart';
-import 'package:flutter_my_blueprint/ui/view/start_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:my_app/routing/transition/custom_slide_transition.dart';
+import 'package:my_app/ui/view/debug_screen.dart';
+import 'package:my_app/ui/view/settings_screen.dart';
+import 'package:my_app/ui/view/start_screen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'go_router_provider.g.dart';
-part 'package:flutter_my_blueprint/routing/routes/bottom_tab/bottom_tab_route.dart';
-part 'package:flutter_my_blueprint/routing/routes/bottom_tab/search/search_branch.dart';
-part 'package:flutter_my_blueprint/routing/routes/bottom_tab/settings/settings_branch.dart';
-part 'package:flutter_my_blueprint/routing/routes/debug_route.dart';
-part 'package:flutter_my_blueprint/routing/routes/start_up_route.dart';
+part 'package:my_app/routing/routes/bottom_tab/bottom_tab_route.dart';
+part 'package:my_app/routing/routes/bottom_tab/search/search_branch.dart';
+part 'package:my_app/routing/routes/bottom_tab/settings/settings_branch.dart';
+part 'package:my_app/routing/routes/debug_route.dart';
+part 'package:my_app/routing/routes/start_up_route.dart';
 
 /// NavigatorKey
 final rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'rootNavigator');

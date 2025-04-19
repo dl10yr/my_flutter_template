@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_my_blueprint/routing/go_router_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:my_app/routing/go_router_provider.dart';
 
 class StartScreen extends HookConsumerWidget {
   const StartScreen({super.key});

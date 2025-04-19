@@ -1,4 +1,4 @@
-# flutter_my_blueprint
+# my_app
 
 A new Flutter project.
 

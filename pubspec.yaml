@@ -1,11 +1,11 @@
-name: flutter_my_blueproof_feature_first
+name: my_flutter_template
 
 environment:
   sdk: ^3.7.0
 
 workspace:
   # apps
-  - apps/flutter_my_blueproof_app
+  - apps/my_app
   - apps/widgetbook
   # packages
   - packages/cores/core
@@ -84,7 +84,7 @@ melos:
       packageFilters:
         flutter: true
         dirExists: test
-    
+
     pod:ios:
       exec: |
         cd ios

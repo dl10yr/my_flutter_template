@@ -13,7 +13,7 @@ import 'package:cores_core/widgets/snack_bar/app_snack_bar_manager.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_my_blueprint/routing/go_router_provider.dart';
+import 'package:my_app/routing/go_router_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';

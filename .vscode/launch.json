@@ -6,7 +6,7 @@
   "configurations": [
       {
           "name": "dev-debug",
-          "cwd": "apps/flutter_my_blueproof_app",
+          "cwd": "apps/my_app",
           "request": "launch",
           "program": "lib/main.dart",
           "type": "dart",
