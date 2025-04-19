@@ -31,4 +31,3 @@ flutter:
 flutter_gen:
   output: lib/gen/assets
   assets:
-    outputs:
