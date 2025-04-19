@@ -1,5 +1,5 @@
-import 'package:flutter_my_blueprint/core/data/service/api/github_token/github_token_state.dart';
-import 'package:flutter_my_blueprint/core/data/service/api/github_token/provider/github_token_state_notifier.dart';
+import 'package:cores_core/data/service/api/github_token/github_token_state.dart';
+import 'package:cores_core/data/service/api/github_token/provider/github_token_state_notifier.dart';
 import 'package:flutter_my_blueprint/features/auth/data/repository/provider/auth_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';

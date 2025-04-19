@@ -1,6 +1,6 @@
+import 'package:cores_core/provider/package_info.dart';
+import 'package:cores_core/widgets/loading_indicator/app_loading_indicator_notifier.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_my_blueprint/core/provider/package_info.dart';
-import 'package:flutter_my_blueprint/core/widgets/loading_indicator/app_loading_indicator_notifier.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class DebugScreen extends ConsumerWidget {

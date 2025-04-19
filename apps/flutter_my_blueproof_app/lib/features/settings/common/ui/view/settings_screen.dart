@@ -1,8 +1,7 @@
-import 'package:cores_core/core.dart';
+import 'package:cores_core/flavor/app_flavor.dart';
+import 'package:cores_core/ui/theme_mode/provider/theme_mode_notifier.dart';
+import 'package:cores_core/widgets/modal_bottom_sheet/show_list_bottom_sheet.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_my_blueprint/core/flavor/app_flavor.dart';
-import 'package:flutter_my_blueprint/core/ui/theme_mode/provider/theme_mode_notifier.dart';
-import 'package:flutter_my_blueprint/core/widgets/modal_bottom_sheet/show_list_bottom_sheet.dart';
 import 'package:flutter_my_blueprint/routing/go_router_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -16,9 +15,7 @@ class SettingsScreen extends HookConsumerWidget {
         title: Text(
           'appFlavor: ${stringToFlavor(const String.fromEnvironment('flavor'))}',
         ),
-        onTap: () {
-          final calculator = Calculator();
-        },
+        onTap: () {},
       ),
       ListTile(
         title: const Text('select theme'),

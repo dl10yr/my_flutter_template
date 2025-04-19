@@ -1,7 +1,7 @@
+import 'package:cores_core/flavor/app_flavor.dart';
+import 'package:cores_core/widgets/bottom_tab/bottom_tab_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_my_blueprint/core/flavor/app_flavor.dart';
-import 'package:flutter_my_blueprint/core/widgets/bottom_tab/bottom_tab_screen.dart';
 import 'package:flutter_my_blueprint/features/github_repository/search/ui/view/github_repository_search_screen.dart';
 import 'package:flutter_my_blueprint/features/settings/common/ui/view/settings_screen.dart';
 import 'package:flutter_my_blueprint/features/settings/debug/ui/view/debug_screen.dart';

@@ -1,5 +1,6 @@
-import 'package:flutter_my_blueprint/core/data/service/api/github_token/github_token_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+import '../github_token_state.dart';
 
 part 'github_token_state_notifier.g.dart';
 

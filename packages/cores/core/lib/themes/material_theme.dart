@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_my_blueprint/core/theme_extension/color/app_colors.dart';
+
+import '../theme_extension/color/app_colors.dart';
 
 ThemeData lightTheme({required TextTheme textTheme}) => _createTheme(
   colorScheme: lightColorScheme,

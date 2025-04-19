@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_my_blueprint/core/widgets/loading_indicator/app_loading_indicator_notifier.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+import 'app_loading_indicator_notifier.dart';
 
 class AppLoadingIndicator extends ConsumerWidget {
   const AppLoadingIndicator({super.key});
