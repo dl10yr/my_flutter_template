@@ -35,4 +35,11 @@ class AppSnackBarManager {
     }
     scaffoldMessengerKey.currentState!.hideCurrentSnackBar();
   }
+
+  static void showErrorSnackBar({
+    required BuildContext context,
+    required message,
+  }) {
+    showSnackBar(message, textColor: Colors.white, backgroundColor: Colors.red);
+  }
 }
