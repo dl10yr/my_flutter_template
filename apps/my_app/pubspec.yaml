@@ -22,11 +22,11 @@ dependencies:
     path: ../../packages/features/github_repository
   flutter:
     sdk: flutter
-  flutter_hooks: ^0.20.5
+  flutter_hooks: ^0.21.2
   flutter_localizations:
     sdk: flutter
-  freezed_annotation: ^2.4.4
-  go_router: ^14.8.0
+  freezed_annotation: ^3.0.0
+  go_router: ^15.1.1
   hooks_riverpod: ^2.6.1
   riverpod_annotation: ^2.6.1
   flutter_riverpod: ^2.6.1
