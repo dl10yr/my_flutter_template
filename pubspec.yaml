@@ -94,3 +94,17 @@ melos:
       packageFilters:
         dirExists: [lib, ios]
         fileExists: "ios/Podfile"
+
+    package:update:
+      exec: |
+        fvm flutter pub upgrade
+      description: Update package dependencies.
+      packageFilters:
+        dirExists: lib
+
+    package:update-major:
+      exec: |
+        fvm flutter pub upgrade --major-versions
+      description: Update package dependencies.
+      packageFilters:
+        dirExists: lib
