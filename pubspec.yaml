@@ -94,3 +94,11 @@ melos:
       packageFilters:
         dirExists: [lib, ios]
         fileExists: "ios/Podfile"
+
+    package:update:
+      exec: |
+        dart pub upgrade
+        dart pub updage --major-versions
+      description: Update package dependencies.
+      packageFilters:
+        dirExists: lib
