@@ -97,8 +97,14 @@ melos:
 
     package:update:
       exec: |
-        dart pub upgrade
-        dart pub updage --major-versions
+        fvm flutter pub upgrade
+      description: Update package dependencies.
+      packageFilters:
+        dirExists: lib
+
+    package:update-major:
+      exec: |
+        fvm flutter pub upgrade --major-versions
       description: Update package dependencies.
       packageFilters:
         dirExists: lib
