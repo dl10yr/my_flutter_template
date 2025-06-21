@@ -35,7 +35,10 @@ void main() async {
   ];
 
   runApp(
-    ProviderScope(overrides: [...overrideProviders], child: const MyApp()),
+    ProviderScope(
+      overrides: [...overrideProviders],
+      child: const MyApp(),
+    ),
   );
 }
 
