@@ -19,7 +19,7 @@ RouteBase get $bottomTabRoute => StatefulShellRouteData.$route(
         GoRouteData.$route(
           path: '/search_tab',
 
-          factory: $SearchTabRouteExtension._fromState,
+          factory: _$SearchTabRoute._fromState,
         ),
       ],
     ),
@@ -30,19 +30,19 @@ RouteBase get $bottomTabRoute => StatefulShellRouteData.$route(
         GoRouteData.$route(
           path: '/settings_tab',
 
-          factory: $SettingsTabRouteExtension._fromState,
+          factory: _$SettingsTabRoute._fromState,
           routes: [
             GoRouteData.$route(
               path: 'license',
 
-              factory: $LicensePageRouteExtension._fromState,
+              factory: _$LicensePageRoute._fromState,
             ),
             GoRouteData.$route(
               path: 'web_view',
 
               parentNavigatorKey: WebViewPageRoute.$parentNavigatorKey,
 
-              factory: $WebViewPageRouteExtension._fromState,
+              factory: _$WebViewPageRoute._fromState,
             ),
           ],
         ),
@@ -56,67 +56,87 @@ extension $BottomTabRouteExtension on BottomTabRoute {
       const BottomTabRoute();
 }
 
-extension $SearchTabRouteExtension on SearchTabRoute {
+mixin _$SearchTabRoute on GoRouteData {
   static SearchTabRoute _fromState(GoRouterState state) =>
       const SearchTabRoute();
 
+  @override
   String get location => GoRouteData.$location('/search_tab');
 
+  @override
   void go(BuildContext context) => context.go(location);
 
+  @override
   Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
+  @override
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
 
+  @override
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $SettingsTabRouteExtension on SettingsTabRoute {
+mixin _$SettingsTabRoute on GoRouteData {
   static SettingsTabRoute _fromState(GoRouterState state) =>
       const SettingsTabRoute();
 
+  @override
   String get location => GoRouteData.$location('/settings_tab');
 
+  @override
   void go(BuildContext context) => context.go(location);
 
+  @override
   Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
+  @override
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
 
+  @override
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $LicensePageRouteExtension on LicensePageRoute {
+mixin _$LicensePageRoute on GoRouteData {
   static LicensePageRoute _fromState(GoRouterState state) =>
       const LicensePageRoute();
 
+  @override
   String get location => GoRouteData.$location('/settings_tab/license');
 
+  @override
   void go(BuildContext context) => context.go(location);
 
+  @override
   Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
+  @override
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
 
+  @override
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $WebViewPageRouteExtension on WebViewPageRoute {
+mixin _$WebViewPageRoute on GoRouteData {
   static WebViewPageRoute _fromState(GoRouterState state) =>
       const WebViewPageRoute();
 
+  @override
   String get location => GoRouteData.$location('/settings_tab/web_view');
 
+  @override
   void go(BuildContext context) => context.go(location);
 
+  @override
   Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
+  @override
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
 
+  @override
   void replace(BuildContext context) => context.replace(location);
 }
 
@@ -125,21 +145,26 @@ RouteBase get $debugRoute => GoRouteData.$route(
 
   parentNavigatorKey: DebugRoute.$parentNavigatorKey,
 
-  factory: $DebugRouteExtension._fromState,
+  factory: _$DebugRoute._fromState,
 );
 
-extension $DebugRouteExtension on DebugRoute {
+mixin _$DebugRoute on GoRouteData {
   static DebugRoute _fromState(GoRouterState state) => const DebugRoute();
 
+  @override
   String get location => GoRouteData.$location('/debug');
 
+  @override
   void go(BuildContext context) => context.go(location);
 
+  @override
   Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
+  @override
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
 
+  @override
   void replace(BuildContext context) => context.replace(location);
 }
 
@@ -148,21 +173,26 @@ RouteBase get $startUpRoute => GoRouteData.$route(
 
   parentNavigatorKey: StartUpRoute.$parentNavigatorKey,
 
-  factory: $StartUpRouteExtension._fromState,
+  factory: _$StartUpRoute._fromState,
 );
 
-extension $StartUpRouteExtension on StartUpRoute {
+mixin _$StartUpRoute on GoRouteData {
   static StartUpRoute _fromState(GoRouterState state) => const StartUpRoute();
 
+  @override
   String get location => GoRouteData.$location('/');
 
+  @override
   void go(BuildContext context) => context.go(location);
 
+  @override
   Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
+  @override
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
 
+  @override
   void replace(BuildContext context) => context.replace(location);
 }
 

@@ -6,7 +6,7 @@ const searchBranch = TypedStatefulShellBranch<BranchSearchData>(
   ],
 );
 
-class SearchTabRoute extends GoRouteData {
+class SearchTabRoute extends GoRouteData with _$SearchTabRoute {
   const SearchTabRoute();
 
   static const path = '/search_tab';

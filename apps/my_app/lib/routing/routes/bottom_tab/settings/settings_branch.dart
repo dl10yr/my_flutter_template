@@ -12,7 +12,7 @@ const settingsBranch = TypedStatefulShellBranch<BranchSettingsData>(
   ],
 );
 
-class SettingsTabRoute extends GoRouteData {
+class SettingsTabRoute extends GoRouteData with _$SettingsTabRoute {
   const SettingsTabRoute();
 
   static const path = '/settings_tab';
@@ -22,7 +22,7 @@ class SettingsTabRoute extends GoRouteData {
       const SettingsPage();
 }
 
-class LicensePageRoute extends GoRouteData {
+class LicensePageRoute extends GoRouteData with _$LicensePageRoute {
   const LicensePageRoute();
 
   static const path = 'license';
@@ -33,12 +33,12 @@ class LicensePageRoute extends GoRouteData {
   }
 }
 
-class WebViewPageRoute extends GoRouteData {
+class WebViewPageRoute extends GoRouteData with _$WebViewPageRoute {
   const WebViewPageRoute();
 
   static const path = 'web_view';
 
-  static final $parentNavigatorKey = rootNavigatorKey;
+  static final GlobalKey<NavigatorState> $parentNavigatorKey = rootNavigatorKey;
 
   @override
   Widget build(BuildContext context, GoRouterState state) {

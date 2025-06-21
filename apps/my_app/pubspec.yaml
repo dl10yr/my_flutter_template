@@ -39,11 +39,13 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
+  build_runner: ^2.4.15
   flutter_lints: ^6.0.0
   flutter_test:
     sdk: flutter
-  go_router_builder: ^2.8.2
-  very_good_analysis: ^8.0.0
+  go_router_builder: ^3.0.1
+  riverpod_generator: ^2.6.5
+  very_good_analysis: ^9.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
