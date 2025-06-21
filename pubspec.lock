@@ -181,10 +181,10 @@ packages:
     dependency: transitive
     description:
       name: checked_yaml
-      sha256: feb6bed21949061731a7a75fc5d2aa727cf160b91af9a3e464c5e3a32e28b5ff
+      sha256: "959525d3162f249993882720d52b7e0c833978df229be20702b33d48d91de70f"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.3"
+    version: "2.0.4"
   cli_launcher:
     dependency: transitive
     description:
@@ -301,10 +301,10 @@ packages:
     dependency: transitive
     description:
       name: device_frame_plus
-      sha256: "61b10153b7f2b143265cfb9b84684e660a676f7002e70cc1acd2e3a7caed958b"
+      sha256: ccc94abccd4d9f0a9f19ef239001b3a59896e678ad42601371d7065889f2bf78
       url: "https://pub.dev"
     source: hosted
-    version: "1.3.1"
+    version: "1.5.0"
   dio:
     dependency: transitive
     description:
@@ -513,18 +513,18 @@ packages:
     dependency: transitive
     description:
       name: go_router
-      sha256: "0b1e06223bee260dee31a171fb1153e306907563a0b0225e8c1733211911429a"
+      sha256: "02ff498f6279470ff7f60c998a69b872f26696ceec237c8402e63a2133868ddf"
       url: "https://pub.dev"
     source: hosted
-    version: "15.1.2"
+    version: "15.2.3"
   go_router_builder:
     dependency: transitive
     description:
       name: go_router_builder
-      sha256: "7f6f4bfb97cadc3d25378a0237fe4ddd98b54d6094b5a5c158b775a2cc30843e"
+      sha256: "2357997b3419219ee7096c861e65506475202a49cf38153efab0e82370925eaa"
       url: "https://pub.dev"
     source: hosted
-    version: "2.9.0"
+    version: "3.0.1"
   graphs:
     dependency: transitive
     description:
@@ -1318,10 +1318,10 @@ packages:
     dependency: transitive
     description:
       name: very_good_analysis
-      sha256: c529563be4cbba1137386f2720fb7ed69e942012a28b13398d8a5e3e6ef551a7
+      sha256: e479fbc0941009262343db308133e121bf8660c2c81d48dd8e952df7b7e1e382
       url: "https://pub.dev"
     source: hosted
-    version: "8.0.0"
+    version: "9.0.0"
   vm_service:
     dependency: transitive
     description:
@@ -1334,10 +1334,10 @@ packages:
     dependency: transitive
     description:
       name: watcher
-      sha256: "69da27e49efa56a15f8afe8f4438c4ec02eff0a117df1b22ea4aad194fe1c104"
+      sha256: "0b7fd4a0bbc4b92641dbf20adfd7e3fd1398fe17102d94b674234563e110088a"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.1"
+    version: "1.1.2"
   web:
     dependency: transitive
     description:
@@ -1366,10 +1366,10 @@ packages:
     dependency: transitive
     description:
       name: widgetbook
-      sha256: "116efd339f9d060ac4a063f3c1c91266757198bcfb43083fb3f1b7bcbb9e6f75"
+      sha256: a9d58080174ba5666e8515311b4c952ba02ddcb5cc9d9db244d0aac447988052
       url: "https://pub.dev"
     source: hosted
-    version: "3.14.2"
+    version: "3.14.3"
   widgetbook_annotation:
     dependency: transitive
     description:
@@ -1390,10 +1390,10 @@ packages:
     dependency: transitive
     description:
       name: win32
-      sha256: "329edf97fdd893e0f1e3b9e88d6a0e627128cc17cc316a8d67fda8f1451178ba"
+      sha256: "66814138c3562338d05613a6e368ed8cfb237ad6d64a9e9334be3f309acfca03"
       url: "https://pub.dev"
     source: hosted
-    version: "5.13.0"
+    version: "5.14.0"
   xdg_directories:
     dependency: transitive
     description:
