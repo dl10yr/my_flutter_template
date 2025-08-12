@@ -134,7 +134,7 @@
 
 ```bash
 git clone <repository-url>
-cd flutter_my_blueproof
+cd my_flutter_template
 ```
 
 2. FVM で Flutter バージョンを設定
@@ -263,8 +263,8 @@ class GithubRepositorySearchStateNotifier extends _$GithubRepositorySearchStateN
 
 - **宣言的ルーティング**: パス・クエリパラメータの型安全管理
 - **ネストしたナビゲーション**: ボトムタブ + 各タブ内画面遷移
-- **認証フロー**: 条件付きリダイレクト
-- **ディープリンク対応**: URL 直接アクセス
+- **基本ルーティング**: シンプルなルート管理
+- **デバッグモード対応**: 開発時のみデバッグルート表示
 
 **ルート構成:**
 
@@ -277,110 +277,34 @@ class GithubRepositorySearchStateNotifier extends _$GithubRepositorySearchStateN
 └── /debug (Debug mode only)
 ```
 
-### エラーハンドリング戦略
+### エラーハンドリング
 
-**多層エラー処理システム:**
-
-1. **API 層**: DioException → AppException 変換
-2. **Repository 層**: ビジネス例外ハンドリング
-3. **UseCase 層**: 入力値検証・ビジネスルール
-4. **UI 層**: ユーザーフレンドリーなエラー表示
+- **AppException**: DioExceptionからの統一例外変換
+- **AppExceptionNotifier**: グローバルエラー状態管理
+- **タイムアウト・接続エラー**: ネットワークエラーの分類と処理
 
 ### テスト戦略
 
-**包括的テストピラミッド:**
+- **Unit Tests**: UseCase、Repository、Notifierのテスト実装済み
+- **Mockito**: 外部依存のモック化
+- **ProviderContainer**: Riverpodプロバイダーのテスト
 
-- **Unit Tests**: UseCase, Repository, Notifier
-- **Widget Tests**: 個別コンポーネント
-- **Integration Tests**: エンドツーエンドフロー
 
-**Mockito 活用:**
+## 🧪 テスト実装
 
-- API 応答のモック化
-- 複雑な依存関係の分離
-- エラーケーステスト
+主要な機能に対してユニットテストを実装済み：
 
-## 🎯 プロダクション対応機能
-
-### パフォーマンス最適化
-
-- **画像キャッシュ**: `cached_network_image`によるメモリ効率化
-- **デバウンス検索**: 不要な API 呼び出し削減
-- **遅延ローディング**: 必要時のみリソース読み込み
-- **Keep Alive Provider**: 重要な状態の永続化
-
-### ユーザビリティ
-
-- **ローディング状態**: 操作フィードバックの明確化
-- **エラー回復**: リトライ機能付きエラー表示
-- **空状態処理**: 適切なプレースホルダー表示
-- **アクセシビリティ**: セマンティクス対応
-
-### 開発者体験
-
-- **Hot Reload**: 状態保持しながらの開発
-- **型安全性**: コンパイル時エラー検出
-- **コード生成**: ボイラープレート削減
-- **静的解析**: Very Good Analysis 使用
-
-### セキュリティ
-
-- **トークン管理**: メモリ内での安全な認証情報保持
-- **HTTPS 通信**: 暗号化された API 通信
-- **入力値検証**: XSS/インジェクション対策
-
-## 🧪 テスト実装詳細
-
-### テスト構成
-
-```
-test/
-├── unit/                    # ユニットテスト
-│   ├── use_cases/          # ビジネスロジックテスト
-│   ├── repositories/       # データアクセステスト
-│   └── notifiers/          # 状態管理テスト
-├── widget/                 # ウィジェットテスト
-└── integration/            # 統合テスト（準備中）
-```
-
-### 実装済みテスト
-
-**GitHub Repository Search Feature:**
-
-- `GithubRepositorySearchUseCase`: 検索ロジックテスト
-- `GithubRepositorySearchLoadMoreUseCase`: ページネーションテスト
-- `RemoteGithubRepositorySearchRepository`: API 通信テスト
-- `GithubRepositorySearchStateNotifier`: 状態管理テスト
-
-**Authentication Feature:**
-
-- `RemoteAuthRepository`: 認証データアクセステスト
-- `AuthNotifier`: 認証状態管理テスト
-
-### テスト戦略
-
-- **Mockito 使用**: 外部依存をモック化
-- **ProviderContainer**: Riverpod プロバイダーテスト
-- **AsyncValue**: 非同期状態のテスト
-- **Edge Case**: エラー・境界値テスト
+- **GitHub Repository Search**: UseCase、Repository、StateNotifierのテスト
+- **Authentication**: Repository、StateNotifierのテスト
+- **Mockito**: 外部依存のモック化によるテスト分離
 
 ## 📖 開発ガイドライン
 
-### コーディング規約
+### コード品質
 
-- **Very Good Analysis**: Dart/Flutter 推奨リント設定
-- **Code Generation**: 手動コード記述の最小化
-- **型安全性**: nullable 型の適切な使用
-- **関数型プログラミング**: 不変オブジェクト・純粋関数
-- **SOLID 原則**: 単一責任・依存性逆転
-
-### アーキテクチャ原則
-
-1. **Clean Architecture 準拠**: レイヤー境界の厳格な管理
-2. **Dependency Injection**: コンストラクタ注入・Provider パターン
-3. **Single Source of Truth**: 状態の一元管理
-4. **Separation of Concerns**: 責務の明確な分離
-5. **Testability First**: テスト容易性を最優先
+- **Very Good Analysis**: Dart/Flutter 推奨リント設定を採用
+- **Code Generation**: Freezed、Riverpod、go_router_builder等による自動生成
+- **型安全性**: 静的型付けによるコンパイル時エラー検出
 
 ### 新機能追加ガイドライン
 
@@ -435,25 +359,6 @@ class NewFeatureNotifier extends _$NewFeatureNotifier {
 }
 ```
 
-### ブランチ戦略
-
-- **main**: 本番用ブランチ（保護対象）
-- **develop**: 開発統合ブランチ
-- **feature/\***: 新機能開発用ブランチ
-- **fix/\***: バグ修正用ブランチ
-- **release/\***: リリース準備用ブランチ
-
-### コミット規約
-
-```
-feat(scope): 新機能追加
-fix(scope): バグ修正
-docs(scope): ドキュメント更新
-style(scope): コードフォーマット
-refactor(scope): リファクタリング
-test(scope): テスト追加・修正
-chore(scope): ビルドプロセス・補助ツール
-```
 
 ## 🔧 設定・環境管理
 
@@ -470,20 +375,17 @@ chore(scope): ビルドプロセス・補助ツール
 ```json
 // dev.json - 開発環境
 {
-  "API_BASE_URL": "https://api.github.com",
-  "LOG_LEVEL": "debug"
+  "flavor": "dev"
 }
 
 // stg.json - ステージング環境
 {
-  "API_BASE_URL": "https://api.github.com",
-  "LOG_LEVEL": "info"
+  "flavor": "stg"
 }
 
 // prd.json - 本番環境
 {
-  "API_BASE_URL": "https://api.github.com",
-  "LOG_LEVEL": "error"
+  "flavor": "prd"
 }
 ```
 
