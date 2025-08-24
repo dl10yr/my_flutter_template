@@ -6,7 +6,39 @@ part of 'go_router_provider.dart';
 // GoRouterGenerator
 // **************************************************************************
 
-List<RouteBase> get $appRoutes => [$bottomTabRoute, $debugRoute, $startUpRoute];
+List<RouteBase> get $appRoutes => [
+  $animatedGridRoute,
+  $bottomTabRoute,
+  $debugRoute,
+  $startUpRoute,
+];
+
+RouteBase get $animatedGridRoute => GoRouteData.$route(
+  path: '/animated-grid',
+
+  factory: _$AnimatedGridRoute._fromState,
+);
+
+mixin _$AnimatedGridRoute on GoRouteData {
+  static AnimatedGridRoute _fromState(GoRouterState state) =>
+      const AnimatedGridRoute();
+
+  @override
+  String get location => GoRouteData.$location('/animated-grid');
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
 
 RouteBase get $bottomTabRoute => StatefulShellRouteData.$route(
   parentNavigatorKey: BottomTabRoute.$parentNavigatorKey,

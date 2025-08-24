@@ -279,23 +279,22 @@ class GithubRepositorySearchStateNotifier extends _$GithubRepositorySearchStateN
 
 ### エラーハンドリング
 
-- **AppException**: DioExceptionからの統一例外変換
+- **AppException**: DioException からの統一例外変換
 - **AppExceptionNotifier**: グローバルエラー状態管理
 - **タイムアウト・接続エラー**: ネットワークエラーの分類と処理
 
 ### テスト戦略
 
-- **Unit Tests**: UseCase、Repository、Notifierのテスト実装済み
+- **Unit Tests**: UseCase、Repository、Notifier のテスト実装済み
 - **Mockito**: 外部依存のモック化
-- **ProviderContainer**: Riverpodプロバイダーのテスト
-
+- **ProviderContainer**: Riverpod プロバイダーのテスト
 
 ## 🧪 テスト実装
 
 主要な機能に対してユニットテストを実装済み：
 
-- **GitHub Repository Search**: UseCase、Repository、StateNotifierのテスト
-- **Authentication**: Repository、StateNotifierのテスト
+- **GitHub Repository Search**: UseCase、Repository、StateNotifier のテスト
+- **Authentication**: Repository、StateNotifier のテスト
 - **Mockito**: 外部依存のモック化によるテスト分離
 
 ## 📖 開発ガイドライン
@@ -303,7 +302,7 @@ class GithubRepositorySearchStateNotifier extends _$GithubRepositorySearchStateN
 ### コード品質
 
 - **Very Good Analysis**: Dart/Flutter 推奨リント設定を採用
-- **Code Generation**: Freezed、Riverpod、go_router_builder等による自動生成
+- **Code Generation**: Freezed、Riverpod、go_router_builder 等による自動生成
 - **型安全性**: 静的型付けによるコンパイル時エラー検出
 
 ### 新機能追加ガイドライン
@@ -358,7 +357,6 @@ class NewFeatureNotifier extends _$NewFeatureNotifier {
   // State management logic
 }
 ```
-
 
 ## 🔧 設定・環境管理
 
@@ -453,6 +451,13 @@ abstract class GithubApi {
   @GET('/search/repositories')
   Future<SearchResponse> search(@Query('q') String query);
 }
+```
+
+## MCP サーバー（dart）追加
+
+```
+claude
+claude mcp add-json dart '{"command":"dart","args":["mcp-server","--force-roots-fallback"]}' --scope user
 ```
 
 ### アーキテクチャの継承価値
