@@ -13,8 +13,6 @@ workspace:
   - packages/features/auth
   - packages/features/github_repository
 
-dev_dependencies:
-  melos: ^7.0.0-dev.8
 
 melos:
   sdkPath: .fvm/flutter_sdk
@@ -108,3 +106,5 @@ melos:
       description: Update package dependencies.
       packageFilters:
         dirExists: lib
+dev_dependencies:
+  melos: ^7.1.1
