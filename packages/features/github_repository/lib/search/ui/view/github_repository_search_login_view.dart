@@ -79,7 +79,7 @@ class GithubRepositorySearchLoginView extends HookConsumerWidget {
 
                             try {
                               ref
-                                  .read(authNotifierProvider.notifier)
+                                  .read(authProvider.notifier)
                                   .login(controller.text);
                             } finally {
                               isLoading.value = false;

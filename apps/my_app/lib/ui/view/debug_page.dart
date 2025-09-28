@@ -25,7 +25,7 @@ class DebugPage extends ConsumerWidget {
             title: const Text('loading'),
             onTap: () async {
               final rrr = await ref
-                  .read(appLoadingIndicatorNotifierProvider.notifier)
+                  .read(appLoadingIndicatorProvider.notifier)
                   .show(() async {
                     await Future.delayed(const Duration(seconds: 2));
                     return 'aaa';

@@ -11,7 +11,7 @@ class GithubRepositorySearchPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isAuthenticated = ref.watch(
-      githubTokenStateNotifierProvider.select((value) => value.isAuthenticated),
+      githubTokenStateProvider.select((value) => value.isAuthenticated),
     );
 
     if (isAuthenticated) {

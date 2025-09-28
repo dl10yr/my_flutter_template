@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../error_interceptor.dart';
@@ -12,9 +11,7 @@ part 'github_dio.g.dart';
 
 @Riverpod(keepAlive: true)
 Dio githubDio(Ref ref) {
-  return GithubDio.getInstance(
-    ref.watch(githubTokenStateNotifierProvider.notifier),
-  );
+  return GithubDio.getInstance(ref.watch(githubTokenStateProvider.notifier));
 }
 
 class GithubDio with DioMixin implements Dio {

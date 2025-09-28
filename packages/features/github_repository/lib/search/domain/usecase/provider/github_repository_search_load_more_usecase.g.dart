@@ -6,26 +6,56 @@ part of 'github_repository_search_load_more_usecase.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+@ProviderFor(githubRepositorySearchLoadMoreUseCase)
+const githubRepositorySearchLoadMoreUseCaseProvider =
+    GithubRepositorySearchLoadMoreUseCaseProvider._();
+
+final class GithubRepositorySearchLoadMoreUseCaseProvider
+    extends
+        $FunctionalProvider<
+          GithubRepositorySearchLoadMoreUseCase,
+          GithubRepositorySearchLoadMoreUseCase,
+          GithubRepositorySearchLoadMoreUseCase
+        >
+    with $Provider<GithubRepositorySearchLoadMoreUseCase> {
+  const GithubRepositorySearchLoadMoreUseCaseProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'githubRepositorySearchLoadMoreUseCaseProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() =>
+      _$githubRepositorySearchLoadMoreUseCaseHash();
+
+  @$internal
+  @override
+  $ProviderElement<GithubRepositorySearchLoadMoreUseCase> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  GithubRepositorySearchLoadMoreUseCase create(Ref ref) {
+    return githubRepositorySearchLoadMoreUseCase(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(GithubRepositorySearchLoadMoreUseCase value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride:
+          $SyncValueProvider<GithubRepositorySearchLoadMoreUseCase>(value),
+    );
+  }
+}
+
 String _$githubRepositorySearchLoadMoreUseCaseHash() =>
     r'84ce681b2bc67f3d89df17760322c657969689d1';
-
-/// See also [githubRepositorySearchLoadMoreUseCase].
-@ProviderFor(githubRepositorySearchLoadMoreUseCase)
-final githubRepositorySearchLoadMoreUseCaseProvider =
-    AutoDisposeProvider<GithubRepositorySearchLoadMoreUseCase>.internal(
-      githubRepositorySearchLoadMoreUseCase,
-      name: r'githubRepositorySearchLoadMoreUseCaseProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$githubRepositorySearchLoadMoreUseCaseHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
-
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef GithubRepositorySearchLoadMoreUseCaseRef =
-    AutoDisposeProviderRef<GithubRepositorySearchLoadMoreUseCase>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

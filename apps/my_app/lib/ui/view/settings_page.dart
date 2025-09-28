@@ -27,7 +27,7 @@ class SettingsPage extends HookConsumerWidget {
 
           if (selectedIndex != null) {
             final themeMode = ThemeMode.values[selectedIndex];
-            ref.read(themeModeNotifierProvider.notifier).save(themeMode);
+            ref.read(themeModeProvider.notifier).save(themeMode);
           }
         },
       ),

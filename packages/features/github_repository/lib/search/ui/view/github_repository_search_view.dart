@@ -14,10 +14,10 @@ class GithubRepositorySearchView extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final textController = useTextEditingController();
-    final asyncState = ref.watch(githubRepositoryStateNotifierProvider);
+    final asyncState = ref.watch(githubRepositoryStateProvider);
     final searchDebounce = useState<bool>(false);
 
-    ref.listen(githubRepositoryStateNotifierProvider, (prev, next) {
+    ref.listen(githubRepositoryStateProvider, (prev, next) {
       if (next is AsyncError) {
         AppSnackBarManager.showSnackBar(next.error.toString());
       }
@@ -30,7 +30,7 @@ class GithubRepositorySearchView extends HookConsumerWidget {
           await Future<void>.delayed(const Duration(milliseconds: 500));
           if (textController.text.isNotEmpty) {
             await ref
-                .read(githubRepositoryStateNotifierProvider.notifier)
+                .read(githubRepositoryStateProvider.notifier)
                 .search(textController.text);
           }
           searchDebounce.value = false;
@@ -48,7 +48,7 @@ class GithubRepositorySearchView extends HookConsumerWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.logout),
-            onPressed: () => ref.read(authNotifierProvider.notifier).logout(),
+            onPressed: () => ref.read(authProvider.notifier).logout(),
             tooltip: 'Logout',
           ),
         ],
@@ -100,9 +100,7 @@ class GithubRepositorySearchView extends HookConsumerWidget {
                         const SizedBox(height: 16),
                         ElevatedButton(
                           onPressed:
-                              () => ref.refresh(
-                                githubRepositoryStateNotifierProvider,
-                              ),
+                              () => ref.refresh(githubRepositoryStateProvider),
                           child: const Text('Retry'),
                         ),
                       ],

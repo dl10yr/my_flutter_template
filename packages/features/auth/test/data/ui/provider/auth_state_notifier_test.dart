@@ -30,7 +30,7 @@ void main() {
       return 'testToken';
     });
 
-    container.read(authNotifierProvider.notifier).initialize();
+    container.read(authProvider.notifier).initialize();
   });
 
   test('login from repository', () async {
@@ -38,6 +38,6 @@ void main() {
       return 'newToken';
     });
 
-    container.read(authNotifierProvider.notifier).login('newToken');
+    container.read(authProvider.notifier).login('newToken');
   });
 }

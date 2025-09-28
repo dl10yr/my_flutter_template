@@ -6,25 +6,59 @@ part of 'app_lifecycle_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+@ProviderFor(AppLifecycleNotifier)
+const appLifecycleProvider = AppLifecycleNotifierProvider._();
+
+final class AppLifecycleNotifierProvider
+    extends $NotifierProvider<AppLifecycleNotifier, AppLifecycleState> {
+  const AppLifecycleNotifierProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'appLifecycleProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$appLifecycleNotifierHash();
+
+  @$internal
+  @override
+  AppLifecycleNotifier create() => AppLifecycleNotifier();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(AppLifecycleState value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<AppLifecycleState>(value),
+    );
+  }
+}
+
 String _$appLifecycleNotifierHash() =>
     r'2f2dfd3437f136565364392bb81d13003da79ecf';
 
-/// See also [AppLifecycleNotifier].
-@ProviderFor(AppLifecycleNotifier)
-final appLifecycleNotifierProvider = AutoDisposeNotifierProvider<
-  AppLifecycleNotifier,
-  AppLifecycleState
->.internal(
-  AppLifecycleNotifier.new,
-  name: r'appLifecycleNotifierProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$appLifecycleNotifierHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
-
-typedef _$AppLifecycleNotifier = AutoDisposeNotifier<AppLifecycleState>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$AppLifecycleNotifier extends $Notifier<AppLifecycleState> {
+  AppLifecycleState build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build();
+    final ref = this.ref as $Ref<AppLifecycleState, AppLifecycleState>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AppLifecycleState, AppLifecycleState>,
+              AppLifecycleState,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}
