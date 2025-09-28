@@ -37,6 +37,7 @@ void main() async {
   runApp(
     ProviderScope(
       overrides: [...overrideProviders],
+      retry: (retryCount, error) => null,
       child: const MyApp(),
     ),
   );
@@ -54,7 +55,7 @@ class MyApp extends HookConsumerWidget {
     });
 
     ref
-      ..listen(appLifecycleNotifierProvider, (_, newState) {
+      ..listen(appLifecycleProvider, (_, newState) {
         switch (newState) {
           case AppLifecycleState.resumed:
             logger.d('AppLifecycleState.resumed');
@@ -68,9 +69,9 @@ class MyApp extends HookConsumerWidget {
             logger.d('AppLifecycleState.hidden');
         }
       })
-      ..listen(appExceptionNotifierProvider, (previous, next) {
+      ..listen(appExceptionProvider, (previous, next) {
         if (next != null) {
-          ref.read(appExceptionNotifierProvider.notifier).consume();
+          ref.read(appExceptionProvider.notifier).consume();
           AppSnackBarManager.showErrorSnackBar(
             context: context,
             message: next.message,
@@ -100,7 +101,7 @@ class MyApp extends HookConsumerWidget {
       ],
       theme: lightTheme(textTheme: textTheme),
       darkTheme: darkTheme(textTheme: textTheme),
-      themeMode: ref.watch(themeModeNotifierProvider),
+      themeMode: ref.watch(themeModeProvider),
       scaffoldMessengerKey: AppSnackBarManager.scaffoldMessengerKey,
     );
   }
