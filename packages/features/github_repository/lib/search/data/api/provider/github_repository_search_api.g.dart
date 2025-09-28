@@ -6,7 +6,7 @@ part of 'github_repository_search_api.dart';
 // RetrofitGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations
+// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations,unused_element_parameter
 
 class _GithubRepositorySearchApi implements GithubRepositorySearchApi {
   _GithubRepositorySearchApi(this._dio, {this.baseUrl, this.errorLogger});
@@ -82,26 +82,53 @@ class _GithubRepositorySearchApi implements GithubRepositorySearchApi {
 // RiverpodGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+@ProviderFor(githubRepositorySearchApi)
+const githubRepositorySearchApiProvider = GithubRepositorySearchApiProvider._();
+
+final class GithubRepositorySearchApiProvider
+    extends
+        $FunctionalProvider<
+          GithubRepositorySearchApi,
+          GithubRepositorySearchApi,
+          GithubRepositorySearchApi
+        >
+    with $Provider<GithubRepositorySearchApi> {
+  const GithubRepositorySearchApiProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'githubRepositorySearchApiProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$githubRepositorySearchApiHash();
+
+  @$internal
+  @override
+  $ProviderElement<GithubRepositorySearchApi> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  GithubRepositorySearchApi create(Ref ref) {
+    return githubRepositorySearchApi(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(GithubRepositorySearchApi value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<GithubRepositorySearchApi>(value),
+    );
+  }
+}
+
 String _$githubRepositorySearchApiHash() =>
     r'2de41253b561415f03378eb8ae436485e676c55f';
-
-/// See also [githubRepositorySearchApi].
-@ProviderFor(githubRepositorySearchApi)
-final githubRepositorySearchApiProvider =
-    AutoDisposeProvider<GithubRepositorySearchApi>.internal(
-      githubRepositorySearchApi,
-      name: r'githubRepositorySearchApiProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$githubRepositorySearchApiHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
-
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef GithubRepositorySearchApiRef =
-    AutoDisposeProviderRef<GithubRepositorySearchApi>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

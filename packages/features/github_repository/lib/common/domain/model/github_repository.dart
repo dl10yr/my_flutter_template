@@ -16,7 +16,6 @@ class GithubRepositoryOwner with _$GithubRepositoryOwner {
 
 @freezed
 class GithubRepository with _$GithubRepository {
-  @JsonSerializable(explicitToJson: true)
   factory GithubRepository({
     @JsonKey(name: 'name') required String name,
     @JsonKey(name: 'full_name') required String? fullName,
@@ -35,7 +34,6 @@ class GithubRepository with _$GithubRepository {
 
 @freezed
 class GithubSearchRepositoriesResponse with _$GithubSearchRepositoriesResponse {
-  @JsonSerializable(explicitToJson: true)
   factory GithubSearchRepositoriesResponse({
     @JsonKey(name: 'total_count') required num totalCount,
     @JsonKey(name: 'incomplete_results') required bool incompleteResults,

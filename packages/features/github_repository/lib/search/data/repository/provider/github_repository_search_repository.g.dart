@@ -6,26 +6,57 @@ part of 'github_repository_search_repository.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+@ProviderFor(remoteGithubSearchRepositoryRepository)
+const remoteGithubSearchRepositoryRepositoryProvider =
+    RemoteGithubSearchRepositoryRepositoryProvider._();
+
+final class RemoteGithubSearchRepositoryRepositoryProvider
+    extends
+        $FunctionalProvider<
+          GithubRepositorySearchRepository,
+          GithubRepositorySearchRepository,
+          GithubRepositorySearchRepository
+        >
+    with $Provider<GithubRepositorySearchRepository> {
+  const RemoteGithubSearchRepositoryRepositoryProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'remoteGithubSearchRepositoryRepositoryProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() =>
+      _$remoteGithubSearchRepositoryRepositoryHash();
+
+  @$internal
+  @override
+  $ProviderElement<GithubRepositorySearchRepository> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  GithubRepositorySearchRepository create(Ref ref) {
+    return remoteGithubSearchRepositoryRepository(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(GithubRepositorySearchRepository value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<GithubRepositorySearchRepository>(
+        value,
+      ),
+    );
+  }
+}
+
 String _$remoteGithubSearchRepositoryRepositoryHash() =>
     r'4bea6e63e287c69a560a4e2518b959937fbc1e87';
-
-/// See also [remoteGithubSearchRepositoryRepository].
-@ProviderFor(remoteGithubSearchRepositoryRepository)
-final remoteGithubSearchRepositoryRepositoryProvider =
-    AutoDisposeProvider<GithubRepositorySearchRepository>.internal(
-      remoteGithubSearchRepositoryRepository,
-      name: r'remoteGithubSearchRepositoryRepositoryProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$remoteGithubSearchRepositoryRepositoryHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
-
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef RemoteGithubSearchRepositoryRepositoryRef =
-    AutoDisposeProviderRef<GithubRepositorySearchRepository>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -74,17 +74,17 @@ void main() {
       });
 
       final githubRepoSearchViewModel = container.read(
-        githubRepositoryStateNotifierProvider.notifier,
+        githubRepositoryStateProvider.notifier,
       );
 
       container.listen(
-        githubRepositoryStateNotifierProvider,
+        githubRepositoryStateProvider,
         listener.call,
         fireImmediately: true,
       );
       const initialState = GithubRepositorySearchState();
 
-      await container.read(githubRepositoryStateNotifierProvider.future);
+      await container.read(githubRepositoryStateProvider.future);
       verify(listener.call(argThat(isNull), const AsyncData(initialState)));
 
       await githubRepoSearchViewModel.search('apple');
@@ -113,17 +113,17 @@ void main() {
       when(mockSearchUseCase.call(searchWord)).thenThrow(exception);
 
       final githubRepoSearchViewModel = container.read(
-        githubRepositoryStateNotifierProvider.notifier,
+        githubRepositoryStateProvider.notifier,
       );
 
       container.listen(
-        githubRepositoryStateNotifierProvider,
+        githubRepositoryStateProvider,
         listener.call,
         fireImmediately: true,
       );
       const initialState = GithubRepositorySearchState();
 
-      await container.read(githubRepositoryStateNotifierProvider.future);
+      await container.read(githubRepositoryStateProvider.future);
       verify(listener.call(argThat(isNull), const AsyncData(initialState)));
 
       await githubRepoSearchViewModel.search('apple');

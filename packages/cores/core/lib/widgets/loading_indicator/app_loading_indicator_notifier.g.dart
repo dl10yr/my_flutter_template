@@ -6,23 +6,59 @@ part of 'app_loading_indicator_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+@ProviderFor(AppLoadingIndicatorNotifier)
+const appLoadingIndicatorProvider = AppLoadingIndicatorNotifierProvider._();
+
+final class AppLoadingIndicatorNotifierProvider
+    extends $NotifierProvider<AppLoadingIndicatorNotifier, bool> {
+  const AppLoadingIndicatorNotifierProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'appLoadingIndicatorProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$appLoadingIndicatorNotifierHash();
+
+  @$internal
+  @override
+  AppLoadingIndicatorNotifier create() => AppLoadingIndicatorNotifier();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(bool value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<bool>(value),
+    );
+  }
+}
+
 String _$appLoadingIndicatorNotifierHash() =>
     r'45b917ed5d9d44a5b532b5314e37daabdf04248d';
 
-/// See also [AppLoadingIndicatorNotifier].
-@ProviderFor(AppLoadingIndicatorNotifier)
-final appLoadingIndicatorNotifierProvider =
-    AutoDisposeNotifierProvider<AppLoadingIndicatorNotifier, bool>.internal(
-      AppLoadingIndicatorNotifier.new,
-      name: r'appLoadingIndicatorNotifierProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$appLoadingIndicatorNotifierHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
-
-typedef _$AppLoadingIndicatorNotifier = AutoDisposeNotifier<bool>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$AppLoadingIndicatorNotifier extends $Notifier<bool> {
+  bool build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build();
+    final ref = this.ref as $Ref<bool, bool>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<bool, bool>,
+              bool,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

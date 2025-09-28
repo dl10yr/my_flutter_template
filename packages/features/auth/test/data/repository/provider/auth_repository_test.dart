@@ -17,10 +17,7 @@ void main() {
     });
 
     test('perform login', () async {
-      expect(
-        container.read(githubTokenStateNotifierProvider),
-        GithubTokenState(),
-      );
+      expect(container.read(githubTokenStateProvider), GithubTokenState());
 
       final result = container
           .read(remoteAuthRepositoryProvider)
@@ -28,7 +25,7 @@ void main() {
 
       expect(result, 'TOKEN');
       expect(
-        container.read(githubTokenStateNotifierProvider),
+        container.read(githubTokenStateProvider),
         GithubTokenState(githubToken: 'TOKEN'),
       );
     });

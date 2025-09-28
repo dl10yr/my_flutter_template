@@ -6,21 +6,45 @@ part of 'github_dio.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$githubDioHash() => r'e87b61e53148a4a43f46a5a18919e9728c11d4f4';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [githubDio].
 @ProviderFor(githubDio)
-final githubDioProvider = Provider<Dio>.internal(
-  githubDio,
-  name: r'githubDioProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$githubDioHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+const githubDioProvider = GithubDioProvider._();
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef GithubDioRef = ProviderRef<Dio>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+final class GithubDioProvider extends $FunctionalProvider<Dio, Dio, Dio>
+    with $Provider<Dio> {
+  const GithubDioProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'githubDioProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$githubDioHash();
+
+  @$internal
+  @override
+  $ProviderElement<Dio> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  Dio create(Ref ref) {
+    return githubDio(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(Dio value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<Dio>(value),
+    );
+  }
+}
+
+String _$githubDioHash() => r'c5a2a4971a2daa6219974199eec58f0ccdc57dd6';

@@ -12,9 +12,7 @@ abstract class AuthRepository {
 
 @riverpod
 AuthRepository remoteAuthRepository(Ref ref) {
-  return RemoteAuthRepository(
-    ref.watch(githubTokenStateNotifierProvider.notifier),
-  );
+  return RemoteAuthRepository(ref.watch(githubTokenStateProvider.notifier));
 }
 
 class RemoteAuthRepository implements AuthRepository {

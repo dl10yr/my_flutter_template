@@ -8,7 +8,7 @@ class AppLoadingIndicator extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isLoading = ref.watch(appLoadingIndicatorNotifierProvider);
+    final isLoading = ref.watch(appLoadingIndicatorProvider);
 
     return Visibility(
       visible: isLoading,
