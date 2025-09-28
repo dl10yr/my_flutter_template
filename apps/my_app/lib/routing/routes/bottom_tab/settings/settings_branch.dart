@@ -12,7 +12,7 @@ const settingsBranch = TypedStatefulShellBranch<BranchSettingsData>(
   ],
 );
 
-class SettingsTabRoute extends GoRouteData with _$SettingsTabRoute {
+class SettingsTabRoute extends GoRouteData with $SettingsTabRoute {
   const SettingsTabRoute();
 
   static const path = '/settings_tab';
@@ -22,7 +22,7 @@ class SettingsTabRoute extends GoRouteData with _$SettingsTabRoute {
       const SettingsPage();
 }
 
-class LicensePageRoute extends GoRouteData with _$LicensePageRoute {
+class LicensePageRoute extends GoRouteData with $LicensePageRoute {
   const LicensePageRoute();
 
   static const path = 'license';
@@ -33,7 +33,7 @@ class LicensePageRoute extends GoRouteData with _$LicensePageRoute {
   }
 }
 
-class WebViewPageRoute extends GoRouteData with _$WebViewPageRoute {
+class WebViewPageRoute extends GoRouteData with $WebViewPageRoute {
   const WebViewPageRoute();
 
   static const path = 'web_view';
