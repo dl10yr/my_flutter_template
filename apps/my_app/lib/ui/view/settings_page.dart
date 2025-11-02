@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cores_core/flavor/app_flavor.dart';
 import 'package:cores_core/ui/theme_mode/provider/theme_mode_notifier.dart';
 import 'package:cores_core/widgets/modal_bottom_sheet/show_list_bottom_sheet.dart';
@@ -10,10 +12,11 @@ class SettingsPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final flavor = stringToFlavor(const String.fromEnvironment('flavor'));
     final settingItems = [
       ListTile(
         title: Text(
-          'appFlavor: ${stringToFlavor(const String.fromEnvironment('flavor'))}',
+          'appFlavor: $flavor',
         ),
         onTap: () {},
       ),
@@ -34,20 +37,20 @@ class SettingsPage extends HookConsumerWidget {
       ListTile(
         title: const Text('go to license'),
         onTap: () {
-          const LicensePageRoute().push<void>(context);
+          unawaited(const LicensePageRoute().push<void>(context));
         },
       ),
       ListTile(
         title: const Text('go to web_view'),
         onTap: () {
-          const WebViewPageRoute().push<void>(context);
+          unawaited(const WebViewPageRoute().push<void>(context));
         },
       ),
       if (!isPrd())
         ListTile(
           title: const Text('go to debug'),
           onTap: () {
-            const DebugRoute().push<void>(context);
+            unawaited(const DebugRoute().push<void>(context));
           },
         ),
     ];

@@ -45,7 +45,7 @@ class WebViewPageRoute extends GoRouteData with $WebViewPageRoute {
     return WebViewPage(
       initialUrl: Uri.parse('https://flutter.dev'),
       pop: () {
-        print('pop');
+        logger.d('pop');
       },
     );
   }

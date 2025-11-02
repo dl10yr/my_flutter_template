@@ -1,6 +1,5 @@
 import 'package:cores_core/exception/app_exception.dart';
 import 'package:dio/dio.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../common/domain/model/github_repository.dart';

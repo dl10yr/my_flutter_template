@@ -5,7 +5,7 @@ class CustomSlideTransition extends CustomTransitionPage<void> {
   CustomSlideTransition({required super.child, super.key})
     : super(
         transitionDuration: const Duration(milliseconds: 250),
-        transitionsBuilder: (_, animation, __, child) {
+        transitionsBuilder: (_, animation, _, child) {
           return SlideTransition(
             position: animation.drive(
               Tween(

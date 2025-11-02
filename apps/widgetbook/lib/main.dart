@@ -19,33 +19,25 @@ class WidgetbookApp extends StatelessWidget {
       addons: [
         MaterialThemeAddon(
           themes: [
-            WidgetbookTheme(name: 'Light', data: ThemeData(primarySwatch: Colors.blue)),
-            WidgetbookTheme(name: 'Dark', data: ThemeData(primarySwatch: Colors.blue)),
-          ],
-        ),
-        DeviceFrameAddon(
-          initialDevice: Devices.ios.iPhone13,
-          devices: [
-            Devices.ios.iPhoneSE,
-            Devices.ios.iPhone13,
-            Devices.ios.iPad,
-            Devices.android.smallPhone.copyWith(
-              name: 'small Android phone',
+            WidgetbookTheme(
+              name: 'Light',
+              data: ThemeData(primarySwatch: Colors.blue),
             ),
-            Devices.android.mediumPhone.copyWith(
-              name: 'medium Android phone',
-            ),
-            Devices.android.largeTablet.copyWith(
-              name: 'large Android tablet',
+            WidgetbookTheme(
+              name: 'Dark',
+              data: ThemeData(primarySwatch: Colors.blue),
             ),
           ],
         ),
+        ViewportAddon([
+          IosViewports.iPhoneSE,
+          IosViewports.iPhone13,
+          IosViewports.iPad,
+          AndroidViewports.samsungGalaxyS20,
+        ]),
         InspectorAddon(enabled: true),
         LocalizationAddon(
-          locales: [
-            const Locale('en', 'US'),
-            const Locale('ja', 'JP'),
-          ],
+          locales: [const Locale('en', 'US'), const Locale('ja', 'JP')],
           localizationsDelegates: [
             DefaultWidgetsLocalizations.delegate,
             DefaultMaterialLocalizations.delegate,
@@ -77,11 +69,7 @@ class WidgetbookApp extends StatelessWidget {
             final element = context as Element;
             final hasScaffold = searchScaffold(element, 0);
 
-            return hasScaffold
-                ? child
-                : Scaffold(
-                    body: child,
-                  );
+            return hasScaffold ? child : Scaffold(body: child);
           },
         ),
         BuilderAddon(

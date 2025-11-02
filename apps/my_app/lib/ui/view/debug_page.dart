@@ -16,6 +16,9 @@ class DebugPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final packageInfo = ref.watch(packageInfoProvider);
+    final size = MediaQuery.sizeOf(context);
+    final width = size.width;
+    final height = size.height;
 
     return Scaffold(
       appBar: AppBar(title: const Text('Debug Information')),
@@ -27,7 +30,7 @@ class DebugPage extends ConsumerWidget {
               final rrr = await ref
                   .read(appLoadingIndicatorProvider.notifier)
                   .show(() async {
-                    await Future.delayed(const Duration(seconds: 2));
+                    await Future.delayed(const Duration(seconds: 2), () {});
                     return 'aaa';
                   });
               if (rrr == 'aaa') {}
@@ -48,7 +51,7 @@ class DebugPage extends ConsumerWidget {
           ),
           _infoTile(
             'Screen size',
-            '${MediaQuery.of(context).size.width.toStringAsFixed(1)} x ${MediaQuery.of(context).size.height.toStringAsFixed(1)}',
+            '${width.toStringAsFixed(1)} x ${height.toStringAsFixed(1)}',
           ),
         ],
       ),

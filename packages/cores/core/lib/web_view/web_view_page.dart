@@ -88,7 +88,7 @@ class _WebViewState extends State<WebViewPage> {
                 ),
                 key: _webViewKey,
                 pullToRefreshController: _pullToRefreshController,
-                onLoadStart: (_, __) async {
+                onLoadStart: (_, _) async {
                   isLoading.value = true;
                 },
                 initialSettings: InAppWebViewSettings(
@@ -105,7 +105,7 @@ class _WebViewState extends State<WebViewPage> {
                     canPop.value = true;
                   }
                 },
-                onLoadStop: (_, __) async {
+                onLoadStop: (_, _) async {
                   await _pullToRefreshController?.endRefreshing();
                   isLoading.value = false;
                 },
