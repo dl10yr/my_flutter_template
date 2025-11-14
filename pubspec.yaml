@@ -1,7 +1,7 @@
 name: my_flutter_template
 
 environment:
-  sdk: ^3.7.0
+  sdk: ^3.10.0
 
 workspace:
   # apps
