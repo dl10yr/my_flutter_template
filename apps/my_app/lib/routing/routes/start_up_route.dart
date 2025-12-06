@@ -1,7 +1,7 @@
 part of '../go_router_provider.dart';
 
 /// TypedGoRoute
-@TypedGoRoute<StartUpRoute>(path: '/', routes: [])
+@TypedGoRoute<StartUpRoute>(path: '/')
 class StartUpRoute extends GoRouteData with $StartUpRoute {
   const StartUpRoute();
 

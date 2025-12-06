@@ -1,6 +1,6 @@
 part of '../go_router_provider.dart';
 
-@TypedGoRoute<DebugRoute>(path: DebugRoute.path, routes: [])
+@TypedGoRoute<DebugRoute>(path: DebugRoute.path)
 class DebugRoute extends GoRouteData with $DebugRoute {
   const DebugRoute();
 
