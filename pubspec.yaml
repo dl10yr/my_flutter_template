@@ -1,7 +1,7 @@
 name: my_flutter_template
 
 environment:
-  sdk: ^3.7.0
+  sdk: ^3.10.0
 
 workspace:
   # apps
@@ -12,7 +12,6 @@ workspace:
   - packages/cores/assets
   - packages/features/auth
   - packages/features/github_repository
-
 
 melos:
   sdkPath: .fvm/flutter_sdk
@@ -107,4 +106,4 @@ melos:
       packageFilters:
         dirExists: lib
 dev_dependencies:
-  melos: ^7.1.1
+  melos: ^7.3.0

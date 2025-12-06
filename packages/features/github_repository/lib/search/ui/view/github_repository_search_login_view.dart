@@ -18,21 +18,21 @@ class GithubRepositorySearchLoginView extends HookConsumerWidget {
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(24),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: .center,
+            crossAxisAlignment: .stretch,
             children: [
               const Icon(Icons.code, size: 80, color: Colors.blueGrey),
               const SizedBox(height: 32),
               const Text(
                 'Welcome to GitHub Repository Explorer',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 24, fontWeight: .bold),
+                textAlign: .center,
               ),
               const SizedBox(height: 8),
               Text(
                 'Please enter your GitHub token to continue',
                 style: TextStyle(fontSize: 16, color: Colors.grey.shade600),
-                textAlign: TextAlign.center,
+                textAlign: .center,
               ),
               const SizedBox(height: 32),
               TextField(
@@ -50,9 +50,7 @@ class GithubRepositorySearchLoginView extends HookConsumerWidget {
                     ),
                     onPressed: () => obscureText.value = !obscureText.value,
                   ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
+                  border: OutlineInputBorder(borderRadius: .circular(12)),
                 ),
               ),
               const SizedBox(height: 8),
@@ -61,46 +59,42 @@ class GithubRepositorySearchLoginView extends HookConsumerWidget {
                 style: TextStyle(
                   fontSize: 12,
                   color: Colors.grey.shade600,
-                  fontStyle: FontStyle.italic,
+                  fontStyle: .italic,
                 ),
               ),
               const SizedBox(height: 24),
               SizedBox(
                 height: 50,
                 child: ElevatedButton(
-                  onPressed:
-                      isLoading.value
-                          ? null
-                          : () async {
-                            if (controller.text.isEmpty) return;
+                  onPressed: isLoading.value
+                      ? null
+                      : () async {
+                          if (controller.text.isEmpty) return;
 
-                            FocusManager.instance.primaryFocus?.unfocus();
-                            isLoading.value = true;
+                          FocusManager.instance.primaryFocus?.unfocus();
+                          isLoading.value = true;
 
-                            try {
-                              ref
-                                  .read(authProvider.notifier)
-                                  .login(controller.text);
-                            } finally {
-                              isLoading.value = false;
-                            }
-                          },
+                          try {
+                            ref
+                                .read(authProvider.notifier)
+                                .login(controller.text);
+                          } finally {
+                            isLoading.value = false;
+                          }
+                        },
                   style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
+                    shape: RoundedRectangleBorder(borderRadius: .circular(12)),
                   ),
-                  child:
-                      isLoading.value
-                          ? const SizedBox(
-                            width: 24,
-                            height: 24,
-                            child: CircularProgressIndicator(
-                              strokeWidth: 2,
-                              color: Colors.white,
-                            ),
-                          )
-                          : const Text('Login', style: TextStyle(fontSize: 16)),
+                  child: isLoading.value
+                      ? const SizedBox(
+                          width: 24,
+                          height: 24,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                            color: Colors.white,
+                          ),
+                        )
+                      : const Text('Login', style: TextStyle(fontSize: 16)),
                 ),
               ),
             ],

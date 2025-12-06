@@ -45,10 +45,9 @@ _$$GithubSearchRepositoriesResponseImplFromJson(Map<String, dynamic> json) =>
     _$GithubSearchRepositoriesResponseImpl(
       totalCount: json['total_count'] as num,
       incompleteResults: json['incomplete_results'] as bool,
-      items:
-          (json['items'] as List<dynamic>)
-              .map((e) => GithubRepository.fromJson(e as Map<String, dynamic>))
-              .toList(),
+      items: (json['items'] as List<dynamic>)
+          .map((e) => GithubRepository.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$GithubSearchRepositoriesResponseImplToJson(

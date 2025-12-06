@@ -21,12 +21,15 @@ final directories = <_widgetbook.WidgetbookNode>[
       _widgetbook.WidgetbookFolder(
         name: 'button',
         children: [
-          _widgetbook.WidgetbookLeafComponent(
+          _widgetbook.WidgetbookComponent(
             name: 'CoolButton',
-            useCase: _widgetbook.WidgetbookUseCase(
-              name: 'Default',
-              builder: _widgetbook_workspace_cool_button.buildCoolButtonUseCase,
-            ),
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Default',
+                builder:
+                    _widgetbook_workspace_cool_button.buildCoolButtonUseCase,
+              ),
+            ],
           ),
         ],
       ),

@@ -62,14 +62,13 @@ class GithubRepositorySearchView extends HookConsumerWidget {
               decoration: InputDecoration(
                 hintText: 'Search repositories...',
                 prefixIcon: const Icon(Icons.search),
-                suffixIcon:
-                    searchDebounce.value
-                        ? const SizedBox(
-                          width: 20,
-                          height: 20,
-                          child: CircularProgressIndicator(strokeWidth: 2),
-                        )
-                        : null,
+                suffixIcon: searchDebounce.value
+                    ? const SizedBox(
+                        width: 20,
+                        height: 20,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      )
+                    : null,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -81,142 +80,138 @@ class GithubRepositorySearchView extends HookConsumerWidget {
           Expanded(
             child: asyncState.when(
               loading: () => const Center(child: CircularProgressIndicator()),
-              error:
-                  (error, _) => Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(
-                          Icons.error_outline,
-                          size: 48,
-                          color: Colors.red,
-                        ),
-                        const SizedBox(height: 16),
-                        Text(
-                          'Error: $error',
-                          style: const TextStyle(fontSize: 16),
-                          textAlign: TextAlign.center,
-                        ),
-                        const SizedBox(height: 16),
-                        ElevatedButton(
-                          onPressed:
-                              () => ref.refresh(githubRepositoryStateProvider),
-                          child: const Text('Retry'),
-                        ),
-                      ],
+              error: (error, _) => Center(
+                child: Column(
+                  mainAxisAlignment: .center,
+                  children: [
+                    const Icon(
+                      Icons.error_outline,
+                      size: 48,
+                      color: Colors.red,
                     ),
-                  ),
-              data:
-                  (state) =>
-                      state.repositories.isEmpty
-                          ? Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.search_off,
-                                  size: 64,
-                                  color: Colors.grey.shade400,
-                                ),
-                                const SizedBox(height: 16),
-                                Text(
-                                  textController.text.isEmpty
-                                      ? 'Search for GitHub repositories'
-                                      : 'No repositories found',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: Colors.grey.shade600,
-                                  ),
-                                ),
-                              ],
+                    const SizedBox(height: 16),
+                    Text(
+                      'Error: $error',
+                      style: const TextStyle(fontSize: 16),
+                      textAlign: .center,
+                    ),
+                    const SizedBox(height: 16),
+                    ElevatedButton(
+                      onPressed: () =>
+                          ref.refresh(githubRepositoryStateProvider),
+                      child: const Text('Retry'),
+                    ),
+                  ],
+                ),
+              ),
+              data: (state) => state.repositories.isEmpty
+                  ? Center(
+                      child: Column(
+                        mainAxisAlignment: .center,
+                        children: [
+                          Icon(
+                            Icons.search_off,
+                            size: 64,
+                            color: Colors.grey.shade400,
+                          ),
+                          const SizedBox(height: 16),
+                          Text(
+                            textController.text.isEmpty
+                                ? 'Search for GitHub repositories'
+                                : 'No repositories found',
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.grey.shade600,
                             ),
-                          )
-                          : ListView.separated(
-                            itemCount: state.repositories.length,
-                            separatorBuilder:
-                                (context, index) => const Divider(height: 1),
-                            itemBuilder: (BuildContext context, int index) {
-                              final repo = state.repositories[index];
-                              return ListTile(
-                                contentPadding: const EdgeInsets.symmetric(
-                                  horizontal: 16,
-                                  vertical: 8,
+                          ),
+                        ],
+                      ),
+                    )
+                  : ListView.separated(
+                      itemCount: state.repositories.length,
+                      separatorBuilder: (context, index) =>
+                          const Divider(height: 1),
+                      itemBuilder: (BuildContext context, int index) {
+                        final repo = state.repositories[index];
+                        return ListTile(
+                          contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 8,
+                          ),
+                          leading: CachedNetworkImage(
+                            imageUrl: repo.owner.avatarUrl,
+                            imageBuilder: (context, imageProvider) => Container(
+                              width: 40,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                image: DecorationImage(
+                                  image: imageProvider,
+                                  fit: BoxFit.cover,
                                 ),
-                                leading: CachedNetworkImage(
-                                  imageUrl: repo.owner.avatarUrl,
-                                  imageBuilder:
-                                      (context, imageProvider) => Container(
-                                        width: 40,
-                                        height: 40,
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          image: DecorationImage(
-                                            image: imageProvider,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                      ),
-                                  placeholder: (context, url) {
-                                    return Assets.images.placeholder.image(
-                                      width: 40,
-                                      height: 40,
-                                    );
-                                  },
-                                  errorWidget: (context, url, error) {
-                                    return Assets.images.placeholder.image(
-                                      width: 40,
-                                      height: 40,
-                                    );
-                                  },
-                                ),
-                                title: Text(
-                                  repo.name,
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                subtitle: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const SizedBox(height: 4),
-                                    const SizedBox(height: 8),
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          Icons.star_border,
-                                          size: 16,
-                                          color: Colors.amber.shade700,
-                                        ),
-                                        const SizedBox(width: 4),
-                                        Text(repo.stargazersCount.toString()),
-                                        const SizedBox(width: 16),
-                                        Icon(
-                                          Icons.fork_right,
-                                          size: 16,
-                                          color: Colors.blue.shade700,
-                                        ),
-                                        const SizedBox(width: 4),
-                                        Text(repo.forksCount.toString()),
-                                        const SizedBox(width: 16),
-                                        Icon(
-                                          Icons.remove_red_eye_outlined,
-                                          size: 16,
-                                          color: Colors.purple.shade700,
-                                        ),
-                                        const SizedBox(width: 4),
-                                        Text(repo.watchersCount.toString()),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                trailing: const Icon(Icons.chevron_right),
-                                onTap: () {
-                                  // Navigate to repository details screen
-                                },
+                              ),
+                            ),
+                            placeholder: (context, url) {
+                              return Assets.images.placeholder.image(
+                                width: 40,
+                                height: 40,
+                              );
+                            },
+                            errorWidget: (context, url, error) {
+                              return Assets.images.placeholder.image(
+                                width: 40,
+                                height: 40,
                               );
                             },
                           ),
+                          title: Text(
+                            repo.name,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                          subtitle: Column(
+                            crossAxisAlignment: .start,
+                            children: [
+                              const SizedBox(height: 4),
+                              const SizedBox(height: 8),
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.star_border,
+                                    size: 16,
+                                    color: Colors.amber.shade700,
+                                  ),
+                                  const SizedBox(width: 4),
+                                  Text(repo.stargazersCount.toString()),
+                                  const SizedBox(width: 16),
+                                  Icon(
+                                    Icons.fork_right,
+                                    size: 16,
+                                    color: Colors.blue.shade700,
+                                  ),
+                                  const SizedBox(width: 4),
+                                  Text(repo.forksCount.toString()),
+                                  const SizedBox(width: 16),
+                                  Icon(
+                                    Icons.remove_red_eye_outlined,
+                                    size: 16,
+                                    color: Colors.purple.shade700,
+                                  ),
+                                  const SizedBox(width: 4),
+                                  Text(repo.watchersCount.toString()),
+                                ],
+                              ),
+                            ],
+                          ),
+                          trailing: const Icon(Icons.chevron_right),
+                          onTap: () {
+                            // Navigate to repository details screen
+                          },
+                        );
+                      },
+                    ),
             ),
           ),
         ],
