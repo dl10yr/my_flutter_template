@@ -17,27 +17,26 @@ Future<int?> showListBottomSheet<T>({
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
     ),
-    builder:
-        (context) => Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Divider(height: 1),
-            Flexible(
-              child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: items.length,
-                itemBuilder: (context, index) {
-                  final item = items[index];
-                  return ListTile(
-                    title: Text(item.toString()),
-                    onTap: () {
-                      Navigator.of(context).pop(index);
-                    },
-                  );
+    builder: (context) => Column(
+      mainAxisSize: .min,
+      children: [
+        const Divider(height: 1),
+        Flexible(
+          child: ListView.builder(
+            shrinkWrap: true,
+            itemCount: items.length,
+            itemBuilder: (context, index) {
+              final item = items[index];
+              return ListTile(
+                title: Text(item.toString()),
+                onTap: () {
+                  Navigator.of(context).pop(index);
                 },
-              ),
-            ),
-          ],
+              );
+            },
+          ),
         ),
+      ],
+    ),
   );
 }

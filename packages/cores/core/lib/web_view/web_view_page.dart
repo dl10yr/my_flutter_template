@@ -123,7 +123,7 @@ class _WebViewState extends State<WebViewPage> {
             if (hasError.value)
               Center(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: .center,
                   children: [
                     const Text('エラーが発生しました'),
                     TextButton(
