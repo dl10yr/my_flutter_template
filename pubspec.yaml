@@ -48,7 +48,7 @@ melos:
     gen:
       run: dart run build_runner build --delete-conflicting-outputs
       exec:
-        concurrency: 6
+        concurrency: 1
       description: Generate code.
       packageFilters:
         dirExists: lib

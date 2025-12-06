@@ -46,7 +46,7 @@ class _GithubRepositorySearchApi implements GithubRepositorySearchApi {
     try {
       _value = GithubSearchRepositoriesResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
+      errorLogger?.logError(e, s, _options, _result);
       rethrow;
     }
     return _value;
