@@ -10,7 +10,7 @@ part of 'github_repository_search_repository.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(remoteGithubSearchRepositoryRepository)
-const remoteGithubSearchRepositoryRepositoryProvider =
+final remoteGithubSearchRepositoryRepositoryProvider =
     RemoteGithubSearchRepositoryRepositoryProvider._();
 
 final class RemoteGithubSearchRepositoryRepositoryProvider
@@ -21,7 +21,7 @@ final class RemoteGithubSearchRepositoryRepositoryProvider
           GithubRepositorySearchRepository
         >
     with $Provider<GithubRepositorySearchRepository> {
-  const RemoteGithubSearchRepositoryRepositoryProvider._()
+  RemoteGithubSearchRepositoryRepositoryProvider._()
     : super(
         from: null,
         argument: null,

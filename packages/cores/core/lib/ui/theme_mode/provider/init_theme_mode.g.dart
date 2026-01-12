@@ -10,12 +10,12 @@ part of 'init_theme_mode.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(initThemeMode)
-const initThemeModeProvider = InitThemeModeProvider._();
+final initThemeModeProvider = InitThemeModeProvider._();
 
 final class InitThemeModeProvider
     extends $FunctionalProvider<ThemeMode, ThemeMode, ThemeMode>
     with $Provider<ThemeMode> {
-  const InitThemeModeProvider._()
+  InitThemeModeProvider._()
     : super(
         from: null,
         argument: null,

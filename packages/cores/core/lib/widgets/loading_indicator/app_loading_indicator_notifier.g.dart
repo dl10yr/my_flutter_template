@@ -10,11 +10,11 @@ part of 'app_loading_indicator_notifier.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(AppLoadingIndicatorNotifier)
-const appLoadingIndicatorProvider = AppLoadingIndicatorNotifierProvider._();
+final appLoadingIndicatorProvider = AppLoadingIndicatorNotifierProvider._();
 
 final class AppLoadingIndicatorNotifierProvider
     extends $NotifierProvider<AppLoadingIndicatorNotifier, bool> {
-  const AppLoadingIndicatorNotifierProvider._()
+  AppLoadingIndicatorNotifierProvider._()
     : super(
         from: null,
         argument: null,
@@ -49,7 +49,6 @@ abstract class _$AppLoadingIndicatorNotifier extends $Notifier<bool> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<bool, bool>;
     final element =
         ref.element
@@ -59,6 +58,6 @@ abstract class _$AppLoadingIndicatorNotifier extends $Notifier<bool> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

@@ -10,7 +10,7 @@ part of 'github_repository_search_usecase.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(githubRepositorySearchUseCase)
-const githubRepositorySearchUseCaseProvider =
+final githubRepositorySearchUseCaseProvider =
     GithubRepositorySearchUseCaseProvider._();
 
 final class GithubRepositorySearchUseCaseProvider
@@ -21,7 +21,7 @@ final class GithubRepositorySearchUseCaseProvider
           GithubRepositorySearchUseCase
         >
     with $Provider<GithubRepositorySearchUseCase> {
-  const GithubRepositorySearchUseCaseProvider._()
+  GithubRepositorySearchUseCaseProvider._()
     : super(
         from: null,
         argument: null,

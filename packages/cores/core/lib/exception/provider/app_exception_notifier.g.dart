@@ -10,11 +10,11 @@ part of 'app_exception_notifier.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(AppExceptionNotifier)
-const appExceptionProvider = AppExceptionNotifierProvider._();
+final appExceptionProvider = AppExceptionNotifierProvider._();
 
 final class AppExceptionNotifierProvider
     extends $NotifierProvider<AppExceptionNotifier, AppException?> {
-  const AppExceptionNotifierProvider._()
+  AppExceptionNotifierProvider._()
     : super(
         from: null,
         argument: null,
@@ -49,7 +49,6 @@ abstract class _$AppExceptionNotifier extends $Notifier<AppException?> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<AppException?, AppException?>;
     final element =
         ref.element
@@ -59,6 +58,6 @@ abstract class _$AppExceptionNotifier extends $Notifier<AppException?> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

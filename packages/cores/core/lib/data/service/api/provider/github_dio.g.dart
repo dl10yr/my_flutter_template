@@ -10,11 +10,11 @@ part of 'github_dio.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(githubDio)
-const githubDioProvider = GithubDioProvider._();
+final githubDioProvider = GithubDioProvider._();
 
 final class GithubDioProvider extends $FunctionalProvider<Dio, Dio, Dio>
     with $Provider<Dio> {
-  const GithubDioProvider._()
+  GithubDioProvider._()
     : super(
         from: null,
         argument: null,

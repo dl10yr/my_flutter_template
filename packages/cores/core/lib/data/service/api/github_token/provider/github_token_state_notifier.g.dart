@@ -10,11 +10,11 @@ part of 'github_token_state_notifier.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(GithubTokenStateNotifier)
-const githubTokenStateProvider = GithubTokenStateNotifierProvider._();
+final githubTokenStateProvider = GithubTokenStateNotifierProvider._();
 
 final class GithubTokenStateNotifierProvider
     extends $NotifierProvider<GithubTokenStateNotifier, GithubTokenState> {
-  const GithubTokenStateNotifierProvider._()
+  GithubTokenStateNotifierProvider._()
     : super(
         from: null,
         argument: null,
@@ -49,7 +49,6 @@ abstract class _$GithubTokenStateNotifier extends $Notifier<GithubTokenState> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<GithubTokenState, GithubTokenState>;
     final element =
         ref.element
@@ -59,6 +58,6 @@ abstract class _$GithubTokenStateNotifier extends $Notifier<GithubTokenState> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

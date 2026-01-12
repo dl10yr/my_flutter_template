@@ -10,7 +10,7 @@ part of 'github_repository_search_state_notifier.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(GithubRepositoryStateNotifier)
-const githubRepositoryStateProvider = GithubRepositoryStateNotifierProvider._();
+final githubRepositoryStateProvider = GithubRepositoryStateNotifierProvider._();
 
 final class GithubRepositoryStateNotifierProvider
     extends
@@ -18,7 +18,7 @@ final class GithubRepositoryStateNotifierProvider
           GithubRepositoryStateNotifier,
           GithubRepositorySearchState
         > {
-  const GithubRepositoryStateNotifierProvider._()
+  GithubRepositoryStateNotifierProvider._()
     : super(
         from: null,
         argument: null,
@@ -46,7 +46,6 @@ abstract class _$GithubRepositoryStateNotifier
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref =
         this.ref
             as $Ref<
@@ -64,6 +63,6 @@ abstract class _$GithubRepositoryStateNotifier
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

@@ -10,11 +10,11 @@ part of 'app_lifecycle_notifier.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(AppLifecycleNotifier)
-const appLifecycleProvider = AppLifecycleNotifierProvider._();
+final appLifecycleProvider = AppLifecycleNotifierProvider._();
 
 final class AppLifecycleNotifierProvider
     extends $NotifierProvider<AppLifecycleNotifier, AppLifecycleState> {
-  const AppLifecycleNotifierProvider._()
+  AppLifecycleNotifierProvider._()
     : super(
         from: null,
         argument: null,
@@ -49,7 +49,6 @@ abstract class _$AppLifecycleNotifier extends $Notifier<AppLifecycleState> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<AppLifecycleState, AppLifecycleState>;
     final element =
         ref.element
@@ -59,6 +58,6 @@ abstract class _$AppLifecycleNotifier extends $Notifier<AppLifecycleState> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

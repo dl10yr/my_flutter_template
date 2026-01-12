@@ -46,7 +46,7 @@ class _GithubRepositorySearchApi implements GithubRepositorySearchApi {
     try {
       _value = GithubSearchRepositoriesResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, _result);
+      errorLogger?.logError(e, s, _options, response: _result);
       rethrow;
     }
     return _value;
@@ -90,7 +90,7 @@ class _GithubRepositorySearchApi implements GithubRepositorySearchApi {
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(githubRepositorySearchApi)
-const githubRepositorySearchApiProvider = GithubRepositorySearchApiProvider._();
+final githubRepositorySearchApiProvider = GithubRepositorySearchApiProvider._();
 
 final class GithubRepositorySearchApiProvider
     extends
@@ -100,7 +100,7 @@ final class GithubRepositorySearchApiProvider
           GithubRepositorySearchApi
         >
     with $Provider<GithubRepositorySearchApi> {
-  const GithubRepositorySearchApiProvider._()
+  GithubRepositorySearchApiProvider._()
     : super(
         from: null,
         argument: null,
