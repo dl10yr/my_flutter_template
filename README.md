@@ -146,13 +146,13 @@ fvm use
 3. Melos を使用して依存関係をインストール
 
 ```bash
-melos pub-get
+fvm dart run melos pub-get
 ```
 
 4. コード生成
 
 ```bash
-melos gen
+fvm dart run melos gen
 ```
 
 ## 📝 開発コマンド
@@ -161,47 +161,47 @@ melos gen
 
 ```bash
 # 全パッケージの依存関係を取得
-melos pub-get
+fvm dart run melos pub-get
 
 # パッケージの依存関係を更新
-melos package:update
+fvm dart run melos package:update
 
 # メジャーバージョンアップデートを含む更新
-melos package:update-major
+fvm dart run melos package:update-major
 ```
 
 ### コード生成
 
 ```bash
 # 全パッケージのコード生成
-melos gen
+fvm dart run melos gen
 
 # アセットのコード生成
-melos gen:assets
+fvm dart run melos gen:assets
 
 # ウォッチモードでコード生成（開発時推奨）
-melos gen:watch
+fvm dart run melos gen:watch
 ```
 
 ### テスト
 
 ```bash
 # 全パッケージのテスト実行
-melos test
+fvm dart run melos test
 ```
 
 ### コード修正
 
 ```bash
 # Dartファイルの自動修正
-melos fix
+fvm dart run melos fix
 ```
 
 ### iOS 設定
 
 ```bash
 # iOSのPod install
-melos pod:ios
+fvm dart run melos pod:ios
 ```
 
 ## 🏗️ アーキテクチャ詳細
@@ -289,7 +289,6 @@ class GithubRepositorySearchStateNotifier extends _$GithubRepositorySearchStateN
 - **Mockito**: 外部依存のモック化
 - **ProviderContainer**: Riverpodプロバイダーのテスト
 
-
 ## 🧪 テスト実装
 
 主要な機能に対してユニットテストを実装済み：
@@ -358,7 +357,6 @@ class NewFeatureNotifier extends _$NewFeatureNotifier {
   // State management logic
 }
 ```
-
 
 ## 🔧 設定・環境管理
 
