@@ -1,5 +1,5 @@
 {
-  "dart.flutterSdkPath": ".fvm/versions/3.38.7",
+  "dart.flutterSdkPath": ".fvm/versions/3.41.1",
   "editor.codeActionsOnSave": {
     "quickfix.insertSemicolon": "always",
     "source.organizeImports": "always",
