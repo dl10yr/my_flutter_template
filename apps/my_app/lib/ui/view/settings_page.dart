@@ -59,7 +59,7 @@ class SettingsPage extends HookConsumerWidget {
       appBar: AppBar(),
       body: ListView.builder(
         itemCount: settingItems.length,
-        itemBuilder: (BuildContext context, int index) {
+        itemBuilder: (context, index) {
           return settingItems[index];
         },
       ),
