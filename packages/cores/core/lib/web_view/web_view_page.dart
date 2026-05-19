@@ -1,11 +1,11 @@
-import 'dart:io';
+import 'dart:async';
+import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:webview_flutter/webview_flutter.dart';
+import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
 
-// ref: https://github.com/yumemi-inc/flutter-mobile-project-template/blob/main/packages/features/webview/lib/src/ui/web_page.dart
-class WebViewPage extends StatefulHookWidget {
+class WebViewPage extends StatefulWidget {
   const WebViewPage({
     required Uri initialUrl,
     required VoidCallback pop,
@@ -21,124 +21,235 @@ class WebViewPage extends StatefulHookWidget {
 }
 
 class _WebViewState extends State<WebViewPage> {
-  final GlobalKey _webViewKey = GlobalKey();
-  PullToRefreshController? _pullToRefreshController;
-  InAppWebViewController? _webViewController;
+  static const _pullToRefreshTriggerDistance = 80.0;
+
+  late final WebViewController _webViewController;
+  bool _isLoading = false;
+  bool _canPop = false;
+  bool _hasError = false;
+  bool _isPullRefreshing = false;
+  double _pullDistance = 0;
+  double _scrollY = 0;
+  double? _pointerDownY;
 
   @override
   void initState() {
     super.initState();
-    _pullToRefreshController = PullToRefreshController(
-      settings: PullToRefreshSettings(color: Colors.blue),
-      onRefresh: onRefresh,
-    );
+    _webViewController = WebViewController();
+    unawaited(_configureWebView());
   }
 
-  Future<void> onRefresh() async {
-    if (Platform.isAndroid) {
-      await _webViewController?.reload();
-    } else if (Platform.isIOS) {
-      await _webViewController?.loadUrl(
-        urlRequest: URLRequest(url: await _webViewController?.getUrl()),
-      );
+  Future<void> _configureWebView() async {
+    await _webViewController.setJavaScriptMode(JavaScriptMode.unrestricted);
+    await _webViewController.setOnScrollPositionChange((change) {
+      _scrollY = change.y;
+      if (_scrollY > 0 && _pullDistance > 0 && mounted) {
+        setState(() {
+          _pullDistance = 0;
+        });
+      }
+    });
+    await _webViewController.setNavigationDelegate(
+      NavigationDelegate(
+        onPageStarted: (_) {
+          if (!mounted) {
+            return;
+          }
+          setState(() {
+            _isLoading = true;
+            _hasError = false;
+          });
+        },
+        onProgress: (progress) {
+          if (progress == 100 && mounted) {
+            setState(() {
+              _isLoading = false;
+            });
+          }
+          unawaited(_syncCanPop());
+        },
+        onPageFinished: (_) {
+          if (!mounted) {
+            return;
+          }
+          setState(() {
+            _isLoading = false;
+            _isPullRefreshing = false;
+          });
+          unawaited(_syncCanPop());
+        },
+        onUrlChange: (_) {
+          unawaited(_syncCanPop());
+        },
+        onWebResourceError: (error) {
+          if (!(error.isForMainFrame ?? true) || !mounted) {
+            return;
+          }
+          setState(() {
+            _isLoading = false;
+            _hasError = true;
+            _isPullRefreshing = false;
+          });
+        },
+      ),
+    );
+
+    if (_webViewController.platform is WebKitWebViewController) {
+      await (_webViewController.platform as WebKitWebViewController)
+          .setAllowsBackForwardNavigationGestures(true);
+    }
+
+    await _webViewController.loadRequest(widget._initialUrl);
+  }
+
+  Future<void> _syncCanPop() async {
+    final canGoBack = await _webViewController.canGoBack();
+    final canPop = !canGoBack;
+
+    if (!mounted || _canPop == canPop) {
+      return;
+    }
+
+    setState(() {
+      _canPop = canPop;
+    });
+  }
+
+  Future<void> _reload() async {
+    if (mounted) {
+      setState(() {
+        _hasError = false;
+        _isLoading = true;
+        _isPullRefreshing = false;
+      });
+    }
+    await _webViewController.reload();
+  }
+
+  Future<void> _reloadFromPullToRefresh() async {
+    if (mounted) {
+      setState(() {
+        _hasError = false;
+        _isLoading = true;
+        _isPullRefreshing = true;
+      });
+    }
+    await _webViewController.reload();
+  }
+
+  void _handlePointerDown(PointerDownEvent event) {
+    _pointerDownY = event.position.dy;
+  }
+
+  void _handlePointerMove(PointerMoveEvent event) {
+    final pointerDownY = _pointerDownY;
+    if (pointerDownY == null || _scrollY > 0 || _hasError) {
+      return;
+    }
+
+    final nextPullDistance = event.position.dy - pointerDownY;
+    final clampedPullDistance = math
+        .max(0, math.min(nextPullDistance, _pullToRefreshTriggerDistance * 1.5))
+        .toDouble();
+
+    if (_pullDistance == clampedPullDistance) {
+      return;
+    }
+
+    setState(() {
+      _pullDistance = clampedPullDistance;
+    });
+  }
+
+  Future<void> _handlePointerEnd() async {
+    final shouldRefresh = _pullDistance >= _pullToRefreshTriggerDistance;
+
+    _pointerDownY = null;
+
+    if (mounted && _pullDistance > 0) {
+      setState(() {
+        _pullDistance = 0;
+      });
+    }
+
+    if (shouldRefresh) {
+      await _reloadFromPullToRefresh();
     }
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-    _webViewController?.dispose();
-    // The `_pullToRefreshController` is internally executing a dispose
-    // operation once, therefore, `dispose()` is not called here.
+  void _handlePointerCancel(PointerCancelEvent _) {
+    _pointerDownY = null;
+
+    if (_pullDistance == 0 || !mounted) {
+      return;
+    }
+
+    setState(() {
+      _pullDistance = 0;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    final isLoading = useState(false);
-    final canPop = useState(false);
-    final hasError = useState(false);
     return PopScope(
-      canPop: canPop.value,
+      canPop: _canPop,
       onPopInvokedWithResult: (didPop, _) async {
         if (didPop) {
           return;
         }
-        final controller = _webViewController;
-        if (controller == null) {
-          return;
-        }
-        if (await controller.canGoBack()) {
-          await controller.goBack();
+        if (await _webViewController.canGoBack()) {
+          await _webViewController.goBack();
         } else {
           widget._pop();
         }
       },
       child: Scaffold(
         appBar: AppBar(title: const Text('WebView')),
-        body: Stack(
-          children: [
-            Visibility(
-              visible: !hasError.value,
-              child: InAppWebView(
-                onWebViewCreated: (controller) {
-                  _webViewController = controller;
-                },
-                initialUrlRequest: URLRequest(
-                  url: WebUri.uri(widget._initialUrl),
-                ),
-                key: _webViewKey,
-                pullToRefreshController: _pullToRefreshController,
-                onLoadStart: (_, _) async {
-                  isLoading.value = true;
-                },
-                initialSettings: InAppWebViewSettings(
-                  cacheMode: CacheMode.LOAD_NO_CACHE,
-                ),
-                onProgressChanged: (_, progress) async {
-                  if (progress == 100) {
-                    isLoading.value = false;
-                    await _pullToRefreshController?.endRefreshing();
-                  }
-                  if (await _webViewController!.canGoBack()) {
-                    canPop.value = false;
-                  } else {
-                    canPop.value = true;
-                  }
-                },
-                onLoadStop: (_, _) async {
-                  await _pullToRefreshController?.endRefreshing();
-                  isLoading.value = false;
-                },
-                onReceivedError: (controller, request, error) async {
-                  if (isLoading.value) {
-                    await _pullToRefreshController?.endRefreshing();
-                    isLoading.value = false;
-                  }
-                  if (request.isForMainFrame ?? true) {
-                    hasError.value = true;
-                  }
-                },
+        body: Listener(
+          behavior: HitTestBehavior.translucent,
+          onPointerDown: _handlePointerDown,
+          onPointerMove: _handlePointerMove,
+          onPointerUp: (_) {
+            unawaited(_handlePointerEnd());
+          },
+          onPointerCancel: _handlePointerCancel,
+          child: Stack(
+            children: [
+              Visibility(
+                visible: !_hasError,
+                child: WebViewWidget(controller: _webViewController),
               ),
-            ),
-            if (hasError.value)
-              Center(
-                child: Column(
-                  mainAxisAlignment: .center,
-                  children: [
-                    const Text('エラーが発生しました'),
-                    TextButton(
-                      onPressed: () async {
-                        hasError.value = false;
-                        await onRefresh();
-                      },
-                      child: const Text('再読み込み'),
+              if (_hasError)
+                Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text('エラーが発生しました'),
+                      TextButton(
+                        onPressed: _reload,
+                        child: const Text('再読み込み'),
+                      ),
+                    ],
+                  ),
+                ),
+              if (_pullDistance > 0 || _isPullRefreshing)
+                Positioned(
+                  top: 16,
+                  left: 0,
+                  right: 0,
+                  child: Center(
+                    child: RefreshProgressIndicator(
+                      value: _isPullRefreshing
+                          ? null
+                          : (_pullDistance / _pullToRefreshTriggerDistance)
+                                .clamp(0.0, 1.0),
                     ),
-                  ],
+                  ),
                 ),
-              ),
-            if (isLoading.value)
-              const Center(child: CircularProgressIndicator.adaptive()),
-          ],
+              if (_isLoading)
+                const Center(child: CircularProgressIndicator.adaptive()),
+            ],
+          ),
         ),
       ),
     );
