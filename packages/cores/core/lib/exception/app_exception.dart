@@ -34,6 +34,9 @@ class AppException implements Exception {
       case DioExceptionType.unknown:
         message = 'Network error: ${exception.message ?? 'Unknown'}';
         code = 'UNKNOWN';
+      case DioExceptionType.transformTimeout:
+        message = 'Network error: ${exception.message ?? 'Unknown'}';
+        code = 'UNKNOWN';
     }
 
     return AppException(

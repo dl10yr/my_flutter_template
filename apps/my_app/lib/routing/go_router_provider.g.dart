@@ -17,6 +17,7 @@ RouteBase get $bottomTabRoute => StatefulShellRouteData.$route(
       routes: [
         GoRouteData.$route(
           path: '/search_tab',
+          hasOverriddenOnExit: false,
           factory: $SearchTabRoute._fromState,
         ),
       ],
@@ -26,14 +27,17 @@ RouteBase get $bottomTabRoute => StatefulShellRouteData.$route(
       routes: [
         GoRouteData.$route(
           path: '/settings_tab',
+          hasOverriddenOnExit: false,
           factory: $SettingsTabRoute._fromState,
           routes: [
             GoRouteData.$route(
               path: 'license',
+              hasOverriddenOnExit: false,
               factory: $LicensePageRoute._fromState,
             ),
             GoRouteData.$route(
               path: 'web_view',
+              hasOverriddenOnExit: false,
               parentNavigatorKey: WebViewPageRoute.$parentNavigatorKey,
               factory: $WebViewPageRoute._fromState,
             ),
@@ -135,6 +139,7 @@ mixin $WebViewPageRoute on GoRouteData {
 
 RouteBase get $debugRoute => GoRouteData.$route(
   path: '/debug',
+  hasOverriddenOnExit: false,
   parentNavigatorKey: DebugRoute.$parentNavigatorKey,
   factory: $DebugRoute._fromState,
 );
@@ -161,6 +166,7 @@ mixin $DebugRoute on GoRouteData {
 
 RouteBase get $startUpRoute => GoRouteData.$route(
   path: '/',
+  hasOverriddenOnExit: false,
   parentNavigatorKey: StartUpRoute.$parentNavigatorKey,
   factory: $StartUpRoute._fromState,
 );

@@ -34,7 +34,7 @@ class SharedPreferenceService {
     }
   }
 
-  Future<T?> read<T>(AppSharedPreferenceKey<T> key) async {
+  Future<T?>? read<T>(AppSharedPreferenceKey<T> key) {
     final type = T;
     try {
       switch (type) {

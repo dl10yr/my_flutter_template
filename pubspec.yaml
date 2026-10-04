@@ -31,23 +31,27 @@ melos:
 
   scripts:
     fix:
-      exec: |
-        dart fix --apply lib
-        dart run custom_lint --fix
+      exec:
+        command: |
+          dart fix --apply lib
+          dart run custom_lint --fix
+        concurrency: 1
       description: Fix dart files.
       packageFilters:
         dirExists: lib
 
     pub-get:
-      exec: |
-        fvm flutter pub get
+      exec:
+        command: |
+          fvm flutter pub get
+        concurrency: 1
       description: pub get.
       packageFilters:
         dirExists: lib
 
     gen:
-      run: dart run build_runner build --delete-conflicting-outputs
       exec:
+        command: dart run build_runner build --delete-conflicting-outputs
         concurrency: 1
       description: Generate code.
       packageFilters:
@@ -55,8 +59,8 @@ melos:
         dependsOn: "build_runner"
 
     gen:assets:
-      run: dart run build_runner build --delete-conflicting-outputs
       exec:
+        command: dart run build_runner build --delete-conflicting-outputs
         concurrency: 1
       description: Generate code.
       packageFilters:
@@ -65,8 +69,8 @@ melos:
         scope: "cores_assets"
 
     gen:watch:
-      run: dart run build_runner watch --delete-conflicting-outputs
       exec:
+        command: dart run build_runner watch --delete-conflicting-outputs
         concurrency: 99
       description: Generate code in watch mode.
       packageFilters:
@@ -74,8 +78,8 @@ melos:
         dependsOn: "build_runner"
 
     test:
-      run: flutter test
       exec:
+        command: flutter test
         failFast: true
       description: Run flutter test.
       packageFilters:
@@ -83,27 +87,33 @@ melos:
         dirExists: test
 
     pod:ios:
-      exec: |
-        cd ios
-        rm -f Podfile.lock
-        pod install --repo-update
+      exec:
+        command: |
+          cd ios
+          rm -f Podfile.lock
+          pod install --repo-update
+        concurrency: 1
       description: Run pod install on iOS.
       packageFilters:
         dirExists: [lib, ios]
         fileExists: "ios/Podfile"
 
     package:update:
-      exec: |
-        fvm flutter pub upgrade
+      exec:
+        command: |
+          fvm flutter pub upgrade
+        concurrency: 1
       description: Update package dependencies.
       packageFilters:
         dirExists: lib
 
     package:update-major:
-      exec: |
-        fvm flutter pub upgrade --major-versions
+      exec:
+        command: |
+          fvm flutter pub upgrade --major-versions
+        concurrency: 1
       description: Update package dependencies.
       packageFilters:
         dirExists: lib
 dev_dependencies:
-  melos: ^7.3.0
+  melos: ^8.6.0

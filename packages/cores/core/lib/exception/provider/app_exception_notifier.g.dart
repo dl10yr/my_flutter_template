@@ -48,7 +48,7 @@ abstract class _$AppExceptionNotifier extends $Notifier<AppException?> {
   AppException? build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AppException?, AppException?>;
     final element =
         ref.element
@@ -58,6 +58,6 @@ abstract class _$AppExceptionNotifier extends $Notifier<AppException?> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }
