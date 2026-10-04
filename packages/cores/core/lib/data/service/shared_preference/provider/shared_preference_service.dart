@@ -34,20 +34,20 @@ class SharedPreferenceService {
     }
   }
 
-  Future<T?> read<T>(AppSharedPreferenceKey<T> key) async {
+  Future<T?>? read<T>(AppSharedPreferenceKey<T> key) {
     final type = T;
     try {
       switch (type) {
         case const (String):
-          return await _asyncPrefs.getString(key.keyName) as Future<T?>;
+          return _asyncPrefs.getString(key.keyName) as Future<T?>;
         case const (bool):
-          return await _asyncPrefs.getBool(key.keyName) as Future<T?>;
+          return _asyncPrefs.getBool(key.keyName) as Future<T?>;
         case const (List<String>):
-          return await _asyncPrefs.getStringList(key.keyName) as Future<T?>;
+          return _asyncPrefs.getStringList(key.keyName) as Future<T?>;
         case const (int):
-          return await _asyncPrefs.getInt(key.keyName) as Future<T?>;
+          return _asyncPrefs.getInt(key.keyName) as Future<T?>;
         case const (double):
-          return await _asyncPrefs.getDouble(key.keyName) as Future<T?>;
+          return _asyncPrefs.getDouble(key.keyName) as Future<T?>;
       }
     } on Exception {
       return null;
