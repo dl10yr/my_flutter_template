@@ -22,9 +22,7 @@ class $ImagesGen {
   List<AssetGenImage> get values => [placeholder];
 }
 
-class Assets {
-  const Assets._();
-
+abstract final class Assets {
   static const $ImagesGen images = $ImagesGen();
 }
 
