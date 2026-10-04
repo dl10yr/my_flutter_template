@@ -39,15 +39,15 @@ class SharedPreferenceService {
     try {
       switch (type) {
         case const (String):
-          return _asyncPrefs.getString(key.keyName) as Future<T?>;
+          return await _asyncPrefs.getString(key.keyName) as Future<T?>;
         case const (bool):
-          return _asyncPrefs.getBool(key.keyName) as Future<T?>;
+          return await _asyncPrefs.getBool(key.keyName) as Future<T?>;
         case const (List<String>):
-          return _asyncPrefs.getStringList(key.keyName) as Future<T?>;
+          return await _asyncPrefs.getStringList(key.keyName) as Future<T?>;
         case const (int):
-          return _asyncPrefs.getInt(key.keyName) as Future<T?>;
+          return await _asyncPrefs.getInt(key.keyName) as Future<T?>;
         case const (double):
-          return _asyncPrefs.getDouble(key.keyName) as Future<T?>;
+          return await _asyncPrefs.getDouble(key.keyName) as Future<T?>;
       }
     } on Exception {
       return null;
